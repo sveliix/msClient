@@ -1176,6 +1176,8 @@ public class Minecraft implements IThreadListener, IPlayerUsage
             this.timer.updateTimer();
         }
 
+        main.partialTicks = this.timer.renderPartialTicks;
+        
         this.mcProfiler.startSection("scheduledExecutables");
 
         synchronized (this.scheduledTasks)

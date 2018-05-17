@@ -29,10 +29,9 @@ public class main {
 	   public static String Client_Prefix = "§6[§2MSClient§7]";
 	   public DrawUtils draw;
 	   private static CommandManager cmdManager;
+	   public static float partialTicks;
 	   
 	   public static ToggleSprintManager SprintM;
-		
-		//private static ModuleManager moduleManager;
 	   
 	   public Logger logger;
 	   

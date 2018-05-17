@@ -18,6 +18,8 @@ public class ModelPlayer extends ModelBiped
     private ModelRenderer bipedCape;
     private ModelRenderer bipedDeadmau5Head;
     private ArrayList<ModelRenderer> msAfro = new ArrayList<ModelRenderer>();
+    private ArrayList<ModelRenderer> msSunglasses = new ArrayList<ModelRenderer>();
+    private ArrayList<ModelRenderer> msShades = new ArrayList<ModelRenderer>();
     
     public float ticks_2;
     public float ticks_3;
@@ -40,26 +42,13 @@ public class ModelPlayer extends ModelBiped
     public ModelPlayer(float p_i46304_1_, boolean p_i46304_2_)
     {
         super(p_i46304_1_, 0.0F, 64, 64);
-         /*
-        for (int i = 0; i < 8; i++) {
-    		for (int j = 0; j < 8; j++) {
-    			for (int k = 0; k < 8; k++) {
-    				ModelRenderer mr = new ModelRenderer(this, 0, 0);
-    				mr.setTextureSize(64, 32);
-    				int a = 0, b = 0, c = 0;
-    				if (i == 0) {a = 1;}
-    				if (j == 0) {b = 1;}
-    				if (k == 0) {c = 1;}
-    				mr.addBox((i-4)*4, (j-4)*4, (k-4)*4, 2+a, 2+b, 2+c);
-    				
-    				this.msAfro.add(mr);
-    			}
-    		}
-    	}
-    	*/
         
         ModelRenderer mr = new ModelRenderer(this, 0, 0);
-        
+        this.msAfro = msAfro(mr);
+        mr = new ModelRenderer(this, 0, 0);
+        this.msSunglasses = msSunglasses(mr);
+        mr = new ModelRenderer(this, 0, 0);
+        this.msShades = msShades(mr);
         
         this.smallArms = p_i46304_2_;
         this.bipedDeadmau5Head = new ModelRenderer(this, 24, 0);
@@ -285,59 +274,195 @@ public class ModelPlayer extends ModelBiped
         }
     }
     
-    public void renderMS(float f) {
+    public void renderMsAfro(float f) {
     	for (ModelRenderer mr : this.msAfro) {
+    		mr.render(f);
+    	}
+    	
+    }
+    
+    public void renderMsSunglasses(float f) {
+    	for (ModelRenderer mr : this.msSunglasses) {
     		mr.render(f);
     	}
     }
     
+    public void renderMsShades(float f) {
+    	for (ModelRenderer mr : this.msShades) {
+    		mr.render(f);
+    	}
+    }
+    
+    // rechts unten hinten -> positiv
+    
     public ArrayList<ModelRenderer> msAfro(ModelRenderer mr) {
     	ArrayList<ModelRenderer> a = new ArrayList<ModelRenderer>();
-    	mr.setTextureSize(32, 32);
-        mr.addBox(-10, -5, -4, 1, 3, 8);
+    	mr.setTextureSize(256, 256);
+    	
+    	mr.addBox(-6, -2, -1, 1, 1, 4);
         a.add(mr);
-        mr.addBox(-9, -5, -6, 1, 3, 12);
+        mr.addBox(-5, -2, -1, 1, 1, 5);
         a.add(mr);
-        mr.addBox(-8, -5, -7, 1, 3, 14);
+        mr.addBox(-4, -2, -1, 1, 1, 6);
         a.add(mr);
-        mr.addBox(-7, -5, -8, 1, 3, 16);
+        mr.addBox(-3, -2, -1, 6, 1, 7);
         a.add(mr);
-        mr.addBox(-6, -5, -9, 2, 3, 18);
+        mr.addBox(3, -2, -1, 1, 1, 6);
         a.add(mr);
-        mr.addBox(-4, -5, -10, 8, 3, 20);
+        mr.addBox(4, -2, -1, 1, 1, 5);
         a.add(mr);
-        mr.addBox(4, -5, -9, 2, 3, 18);
+        mr.addBox(5, -2, -1, 1, 1, 4);
         a.add(mr);
-        mr.addBox(6, -5, -8, 1, 3, 16);
+    	
+    	mr.addBox(-7, -4, -4, 1, 2, 8);
         a.add(mr);
-        mr.addBox(7, -5, -7, 1, 3, 14);
-        a.add(mr);
-        mr.addBox(8, -5, -6, 1, 3, 12);
-        a.add(mr);
-        mr.addBox(9, -5, -4, 1, 3, 8);
+        mr.addBox(-6, -4, -5, 1, 2, 10);
         a.add(mr);
         
-        mr.addBox(-9, -3, -4, 1, 2, 8);
+        mr.addBox(-5, -4, -6, 1, 2, 12);
         a.add(mr);
-        mr.addBox(-8, -3, -6, 1, 2, 12);
+        mr.addBox(-4, -4, 0, 1, 2, 6);
         a.add(mr);
-        mr.addBox(-7, -3, -7, 2, 2, 14);
+        mr.addBox(-3, -4, 0, 6, 2, 7);
         a.add(mr);
-        mr.addBox(-5, -3, -8, 2, 2, 16);
+        mr.addBox(3, -4, 0, 1, 2, 6);
         a.add(mr);
-        mr.addBox(-3, -3, -9, 6, 2, 18);
-        a.add(mr);
-        mr.addBox(3, -3, -8, 2, 2, 16);
-        a.add(mr);
-        mr.addBox(5, -3, -7, 2, 2, 14);
-        a.add(mr);
-        mr.addBox(7, -3, -6, 1, 2, 12);
-        a.add(mr);
-        mr.addBox(8, -3, -4, 1, 2, 8);
+        mr.addBox(4, -4, -6, 1, 2, 12);
         a.add(mr);
         
-        mr.addBox(-8, -2, -4, 1, 1, 8);
+        mr.addBox(5, -4, -5, 1, 2, 10);
+        a.add(mr);
+        mr.addBox(6, -4, -4, 1, 2, 8);
+        a.add(mr);
         
+    	
+    	mr.addBox(-8, -8, -4, 1, 4, 8);
+        a.add(mr);
+        mr.addBox(-7, -8, -5, 1, 4, 10);
+        a.add(mr);
+        mr.addBox(-6, -8, -6, 1, 4, 12);
+        a.add(mr);
+        
+        mr.addBox(-5, -8, -7, 2, 3, 14);
+        a.add(mr);
+        mr.addBox(-3, -8, -8, 6, 3, 16);
+        a.add(mr);
+        mr.addBox(3, -8, -7, 2, 3, 14);
+        a.add(mr);
+        
+        mr.addBox(-5, -5, -7, 1, 1, 14); // edited
+        a.add(mr);
+        mr.addBox(-4, -5, 0, 1, 1, 7); // edited
+        a.add(mr);
+        mr.addBox(-3, -5, 0, 6, 1, 8); // edited
+        a.add(mr);
+        mr.addBox(3, -5, 0, 1, 1, 7); // edited
+        a.add(mr);
+        mr.addBox(4, -5, -7, 1, 1, 14); // edited
+        a.add(mr);
+        
+        mr.addBox(5, -8, -6, 1, 4, 12);
+        a.add(mr);
+        mr.addBox(6, -8, -5, 1, 4, 10);
+        a.add(mr);
+        mr.addBox(7, -8, -4, 1, 4, 8);
+        a.add(mr);
+        
+        
+        mr.addBox(-7, -10, -4, 1, 2, 8);
+        a.add(mr);
+        mr.addBox(-6, -10, -5, 1, 2, 10);
+        a.add(mr);
+        mr.addBox(-5, -10, -6, 2, 2, 12);
+        a.add(mr);
+        mr.addBox(-3, -10, -7, 6, 2, 14);
+        a.add(mr);
+        mr.addBox(3, -10, -6, 2, 2, 12);
+        a.add(mr);
+        mr.addBox(5, -10, -5, 1, 2, 10);
+        a.add(mr);
+        mr.addBox(6, -10, -4, 1, 2, 8);
+        a.add(mr);
+        
+        mr.addBox(-6, -11, -3, 1, 1, 6);
+        a.add(mr);
+        mr.addBox(-5, -11, -4, 1, 1, 8);
+        a.add(mr);
+        mr.addBox(-4, -11, -5, 1, 1, 10);
+        a.add(mr);
+        mr.addBox(-3, -11, -6, 6, 1, 12);
+        a.add(mr);
+        mr.addBox(3, -11, -5, 1, 1, 10);
+        a.add(mr);
+        mr.addBox(4, -11, -4, 1, 1, 8);
+        a.add(mr);
+        mr.addBox(5, -11, -3, 1, 1, 6);
+        a.add(mr);
+        
+        mr.addBox(-5, -12, -3, 1, 1, 6);
+        a.add(mr);
+        mr.addBox(-4, -12, -4, 1, 1, 8);
+        a.add(mr);
+        mr.addBox(-3, -12, -5, 6, 1, 10);
+        a.add(mr);
+        mr.addBox(3, -12, -4, 1, 1, 8);
+        a.add(mr);
+        mr.addBox(4, -12, -3, 1, 1, 6);
+        a.add(mr);
+        
+        mr.addBox(-4, -13, -3, 2, 1, 6);
+        a.add(mr);
+        mr.addBox(-2, -13, -4, 4, 1, 8);
+        a.add(mr);
+        mr.addBox(2, -13, -3, 2, 1, 6);
+        a.add(mr);
+    	
         return a;
+    }
+    
+    public ArrayList<ModelRenderer> msSunglasses(ModelRenderer mr) {
+    	ArrayList<ModelRenderer> a = new ArrayList<ModelRenderer>();
+    	
+    	mr.setTextureSize(64, 64);
+    	
+    	mr.addBox(-5, -4, 0, 1, 1, 1);
+    	a.add(mr);
+    	mr.addBox(-5, -5, -4, 1, 1, 5);
+    	a.add(mr);
+    	
+    	mr.addBox(-5, -5, -5, 4, 1, 1);
+    	a.add(mr);
+    	mr.addBox(-4, -4, -5, 1, 1, 1);
+    	a.add(mr);
+    	mr.addBox(-3, -3, -5, 2, 1, 1);
+    	a.add(mr);
+    	mr.addBox(-1, -4, -5, 2, 1, 1);
+    	a.add(mr);
+    	mr.addBox(1, -3, -5, 2, 1, 1);
+    	a.add(mr);
+    	mr.addBox(3, -4, -5, 1, 1, 1); 
+    	a.add(mr);
+    	mr.addBox(1, -5, -5, 4, 1, 1); 
+    	a.add(mr);
+    	
+    	mr.addBox(4, -5, -4, 1, 1, 5);
+    	a.add(mr);
+    	mr.addBox(4, -4, 0, 1, 1, 1);
+    	a.add(mr);
+    	
+    	return a;
+    }
+    
+    public ArrayList<ModelRenderer> msShades(ModelRenderer mr) {
+    	ArrayList<ModelRenderer> a = new ArrayList<ModelRenderer>();
+    	
+    	mr.setTextureSize(256, 256);
+    	
+    	mr.addBox(-3, -4, -5, 2, 1, 1);
+    	a.add(mr);
+    	mr.addBox(1, -4, -5, 2, 1, 1);
+    	a.add(mr);
+    	
+    	return a;
     }
 }
