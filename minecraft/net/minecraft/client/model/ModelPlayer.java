@@ -1,5 +1,7 @@
 package net.minecraft.client.model;
 
+import java.util.ArrayList;
+
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
@@ -15,23 +17,7 @@ public class ModelPlayer extends ModelBiped
     public ModelRenderer bipedBodyWear;
     private ModelRenderer bipedCape;
     private ModelRenderer bipedDeadmau5Head;
-    private ModelRenderer msAfro0;
-    private ModelRenderer msAfro1;
-    private ModelRenderer msAfro2;
-    private ModelRenderer msAfro3;
-    private ModelRenderer msAfro4;
-    private ModelRenderer msAfro5;
-    private ModelRenderer bipedMS;
-    private ModelRenderer backStripe;
-    private ModelRenderer rib1;
-    private ModelRenderer rib2;
-    private ModelRenderer cornerleft;
-    private ModelRenderer cornerright;
-    private ModelRenderer ribright;
-    private ModelRenderer ribleft;
-    private ModelRenderer cornerrightFront;
-    private ModelRenderer cornerleftFront;
-    private ModelRenderer ribState;
+    private ArrayList<ModelRenderer> msAfro = new ArrayList<ModelRenderer>();
     
     public float ticks_2;
     public float ticks_3;
@@ -54,21 +40,33 @@ public class ModelPlayer extends ModelBiped
     public ModelPlayer(float p_i46304_1_, boolean p_i46304_2_)
     {
         super(p_i46304_1_, 0.0F, 64, 64);
-        this.msAfro0 = new ModelRenderer(this, 0, 0);
-        this.msAfro0.setTextureSize(64, 32);
-        this.msAfro0.addBox(0, 0, 0, 2, 2, 2);
-        this.msAfro1 = new ModelRenderer(this, 0, 0);
-        this.msAfro1.setTextureSize(64, 32);
-        this.msAfro1.addBox(0, 4, 0, 2, 2, 2);
-        this.msAfro2 = new ModelRenderer(this, 0, 0);
-        this.msAfro2.setTextureSize(64, 32);
-        this.msAfro2.addBox(0, 8, 0, 2, 2, 2);
+         /*
+        for (int i = 0; i < 8; i++) {
+    		for (int j = 0; j < 8; j++) {
+    			for (int k = 0; k < 8; k++) {
+    				ModelRenderer mr = new ModelRenderer(this, 0, 0);
+    				mr.setTextureSize(64, 32);
+    				int a = 0, b = 0, c = 0;
+    				if (i == 0) {a = 1;}
+    				if (j == 0) {b = 1;}
+    				if (k == 0) {c = 1;}
+    				mr.addBox((i-4)*4, (j-4)*4, (k-4)*4, 2+a, 2+b, 2+c);
+    				
+    				this.msAfro.add(mr);
+    			}
+    		}
+    	}
+    	*/
+        
+        ModelRenderer mr = new ModelRenderer(this, 0, 0);
+        
+        
         this.smallArms = p_i46304_2_;
         this.bipedDeadmau5Head = new ModelRenderer(this, 24, 0);
         this.bipedDeadmau5Head.addBox(-3.0F, -6.0F, -1.0F, 6, 6, 1, p_i46304_1_);
         this.bipedCape = new ModelRenderer(this, 0, 0);
         this.bipedCape.setTextureSize(64, 32);
-        this.bipedCape.addBox(-5.0F, 0.0F, -1.0F, 10, 16, 1, p_i46304_1_);        
+        this.bipedCape.addBox(-5.0F, 0.0F, -1.0F, 10, 16, 1, p_i46304_1_);
         
         if (p_i46304_2_)
         {
@@ -97,7 +95,6 @@ public class ModelPlayer extends ModelBiped
             this.bipedRightArmwear.addBox(-3.0F, -2.0F, -2.0F, 4, 12, 4, p_i46304_1_ + 0.25F);
             this.bipedRightArmwear.setRotationPoint(-5.0F, 2.0F, 10.0F);
         }
-
         this.bipedLeftLeg = new ModelRenderer(this, 16, 48);
         this.bipedLeftLeg.addBox(-2.0F, 0.0F, -2.0F, 4, 12, 4, p_i46304_1_);
         this.bipedLeftLeg.setRotationPoint(1.9F, 12.0F, 0.0F);
@@ -110,6 +107,7 @@ public class ModelPlayer extends ModelBiped
         this.bipedBodyWear = new ModelRenderer(this, 16, 32);
         this.bipedBodyWear.addBox(-4.0F, 0.0F, -2.0F, 8, 12, 4, p_i46304_1_ + 0.25F);
         this.bipedBodyWear.setRotationPoint(0.0F, 0.0F, 0.0F);
+        
     }
 
     public void setRotation(ModelRenderer modelRenderer, float xRotation, float yRotation, float zRotation)
@@ -288,6 +286,58 @@ public class ModelPlayer extends ModelBiped
     }
     
     public void renderMS(float f) {
-    	this.msAfro0.render(f);
+    	for (ModelRenderer mr : this.msAfro) {
+    		mr.render(f);
+    	}
+    }
+    
+    public ArrayList<ModelRenderer> msAfro(ModelRenderer mr) {
+    	ArrayList<ModelRenderer> a = new ArrayList<ModelRenderer>();
+    	mr.setTextureSize(32, 32);
+        mr.addBox(-10, -5, -4, 1, 3, 8);
+        a.add(mr);
+        mr.addBox(-9, -5, -6, 1, 3, 12);
+        a.add(mr);
+        mr.addBox(-8, -5, -7, 1, 3, 14);
+        a.add(mr);
+        mr.addBox(-7, -5, -8, 1, 3, 16);
+        a.add(mr);
+        mr.addBox(-6, -5, -9, 2, 3, 18);
+        a.add(mr);
+        mr.addBox(-4, -5, -10, 8, 3, 20);
+        a.add(mr);
+        mr.addBox(4, -5, -9, 2, 3, 18);
+        a.add(mr);
+        mr.addBox(6, -5, -8, 1, 3, 16);
+        a.add(mr);
+        mr.addBox(7, -5, -7, 1, 3, 14);
+        a.add(mr);
+        mr.addBox(8, -5, -6, 1, 3, 12);
+        a.add(mr);
+        mr.addBox(9, -5, -4, 1, 3, 8);
+        a.add(mr);
+        
+        mr.addBox(-9, -3, -4, 1, 2, 8);
+        a.add(mr);
+        mr.addBox(-8, -3, -6, 1, 2, 12);
+        a.add(mr);
+        mr.addBox(-7, -3, -7, 2, 2, 14);
+        a.add(mr);
+        mr.addBox(-5, -3, -8, 2, 2, 16);
+        a.add(mr);
+        mr.addBox(-3, -3, -9, 6, 2, 18);
+        a.add(mr);
+        mr.addBox(3, -3, -8, 2, 2, 16);
+        a.add(mr);
+        mr.addBox(5, -3, -7, 2, 2, 14);
+        a.add(mr);
+        mr.addBox(7, -3, -6, 1, 2, 12);
+        a.add(mr);
+        mr.addBox(8, -3, -4, 1, 2, 8);
+        a.add(mr);
+        
+        mr.addBox(-8, -2, -4, 1, 1, 8);
+        
+        return a;
     }
 }
