@@ -17,15 +17,28 @@ public class ModelPlayer extends ModelBiped
     public ModelRenderer bipedBodyWear;
     private ModelRenderer bipedCape;
     private ModelRenderer bipedDeadmau5Head;
+    
+    // disco dude
+    // afro
     private ArrayList<ModelRenderer> msAfro = new ArrayList<ModelRenderer>();
     private ArrayList<ModelRenderer> msSunglasses = new ArrayList<ModelRenderer>();
     private ArrayList<ModelRenderer> msShades = new ArrayList<ModelRenderer>();
+    
+    // lord
+    // tophat
+    private ArrayList<ModelRenderer> msTophat = new ArrayList<ModelRenderer>();
+    private ArrayList<ModelRenderer> msTophatEdge = new ArrayList<ModelRenderer>();
     
     public float ticks_2;
     public float ticks_3;
     public float ticks_4;
     public float ticks_5;
     public float ticks_6;
+    
+    // TODO temporary solution
+    public boolean doAfro = true;
+    public boolean doSunglasses = true;
+    public boolean doTophat = false;
     
     ModelRenderer Shape1;
     ModelRenderer Shape2;
@@ -49,6 +62,10 @@ public class ModelPlayer extends ModelBiped
         this.msSunglasses = msSunglasses(mr);
         mr = new ModelRenderer(this, 0, 0);
         this.msShades = msShades(mr);
+        mr = new ModelRenderer(this, 0, 0);
+        this.msTophat = msTophat(mr);
+        mr = new ModelRenderer(this, 0, 0);
+        this.msTophatEdge = msTophatEdge(mr);
         
         this.smallArms = p_i46304_2_;
         this.bipedDeadmau5Head = new ModelRenderer(this, 24, 0);
@@ -84,6 +101,7 @@ public class ModelPlayer extends ModelBiped
             this.bipedRightArmwear.addBox(-3.0F, -2.0F, -2.0F, 4, 12, 4, p_i46304_1_ + 0.25F);
             this.bipedRightArmwear.setRotationPoint(-5.0F, 2.0F, 10.0F);
         }
+        
         this.bipedLeftLeg = new ModelRenderer(this, 16, 48);
         this.bipedLeftLeg.addBox(-2.0F, 0.0F, -2.0F, 4, 12, 4, p_i46304_1_);
         this.bipedLeftLeg.setRotationPoint(1.9F, 12.0F, 0.0F);
@@ -275,21 +293,43 @@ public class ModelPlayer extends ModelBiped
     }
     
     public void renderMsAfro(float f) {
-    	for (ModelRenderer mr : this.msAfro) {
-    		mr.render(f);
+    	if (doAfro) {
+    		for (ModelRenderer mr : this.msAfro) {
+    			mr.render(f);
+    		}
     	}
     	
     }
     
     public void renderMsSunglasses(float f) {
-    	for (ModelRenderer mr : this.msSunglasses) {
-    		mr.render(f);
+    	if (doSunglasses) {
+    		for (ModelRenderer mr : this.msSunglasses) {
+    			mr.render(f);
+    		}
     	}
     }
     
     public void renderMsShades(float f) {
-    	for (ModelRenderer mr : this.msShades) {
-    		mr.render(f);
+    	if (doSunglasses) {
+    		for (ModelRenderer mr : this.msShades) {
+    			mr.render(f);
+    		}
+    	}
+    }
+    
+    public void renderMsTophat(float f) {
+    	if (doTophat) {
+    		for (ModelRenderer mr : this.msTophat) {
+    			mr.render(f);
+    		}
+    	}
+    }
+    
+    public void renderMsTophatEdge(float f) {
+    	if (doTophat) {
+    		for (ModelRenderer mr : this.msTophatEdge) {
+    			mr.render(f);
+    		}
     	}
     }
     
@@ -298,125 +338,73 @@ public class ModelPlayer extends ModelBiped
     public ArrayList<ModelRenderer> msAfro(ModelRenderer mr) {
     	ArrayList<ModelRenderer> a = new ArrayList<ModelRenderer>();
     	mr.setTextureSize(256, 256);
+
+    	mr.addBox(-6, -2, -1, 1, 1, 4); a.add(mr);
+        mr.addBox(-5, -2, -1, 1, 1, 5); a.add(mr);
+        mr.addBox(-4, -2, -1, 1, 1, 6); a.add(mr);
+        mr.addBox(-3, -2, -1, 6, 1, 7); a.add(mr);
+        mr.addBox(3, -2, -1, 1, 1, 6); a.add(mr);
+        mr.addBox(4, -2, -1, 1, 1, 5); a.add(mr);
+        mr.addBox(5, -2, -1, 1, 1, 4); a.add(mr);
     	
-    	mr.addBox(-6, -2, -1, 1, 1, 4);
-        a.add(mr);
-        mr.addBox(-5, -2, -1, 1, 1, 5);
-        a.add(mr);
-        mr.addBox(-4, -2, -1, 1, 1, 6);
-        a.add(mr);
-        mr.addBox(-3, -2, -1, 6, 1, 7);
-        a.add(mr);
-        mr.addBox(3, -2, -1, 1, 1, 6);
-        a.add(mr);
-        mr.addBox(4, -2, -1, 1, 1, 5);
-        a.add(mr);
-        mr.addBox(5, -2, -1, 1, 1, 4);
-        a.add(mr);
-    	
-    	mr.addBox(-7, -4, -4, 1, 2, 8);
-        a.add(mr);
-        mr.addBox(-6, -4, -5, 1, 2, 10);
-        a.add(mr);
+    	mr.addBox(-7, -4, -4, 1, 2, 8); a.add(mr);
+        mr.addBox(-6, -4, -5, 1, 2, 10); a.add(mr);
+        mr.addBox(-5, -4, -6, 1, 2, 12); a.add(mr);
         
-        mr.addBox(-5, -4, -6, 1, 2, 12);
-        a.add(mr);
-        mr.addBox(-4, -4, 0, 1, 2, 6);
-        a.add(mr);
-        mr.addBox(-3, -4, 0, 6, 2, 7);
-        a.add(mr);
-        mr.addBox(3, -4, 0, 1, 2, 6);
-        a.add(mr);
-        mr.addBox(4, -4, -6, 1, 2, 12);
-        a.add(mr);
+        mr.addBox(-4, -4, 0, 1, 2, 6); a.add(mr);
+        mr.addBox(-3, -4, 0, 6, 2, 7); a.add(mr);
+        mr.addBox(3, -4, 0, 1, 2, 6); a.add(mr);
         
-        mr.addBox(5, -4, -5, 1, 2, 10);
-        a.add(mr);
-        mr.addBox(6, -4, -4, 1, 2, 8);
-        a.add(mr);
+        mr.addBox(4, -4, -6, 1, 2, 12); a.add(mr);
+        mr.addBox(5, -4, -5, 1, 2, 10); a.add(mr);
+        mr.addBox(6, -4, -4, 1, 2, 8); a.add(mr);
         
     	
-    	mr.addBox(-8, -8, -4, 1, 4, 8);
-        a.add(mr);
-        mr.addBox(-7, -8, -5, 1, 4, 10);
-        a.add(mr);
-        mr.addBox(-6, -8, -6, 1, 4, 12);
-        a.add(mr);
+    	mr.addBox(-8, -8, -4, 1, 4, 8); a.add(mr);
+        mr.addBox(-7, -8, -5, 1, 4, 10); a.add(mr);
+        mr.addBox(-6, -8, -6, 1, 4, 12); a.add(mr);
         
-        mr.addBox(-5, -8, -7, 2, 3, 14);
-        a.add(mr);
-        mr.addBox(-3, -8, -8, 6, 3, 16);
-        a.add(mr);
-        mr.addBox(3, -8, -7, 2, 3, 14);
-        a.add(mr);
+        mr.addBox(-5, -8, -7, 2, 3, 14); a.add(mr);
+        mr.addBox(-3, -8, -8, 6, 3, 16); a.add(mr);
+        mr.addBox(3, -8, -7, 2, 3, 14); a.add(mr);
         
-        mr.addBox(-5, -5, -7, 1, 1, 14); // edited
-        a.add(mr);
-        mr.addBox(-4, -5, 0, 1, 1, 7); // edited
-        a.add(mr);
-        mr.addBox(-3, -5, 0, 6, 1, 8); // edited
-        a.add(mr);
-        mr.addBox(3, -5, 0, 1, 1, 7); // edited
-        a.add(mr);
-        mr.addBox(4, -5, -7, 1, 1, 14); // edited
-        a.add(mr);
+        mr.addBox(-5, -5, -7, 1, 1, 14); a.add(mr);
+        mr.addBox(-4, -5, 0, 1, 1, 7); a.add(mr);
+        mr.addBox(-3, -5, 0, 6, 1, 8); a.add(mr);
+        mr.addBox(3, -5, 0, 1, 1, 7); a.add(mr);
+        mr.addBox(4, -5, -7, 1, 1, 14); a.add(mr);
         
-        mr.addBox(5, -8, -6, 1, 4, 12);
-        a.add(mr);
-        mr.addBox(6, -8, -5, 1, 4, 10);
-        a.add(mr);
-        mr.addBox(7, -8, -4, 1, 4, 8);
-        a.add(mr);
+        mr.addBox(5, -8, -6, 1, 4, 12); a.add(mr);
+        mr.addBox(6, -8, -5, 1, 4, 10); a.add(mr);
+        mr.addBox(7, -8, -4, 1, 4, 8); a.add(mr);
         
         
-        mr.addBox(-7, -10, -4, 1, 2, 8);
-        a.add(mr);
-        mr.addBox(-6, -10, -5, 1, 2, 10);
-        a.add(mr);
-        mr.addBox(-5, -10, -6, 2, 2, 12);
-        a.add(mr);
-        mr.addBox(-3, -10, -7, 6, 2, 14);
-        a.add(mr);
-        mr.addBox(3, -10, -6, 2, 2, 12);
-        a.add(mr);
-        mr.addBox(5, -10, -5, 1, 2, 10);
-        a.add(mr);
-        mr.addBox(6, -10, -4, 1, 2, 8);
-        a.add(mr);
+        mr.addBox(-7, -10, -4, 1, 2, 8); a.add(mr);
+        mr.addBox(-6, -10, -5, 1, 2, 10); a.add(mr);
+        mr.addBox(-5, -10, -6, 2, 2, 12); a.add(mr);
+        mr.addBox(-3, -10, -7, 6, 2, 14); a.add(mr);
+        mr.addBox(3, -10, -6, 2, 2, 12); a.add(mr);
+        mr.addBox(5, -10, -5, 1, 2, 10); a.add(mr);
+        mr.addBox(6, -10, -4, 1, 2, 8); a.add(mr);
         
-        mr.addBox(-6, -11, -3, 1, 1, 6);
-        a.add(mr);
-        mr.addBox(-5, -11, -4, 1, 1, 8);
-        a.add(mr);
-        mr.addBox(-4, -11, -5, 1, 1, 10);
-        a.add(mr);
-        mr.addBox(-3, -11, -6, 6, 1, 12);
-        a.add(mr);
-        mr.addBox(3, -11, -5, 1, 1, 10);
-        a.add(mr);
-        mr.addBox(4, -11, -4, 1, 1, 8);
-        a.add(mr);
-        mr.addBox(5, -11, -3, 1, 1, 6);
-        a.add(mr);
+        mr.addBox(-6, -11, -3, 1, 1, 6); a.add(mr);
+        mr.addBox(-5, -11, -4, 1, 1, 8); a.add(mr);
+        mr.addBox(-4, -11, -5, 1, 1, 10); a.add(mr);
+        mr.addBox(-3, -11, -6, 6, 1, 12); a.add(mr);
+        mr.addBox(3, -11, -5, 1, 1, 10); a.add(mr);
+        mr.addBox(4, -11, -4, 1, 1, 8); a.add(mr);
+        mr.addBox(5, -11, -3, 1, 1, 6); a.add(mr);
         
-        mr.addBox(-5, -12, -3, 1, 1, 6);
-        a.add(mr);
-        mr.addBox(-4, -12, -4, 1, 1, 8);
-        a.add(mr);
-        mr.addBox(-3, -12, -5, 6, 1, 10);
-        a.add(mr);
-        mr.addBox(3, -12, -4, 1, 1, 8);
-        a.add(mr);
-        mr.addBox(4, -12, -3, 1, 1, 6);
-        a.add(mr);
+        mr.addBox(-5, -12, -3, 1, 1, 6); a.add(mr);
+        mr.addBox(-4, -12, -4, 1, 1, 8); a.add(mr);
+        mr.addBox(-3, -12, -5, 6, 1, 10); a.add(mr);
+        mr.addBox(3, -12, -4, 1, 1, 8); a.add(mr);
+        mr.addBox(4, -12, -3, 1, 1, 6); a.add(mr);
         
-        mr.addBox(-4, -13, -3, 2, 1, 6);
-        a.add(mr);
-        mr.addBox(-2, -13, -4, 4, 1, 8);
-        a.add(mr);
-        mr.addBox(2, -13, -3, 2, 1, 6);
-        a.add(mr);
-    	
+        mr.addBox(-4, -13, -3, 2, 1, 6); a.add(mr);
+        mr.addBox(-2, -13, -4, 4, 1, 8); a.add(mr);
+        mr.addBox(2, -13, -3, 2, 1, 6); a.add(mr);
+        
         return a;
     }
     
@@ -425,29 +413,43 @@ public class ModelPlayer extends ModelBiped
     	
     	mr.setTextureSize(64, 64);
     	
-    	mr.addBox(-5, -4, 0, 1, 1, 1);
+    	mr.addBox(-9, -8, 1, 1, 2, 1);
     	a.add(mr);
-    	mr.addBox(-5, -5, -4, 1, 1, 5);
-    	a.add(mr);
-    	
-    	mr.addBox(-5, -5, -5, 4, 1, 1);
-    	a.add(mr);
-    	mr.addBox(-4, -4, -5, 1, 1, 1);
-    	a.add(mr);
-    	mr.addBox(-3, -3, -5, 2, 1, 1);
-    	a.add(mr);
-    	mr.addBox(-1, -4, -5, 2, 1, 1);
-    	a.add(mr);
-    	mr.addBox(1, -3, -5, 2, 1, 1);
-    	a.add(mr);
-    	mr.addBox(3, -4, -5, 1, 1, 1); 
-    	a.add(mr);
-    	mr.addBox(1, -5, -5, 4, 1, 1); 
+    	mr.addBox(-9, -10, -8, 1, 2, 10);
     	a.add(mr);
     	
-    	mr.addBox(4, -5, -4, 1, 1, 5);
+    	mr.addBox(-9, -10, -10, 7, 1, 2);
     	a.add(mr);
-    	mr.addBox(4, -4, 0, 1, 1, 1);
+    	mr.addBox(-9, -9, -10, 2, 1, 2);
+    	a.add(mr);
+    	mr.addBox(-8, -8, -10, 1, 3, 2);
+    	a.add(mr);
+    	mr.addBox(-7, -5, -10, 5, 1, 2);
+    	a.add(mr);
+    	mr.addBox(-3, -6, -10, 2, 1, 2);
+    	a.add(mr);
+    	mr.addBox(-2, -9, -10, 1, 3, 2);
+    	a.add(mr);
+    	
+    	mr.addBox(-1, -9, -9, 2, 2, 1);
+    	a.add(mr);
+    	
+    	mr.addBox(1, -9, -10, 1, 3, 2);
+    	a.add(mr);
+    	mr.addBox(1, -6, -10, 2, 1, 2);
+    	a.add(mr);
+    	mr.addBox(2, -5, -10, 5, 1, 2);
+    	a.add(mr);
+    	mr.addBox(7, -8, -10, 1, 3, 2);
+    	a.add(mr);
+    	mr.addBox(7, -9, -10, 2, 1, 2);
+    	a.add(mr);
+    	mr.addBox(2, -10, -10, 7, 1, 2);
+    	a.add(mr);
+    	
+    	mr.addBox(8, -10, -8, 1, 2, 10);
+    	a.add(mr);
+    	mr.addBox(8, -8, 1, 1, 2, 1);
     	a.add(mr);
     	
     	return a;
@@ -457,11 +459,393 @@ public class ModelPlayer extends ModelBiped
     	ArrayList<ModelRenderer> a = new ArrayList<ModelRenderer>();
     	
     	mr.setTextureSize(256, 256);
+
+    	mr.addBox(-7, -9, -9, 5, 3, 1);
+    	a.add(mr);
+    	mr.addBox(-7, -6, -9, 4, 1, 1);
+    	a.add(mr);
     	
-    	mr.addBox(-3, -4, -5, 2, 1, 1);
+    	mr.addBox(2, -9, -9, 5, 3, 1);
     	a.add(mr);
-    	mr.addBox(1, -4, -5, 2, 1, 1);
+    	mr.addBox(3, -6, -9, 4, 1, 1);
     	a.add(mr);
+    	
+    	return a;
+    }
+    
+    public ArrayList<ModelRenderer> msTophat(ModelRenderer mr) {
+    	ArrayList<ModelRenderer> a = new ArrayList<ModelRenderer>();
+    	mr.setTextureSize(256, 256);
+    	
+    	//base 
+    	mr.addBox(-9, -14, -4, 1, 1, 8); a.add(mr);
+    	mr.addBox(-8, -14, -6, 1, 1, 12); a.add(mr);
+    	mr.addBox(-7, -14, -7, 2, 1, 14); a.add(mr);
+    	mr.addBox(-5, -14, -8, 2, 1, 16); a.add(mr);
+    	mr.addBox(-3, -14, -9, 6, 1, 18); a.add(mr);
+    	
+    	mr.addBox(3, -14, -8, 2, 1, 16); a.add(mr);
+    	mr.addBox(5, -14, -7, 2, 1, 14); a.add(mr);
+    	mr.addBox(7, -14, -6, 1, 1, 12); a.add(mr);
+    	mr.addBox(8, -14, -4, 1, 1, 8); a.add(mr);
+    	
+    	
+    	mr.addBox(-18, -15, -4, 1, 1, 8); a.add(mr);
+    	mr.addBox(-17, -15, -6, 1, 1, 12); a.add(mr);
+    	mr.addBox(-16, -15, -7, 1, 1, 14); a.add(mr);
+    	mr.addBox(-15, -15, -8, 2, 1, 16); a.add(mr);
+    	mr.addBox(-13, -15, -9, 2, 1, 18); a.add(mr);
+    	mr.addBox(-11, -15, -10, 2, 1, 20); a.add(mr);
+    	mr.addBox(-9, -15, -11, 4, 1, 22); a.add(mr);
+    	mr.addBox(-5, -15, -12, 10, 1, 24); a.add(mr);
+    	
+    	mr.addBox(5, -15, -11, 4, 1, 22); a.add(mr);
+    	mr.addBox(9, -15, -10, 2, 1, 20); a.add(mr);
+    	mr.addBox(11, -15, -9, 2, 1, 18); a.add(mr);
+    	mr.addBox(13, -15, -8, 2, 1, 16); a.add(mr);
+    	mr.addBox(15, -15, -7, 1, 1, 14); a.add(mr);
+    	mr.addBox(16, -15, -6, 1, 1, 12); a.add(mr);
+    	mr.addBox(17, -15, -4, 1, 1, 8); a.add(mr);
+    	
+    	
+    	//body
+    	mr.addBox(-13, -21, -5, 1, 6, 10); a.add(mr);
+    	mr.addBox(-12, -21, -7, 1, 6, 14); a.add(mr);
+    	mr.addBox(-11, -21, -8, 1, 6, 16); a.add(mr);
+    	mr.addBox(-10, -21, -9, 1, 6, 18); a.add(mr);
+    	mr.addBox(-9, -21, -10, 1, 6, 20); a.add(mr);
+    	mr.addBox(-8, -21, -11, 1, 6, 22); a.add(mr);
+    	mr.addBox(-7, -21, -12, 3, 6, 24); a.add(mr);
+    	mr.addBox(-4, -21, -13, 8, 6, 26); a.add(mr);
+    	
+    	mr.addBox(4, -21, -12, 3, 6, 24); a.add(mr);
+    	mr.addBox(7, -21, -11, 1, 6, 22); a.add(mr);
+    	mr.addBox(8, -21, -10, 1, 6, 20); a.add(mr);
+    	mr.addBox(9, -21, -9, 1, 6, 18); a.add(mr);
+    	mr.addBox(10, -21, -8, 1, 6, 16); a.add(mr);
+    	mr.addBox(11, -21, -7, 1, 6, 14); a.add(mr);
+    	mr.addBox(12, -21, -5, 1, 6, 10); a.add(mr);
+    	
+    	
+    	mr.addBox(-12, -27, -5, 1, 6, 10); a.add(mr);
+    	mr.addBox(-11, -27, -7, 1, 6, 14); a.add(mr);
+    	mr.addBox(-10, -27, -8, 1, 6, 16); a.add(mr);
+    	mr.addBox(-9, -27, -9, 1, 6, 18); a.add(mr);
+    	mr.addBox(-8, -27, -10, 2, 6, 20); a.add(mr);
+    	mr.addBox(-6, -27, -11, 2, 6, 22); a.add(mr);
+    	mr.addBox(-4, -27, -12, 8, 6, 24); a.add(mr);
+    	
+    	mr.addBox(4, -27, -11, 2, 6, 22); a.add(mr);
+    	mr.addBox(6, -27, -10, 2, 6, 20); a.add(mr);
+    	mr.addBox(8, -27, -9, 1, 6, 18); a.add(mr);
+    	mr.addBox(9, -27, -8, 1, 6, 16); a.add(mr);
+    	mr.addBox(10, -27, -7, 1, 6, 14); a.add(mr);
+    	mr.addBox(11, -27, -5, 1, 6, 10); a.add(mr);
+    	
+    	
+    	//center++
+    	mr.addBox(-11, -31, -5, 1, 4, 10); a.add(mr);
+    	mr.addBox(-10, -31, -7, 1, 4, 14); a.add(mr);
+    	mr.addBox(-9, -31, -8, 1, 4, 16); a.add(mr);
+    	mr.addBox(-8, -31, -9, 1, 4, 18); a.add(mr);
+    	mr.addBox(-7, -31, -10, 2, 4, 20); a.add(mr);
+    	mr.addBox(-5, -31, -11, 2, 4, 22); a.add(mr);
+    	mr.addBox(-3, -31, -12, 8, 4, 24); a.add(mr);
+    	
+    	mr.addBox(5, -31, -11, 2, 4, 22); a.add(mr);
+    	mr.addBox(7, -31, -10, 2, 4, 20); a.add(mr);
+    	mr.addBox(9, -31, -9, 1, 4, 18); a.add(mr);
+    	mr.addBox(10, -31, -8, 1, 4, 16); a.add(mr);
+    	mr.addBox(11, -31, -7, 1, 4, 14); a.add(mr);
+    	mr.addBox(12, -31, -5, 1, 4, 10); a.add(mr);
+    	
+    	
+    	//center++
+    	mr.addBox(-11, -35, -5, 1, 4, 10); a.add(mr);
+    	mr.addBox(-10, -35, -7, 1, 4, 14); a.add(mr);
+    	mr.addBox(-9, -35, -8, 1, 4, 16); a.add(mr);
+    	mr.addBox(-8, -35, -9, 1, 4, 18); a.add(mr);
+    	mr.addBox(-7, -35, -10, 1, 4, 20); a.add(mr);
+    	mr.addBox(-6, -35, -11, 1, 4, 22); a.add(mr);
+    	mr.addBox(-5, -35, -12, 3, 4, 24); a.add(mr);
+    	mr.addBox(-2, -35, -13, 8, 4, 26); a.add(mr);
+    	
+    	mr.addBox(6, -35, -12, 3, 4, 24); a.add(mr);
+    	mr.addBox(9, -35, -11, 1, 4, 22); a.add(mr);
+    	mr.addBox(10, -35, -10, 1, 4, 20); a.add(mr);
+    	mr.addBox(11, -35, -9, 1, 4, 18); a.add(mr);
+    	mr.addBox(12, -35, -8, 1, 4, 16); a.add(mr);
+    	mr.addBox(13, -35, -7, 1, 4, 14); a.add(mr);
+    	mr.addBox(14, -35, -5, 1, 4, 10); a.add(mr);
+    	
+    	
+    	mr.addBox(-12, -38, -5, 1, 3, 10); a.add(mr);
+    	mr.addBox(-11, -38, -7, 1, 3, 14); a.add(mr);
+    	mr.addBox(-10, -38, -9, 1, 3, 18); a.add(mr);
+    	mr.addBox(-9, -38, -10, 1, 3, 20); a.add(mr);
+    	mr.addBox(-8, -38, -11, 2, 3, 22); a.add(mr);
+    	mr.addBox(-6, -38, -12, 1, 3, 24); a.add(mr);
+    	mr.addBox(-5, -38, -13, 3, 3, 26); a.add(mr);
+    	mr.addBox(-2, -38, -14, 8, 3, 28); a.add(mr);
+    	
+    	mr.addBox(6, -38, -13, 3, 3, 26); a.add(mr);
+    	mr.addBox(9, -38, -12, 1, 3, 24); a.add(mr);
+    	mr.addBox(10, -38, -11, 2, 3, 22); a.add(mr);
+    	mr.addBox(12, -38, -10, 1, 3, 20); a.add(mr);
+    	mr.addBox(13, -38, -9, 1, 3, 18); a.add(mr);
+    	mr.addBox(14, -38, -7, 1, 3, 14); a.add(mr);
+    	mr.addBox(15, -38, -5, 1, 3, 10); a.add(mr);
+    	
+    	
+    	// center++
+    	mr.addBox(-12, -40, -5, 1, 2, 10); a.add(mr);
+    	mr.addBox(-11, -40, -7, 1, 2, 14); a.add(mr);
+    	mr.addBox(-10, -40, -9, 1, 2, 18); a.add(mr);
+    	mr.addBox(-9, -40, -10, 1, 2, 20); a.add(mr);
+    	mr.addBox(-8, -40, -11, 1, 2, 22); a.add(mr);
+    	mr.addBox(-7, -40, -12, 1, 2, 24); a.add(mr);
+    	mr.addBox(-6, -40, -13, 2, 2, 26); a.add(mr);
+    	mr.addBox(-4, -40, -14, 3, 2, 28); a.add(mr);
+    	mr.addBox(-1, -40, -15, 8, 2, 30); a.add(mr);
+    	
+    	mr.addBox(7, -40, -14, 3, 2, 28); a.add(mr);
+    	mr.addBox(10, -40, -13, 2, 2, 26); a.add(mr);
+    	mr.addBox(12, -40, -12, 1, 2, 24); a.add(mr);
+    	mr.addBox(13, -40, -11, 1, 2, 22); a.add(mr);
+    	mr.addBox(14, -40, -10, 1, 2, 20); a.add(mr);
+    	mr.addBox(15, -40, -9, 1, 2, 18); a.add(mr);
+    	mr.addBox(16, -40, -7, 1, 2, 14); a.add(mr);
+    	mr.addBox(17, -40, -5, 1, 2, 10); a.add(mr);
+    	
+    	
+    	mr.addBox(-13, -42, -6, 1, 2, 12); a.add(mr);
+    	mr.addBox(-12, -42, -8, 1, 2, 16); a.add(mr);
+    	mr.addBox(-11, -42, -9, 1, 2, 18); a.add(mr);
+    	mr.addBox(-10, -42, -11, 1, 2, 22); a.add(mr);
+    	mr.addBox(-9, -42, -12, 2, 2, 24); a.add(mr);
+    	mr.addBox(-7, -42, -13, 1, 2, 26); a.add(mr);
+    	mr.addBox(-6, -42, -14, 2, 2, 28); a.add(mr);
+    	mr.addBox(-4, -42, -15, 3, 2, 30); a.add(mr);
+    	// mr.addBox(-1, -42, -16, 8, 2, 32); a.add(mr);
+    	
+    	mr.addBox(7, -42, -15, 3, 2, 30); a.add(mr);
+    	mr.addBox(10, -42, -14, 2, 2, 28); a.add(mr);
+    	mr.addBox(12, -42, -13, 1, 2, 26); a.add(mr);
+    	mr.addBox(13, -42, -12, 2, 2, 24); a.add(mr);
+    	mr.addBox(15, -42, -11, 1, 2, 22); a.add(mr);
+    	mr.addBox(16, -42, -9, 1, 2, 18); a.add(mr);
+    	mr.addBox(17, -42, -8, 1, 2, 16); a.add(mr);
+    	mr.addBox(18, -42, -6, 1, 2, 12); a.add(mr);
+    	
+    	
+    	
+    	/* (0.0150625F)
+    	mr.addBox(-25, -40, -7, 1, 6, 14); a.add(mr);
+    	mr.addBox(-24, -40, -10, 1, 6, 20); a.add(mr);
+    	mr.addBox(-23, -40, -12, 1, 6, 24); a.add(mr);
+    	mr.addBox(-22, -40, -14, 1, 6, 28); a.add(mr);
+    	mr.addBox(-21, -40, -15, 1, 6, 30); a.add(mr);
+    	mr.addBox(-20, -40, -16, 1, 6, 32); a.add(mr);
+    	mr.addBox(-19, -40, -17, 1, 6, 34); a.add(mr);
+    	mr.addBox(-18, -40, -18, 1, 6, 36); a.add(mr);
+    	mr.addBox(-17, -40, -19, 1, 6, 38); a.add(mr);
+    	mr.addBox(-16, -40, -20, 1, 6, 40); a.add(mr);
+    	mr.addBox(-15, -40, -21, 2, 6, 42); a.add(mr);
+    	mr.addBox(-13, -40, -22, 2, 6, 44); a.add(mr);
+    	mr.addBox(-11, -40, -23, 2, 6, 46); a.add(mr);
+    	mr.addBox(-9, -40, -24, 4, 6, 48); a.add(mr);
+    	mr.addBox(-5, -40, -25, 10, 6, 50); a.add(mr);
+    	
+    	mr.addBox(5, -40, -24, 4, 6, 48); a.add(mr);
+    	mr.addBox(9, -40, -23, 2, 6, 46); a.add(mr);
+    	mr.addBox(11, -40, -22, 2, 6, 44); a.add(mr);
+    	mr.addBox(13, -40, -21, 2, 6, 42); a.add(mr);
+    	mr.addBox(15, -40, -20, 1, 6, 40); a.add(mr);
+    	mr.addBox(16, -40, -19, 1, 6, 38); a.add(mr);
+    	mr.addBox(17, -40, -18, 1, 6, 36); a.add(mr);
+    	mr.addBox(18, -40, -17, 1, 6, 34); a.add(mr);
+    	mr.addBox(19, -40, -16, 1, 6, 32); a.add(mr);
+    	mr.addBox(20, -40, -15, 1, 6, 30); a.add(mr);
+    	mr.addBox(21, -40, -14, 1, 6, 28); a.add(mr);
+    	mr.addBox(22, -40, -12, 1, 6, 24); a.add(mr);
+    	mr.addBox(23, -40, -10, 1, 6, 20); a.add(mr);
+    	mr.addBox(24, -40, -7, 1, 6, 14); a.add(mr);
+    	
+    	
+    	mr.addBox(-24, -60, -7, 1, 20, 14); a.add(mr);
+    	mr.addBox(-23, -60, -10, 1, 20, 20); a.add(mr);
+    	mr.addBox(-22, -60, -12, 1, 20, 24); a.add(mr);
+    	mr.addBox(-21, -60, -13, 1, 20, 26); a.add(mr);
+    	mr.addBox(-20, -60, -15, 1, 20, 30); a.add(mr);
+    	mr.addBox(-19, -60, -16, 1, 20, 32); a.add(mr);
+    	mr.addBox(-18, -60, -17, 1, 20, 34); a.add(mr);
+    	mr.addBox(-17, -60, -18, 1, 20, 36); a.add(mr);
+    	mr.addBox(-16, -60, -19, 2, 20, 38); a.add(mr);
+    	mr.addBox(-14, -60, -20, 1, 20, 40); a.add(mr);
+    	mr.addBox(-13, -60, -21, 2, 20, 42); a.add(mr);
+    	mr.addBox(-11, -60, -22, 2, 20, 44); a.add(mr);
+    	mr.addBox(-9, -60, -23, 4, 20, 46); a.add(mr);
+    	mr.addBox(-5, -60, -24, 10, 20, 48); a.add(mr);
+    	
+    	mr.addBox(5, -60, -23, 4, 20, 46); a.add(mr);
+    	mr.addBox(9, -60, -22, 2, 20, 44); a.add(mr);
+    	mr.addBox(11, -60, -21, 2, 20, 42); a.add(mr);
+    	mr.addBox(13, -60, -20, 1, 20, 40); a.add(mr);
+    	mr.addBox(14, -60, -19, 2, 20, 38); a.add(mr);
+    	mr.addBox(16, -60, -18, 1, 20, 36); a.add(mr);
+    	mr.addBox(17, -60, -17, 1, 20, 34); a.add(mr);
+    	mr.addBox(18, -60, -16, 1, 20, 32); a.add(mr);
+    	mr.addBox(19, -60, -15, 1, 20, 30); a.add(mr);
+    	mr.addBox(20, -60, -13, 1, 20, 26); a.add(mr);
+    	mr.addBox(21, -60, -12, 1, 20, 24); a.add(mr);
+    	mr.addBox(22, -60, -10, 1, 20, 20); a.add(mr);
+    	mr.addBox(23, -60, -7, 1, 20, 14); a.add(mr);
+    	
+    	// center++
+    	mr.addBox(-24, -66, -7, 1, 6, 14); a.add(mr);
+    	mr.addBox(-23, -66, -10, 1, 6, 20); a.add(mr);
+    	mr.addBox(-22, -66, -12, 1, 6, 24); a.add(mr);
+    	mr.addBox(-21, -66, -14, 1, 6, 28); a.add(mr);
+    	mr.addBox(-20, -66, -15, 1, 6, 30); a.add(mr);
+    	mr.addBox(-19, -66, -16, 1, 6, 32); a.add(mr);
+    	mr.addBox(-18, -66, -17, 1, 6, 34); a.add(mr);
+    	mr.addBox(-17, -66, -18, 1, 6, 36); a.add(mr);
+    	mr.addBox(-16, -66, -19, 1, 6, 38); a.add(mr);
+    	mr.addBox(-15, -66, -20, 1, 6, 40); a.add(mr);
+    	mr.addBox(-14, -66, -21, 2, 6, 42); a.add(mr);
+    	mr.addBox(-12, -66, -22, 2, 6, 44); a.add(mr);
+    	mr.addBox(-10, -66, -23, 2, 6, 46); a.add(mr);
+    	mr.addBox(-8, -66, -24, 4, 6, 48); a.add(mr);
+    	mr.addBox(-4, -66, -25, 10, 6, 50); a.add(mr);
+    	
+    	mr.addBox(6, -66, -24, 4, 6, 48); a.add(mr);
+    	mr.addBox(10, -66, -23, 2, 6, 46); a.add(mr);
+    	mr.addBox(12, -66, -22, 2, 6, 44); a.add(mr);
+    	mr.addBox(14, -66, -21, 2, 6, 42); a.add(mr);
+    	mr.addBox(16, -66, -20, 1, 6, 40); a.add(mr);
+    	mr.addBox(17, -66, -19, 1, 6, 38); a.add(mr);
+    	mr.addBox(18, -66, -18, 1, 6, 36); a.add(mr);
+    	mr.addBox(19, -66, -17, 1, 6, 34); a.add(mr);
+    	mr.addBox(20, -66, -16, 1, 6, 32); a.add(mr);
+    	mr.addBox(21, -66, -15, 1, 6, 30); a.add(mr);
+    	mr.addBox(22, -66, -14, 1, 6, 28); a.add(mr);
+    	mr.addBox(23, -66, -12, 1, 6, 24); a.add(mr);
+    	mr.addBox(24, -66, -10, 1, 6, 20); a.add(mr);
+    	mr.addBox(25, -66, -7, 1, 6, 14); a.add(mr);
+    	
+    	// center++
+    	mr.addBox(-24, -70, -7, 1, 4, 14); a.add(mr);
+    	mr.addBox(-23, -70, -10, 1, 4, 20); a.add(mr);
+    	mr.addBox(-22, -70, -12, 1, 4, 24); a.add(mr);
+    	mr.addBox(-21, -70, -14, 1, 4, 28); a.add(mr);
+    	mr.addBox(-20, -70, -15, 1, 4, 30); a.add(mr);
+    	mr.addBox(-19, -70, -17, 1, 4, 34); a.add(mr);
+    	mr.addBox(-18, -70, -18, 1, 4, 36); a.add(mr);
+    	mr.addBox(-17, -70, -19, 1, 4, 38); a.add(mr);
+    	mr.addBox(-16, -70, -20, 2, 4, 40); a.add(mr);
+    	mr.addBox(-14, -70, -21, 1, 4, 42); a.add(mr);
+    	mr.addBox(-13, -70, -22, 1, 4, 44); a.add(mr);
+    	mr.addBox(-12, -70, -23, 2, 4, 46); a.add(mr);
+    	mr.addBox(-10, -70, -24, 3, 4, 48); a.add(mr);
+    	mr.addBox(-7, -70, -25, 3, 4, 50); a.add(mr);
+    	mr.addBox(-4, -70, -26, 12, 4, 52); a.add(mr);
+    	
+    	mr.addBox(8, -70, -25, 3, 4, 50); a.add(mr);
+    	mr.addBox(11, -70, -24, 3, 4, 48); a.add(mr);
+    	mr.addBox(14, -70, -23, 2, 4, 46); a.add(mr);
+    	mr.addBox(16, -70, -22, 1, 4, 44); a.add(mr);
+    	mr.addBox(17, -70, -21, 1, 4, 42); a.add(mr);
+    	mr.addBox(18, -70, -20, 2, 4, 40); a.add(mr);
+    	mr.addBox(20, -70, -19, 1, 4, 38); a.add(mr);
+    	mr.addBox(21, -70, -18, 1, 4, 36); a.add(mr);
+    	mr.addBox(22, -70, -17, 1, 4, 34); a.add(mr);
+    	mr.addBox(23, -70, -15, 1, 4, 30); a.add(mr);
+    	mr.addBox(24, -70, -14, 1, 4, 28); a.add(mr);
+    	mr.addBox(25, -70, -12, 1, 4, 24); a.add(mr);
+    	mr.addBox(26, -70, -10, 1, 4, 20); a.add(mr);
+    	mr.addBox(27, -70, -7, 1, 4, 14); a.add(mr);
+    	
+    	
+    	mr.addBox(-25, -74, -7, 1, 4, 14); a.add(mr);
+    	mr.addBox(-24, -74, -10, 1, 4, 20); a.add(mr);
+    	mr.addBox(-23, -74, -12, 1, 4, 24); a.add(mr);
+    	mr.addBox(-22, -74, -14, 1, 4, 28); a.add(mr);
+    	mr.addBox(-21, -74, -16, 1, 4, 32); a.add(mr);
+    	mr.addBox(-20, -74, -17, 1, 4, 34); a.add(mr);
+    	mr.addBox(-19, -74, -18, 1, 4, 36); a.add(mr);
+    	mr.addBox(-18, -74, -19, 1, 4, 38); a.add(mr);
+    	mr.addBox(-17, -74, -20, 1, 4, 40); a.add(mr);
+    	mr.addBox(-16, -74, -21, 1, 4, 42); a.add(mr);
+    	mr.addBox(-15, -74, -22, 2, 4, 44); a.add(mr);
+    	mr.addBox(-13, -74, -23, 1, 4, 46); a.add(mr);
+    	mr.addBox(-12, -74, -24, 2, 4, 48); a.add(mr);
+    	mr.addBox(-10, -74, -25, 3, 4, 50); a.add(mr);
+    	mr.addBox(-7, -74, -26, 3, 4, 52); a.add(mr);
+    	mr.addBox(-4, -74, -27, 12, 4, 54); a.add(mr);
+    	
+    	mr.addBox(8, -74, -26, 3, 4, 52); a.add(mr);
+    	mr.addBox(11, -74, -25, 3, 4, 50); a.add(mr);
+    	mr.addBox(14, -74, -24, 2, 4, 48); a.add(mr);
+    	mr.addBox(16, -74, -23, 1, 4, 46); a.add(mr);
+    	mr.addBox(17, -74, -22, 2, 4, 44); a.add(mr);
+    	mr.addBox(19, -74, -21, 1, 4, 42); a.add(mr);
+    	mr.addBox(20, -74, -20, 1, 4, 40); a.add(mr);
+    	mr.addBox(21, -74, -19, 1, 4, 38); a.add(mr);
+    	mr.addBox(22, -74, -18, 1, 4, 36); a.add(mr);
+    	mr.addBox(23, -74, -17, 1, 4, 34); a.add(mr);
+    	mr.addBox(24, -74, -16, 1, 4, 32); a.add(mr);
+    	mr.addBox(25, -74, -14, 1, 4, 28); a.add(mr);
+    	mr.addBox(26, -74, -12, 1, 4, 24); a.add(mr);
+    	mr.addBox(27, -74, -10, 1, 4, 20); a.add(mr);
+    	mr.addBox(28, -74, -7, 1, 4, 14); a.add(mr);
+    	*/ 
+    	
+    	
+        // base (0.0625F)
+    	/* 
+        mr.addBox(-16, -14, -6, 1, 2, 12);
+    	a.add(mr);
+    	mr.addBox(-15, -14, -8, 1, 2, 16);
+    	a.add(mr);
+    	mr.addBox(-14, -14, -9, 1, 2, 18);
+    	a.add(mr);
+    	mr.addBox(-13, -14, -11, 1, 2, 22);
+    	a.add(mr);
+    	mr.addBox(-12, -14, -12, 2, 2, 24);
+    	a.add(mr);
+    	mr.addBox(-10, -14, -13, 1, 2, 26);
+    	a.add(mr);
+    	mr.addBox(-9, -14, -14, 2, 2, 28);
+    	a.add(mr);
+    	mr.addBox(-7, -14, -15, 3, 2, 30);
+    	a.add(mr);
+    	mr.addBox(-4, -14, -16, 8, 2, 32);
+    	a.add(mr);
+    	mr.addBox(4, -14, -15, 3, 2, 30);
+    	a.add(mr);
+    	mr.addBox(7, -14, -14, 2, 2, 28);
+    	a.add(mr);
+    	mr.addBox(9, -14, -13, 1, 2, 26);
+    	a.add(mr);
+    	mr.addBox(10, -14, -12, 2, 2, 24);
+    	a.add(mr);
+    	mr.addBox(12, -14, -11, 1, 2, 22);
+    	a.add(mr);
+    	mr.addBox(13, -14, -9, 1, 2, 18);
+    	a.add(mr);
+    	mr.addBox(14, -14, -8, 1, 2, 16);
+    	a.add(mr);
+    	mr.addBox(15, -14, -6, 1, 2, 12);
+    	a.add(mr);
+    	*/
+    	
+    	return a;
+    }
+    
+    public ArrayList<ModelRenderer> msTophatEdge(ModelRenderer mr) {
+    	ArrayList<ModelRenderer> a = new ArrayList<ModelRenderer>();
+    	mr.setTextureSize(256, 256);
+    	
     	
     	return a;
     }

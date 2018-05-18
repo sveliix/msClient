@@ -40,7 +40,7 @@ public class LayerMsGlasses implements LayerRenderer {
 		GlStateManager.rotate(f2, 1.0F, 0.0F, 0.0F);
 		
 		this.playerRenderer.bindTexture(rl);
-		this.playerRenderer.getMainModel().renderMsSunglasses(0.0625F);
+		this.playerRenderer.getMainModel().renderMsSunglasses(0.03125F);
 		
 		GlStateManager.popMatrix();
 	}

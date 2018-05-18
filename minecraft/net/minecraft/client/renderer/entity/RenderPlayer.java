@@ -3,6 +3,8 @@ package net.minecraft.client.renderer.entity;
 import msClient.cosmetics.LayerMsAfro;
 import msClient.cosmetics.LayerMsGlasses;
 import msClient.cosmetics.LayerMsShades;
+import msClient.cosmetics.LayerMsTophat;
+import msClient.cosmetics.LayerMsTophatEdge;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.model.ModelPlayer;
@@ -43,6 +45,8 @@ public class RenderPlayer extends RendererLivingEntity<AbstractClientPlayer>
         this.addLayer(new LayerMsAfro(this));
         this.addLayer(new LayerMsGlasses(this));
         this.addLayer(new LayerMsShades(this));
+        this.addLayer(new LayerMsTophat(this));
+        this.addLayer(new LayerMsTophatEdge(this));
         this.addLayer(new LayerCustomHead(this.getMainModel().bipedHead));
     }
 

@@ -41,7 +41,7 @@ public class LayerMsShades implements LayerRenderer {
 		GlStateManager.rotate(f2, 1.0F, 0.0F, 0.0F);
 		
 		this.playerRenderer.bindTexture(rl);
-		this.playerRenderer.getMainModel().renderMsShades(0.0625F);
+		this.playerRenderer.getMainModel().renderMsShades(0.03125F);
 		
 		GlStateManager.popMatrix();
 	}
