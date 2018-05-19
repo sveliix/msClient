@@ -1,10 +1,12 @@
 package net.minecraft.client.renderer.entity;
 
-import msClient.cosmetics.LayerMsAfro;
-import msClient.cosmetics.LayerMsGlasses;
-import msClient.cosmetics.LayerMsShades;
-import msClient.cosmetics.LayerMsTophat;
-import msClient.cosmetics.LayerMsTophatEdge;
+import msClient.cosmetics.afro.LayerMsAfro;
+import msClient.cosmetics.afro.LayerMsComb;
+import msClient.cosmetics.afro.LayerMsGlasses;
+import msClient.cosmetics.afro.LayerMsShades;
+import msClient.cosmetics.discoball.LayerMsDiscoball;
+import msClient.cosmetics.tophat.LayerMsTophat;
+import msClient.cosmetics.tophat.LayerMsTophatEdge;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.model.ModelPlayer;
@@ -43,8 +45,10 @@ public class RenderPlayer extends RendererLivingEntity<AbstractClientPlayer>
         this.addLayer(new LayerDeadmau5Head(this));
         this.addLayer(new LayerCape(this));
         this.addLayer(new LayerMsAfro(this));
+        this.addLayer(new LayerMsComb(this));
         this.addLayer(new LayerMsGlasses(this));
         this.addLayer(new LayerMsShades(this));
+        this.addLayer(new LayerMsDiscoball(this));
         this.addLayer(new LayerMsTophat(this));
         this.addLayer(new LayerMsTophatEdge(this));
         this.addLayer(new LayerCustomHead(this.getMainModel().bipedHead));

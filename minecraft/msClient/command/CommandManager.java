@@ -27,7 +27,7 @@ public class CommandManager {
 			
 			@Override
 			public void onCommand(String command, String[] args) throws Exception {
-				// TODO Auto-generated method stub
+				
 				if(args.length<3) {
 					
 					if(Integer.valueOf(args[0]) < Integer.valueOf(args[1])) {
@@ -49,19 +49,16 @@ public class CommandManager {
 			
 			@Override
 			public String getSyntax() {
-				// TODO Auto-generated method stub
 				return ".mlg [Höhe Spieler] [Mlg Höhe]";
 			}
 			
 			@Override
 			public String getDescription() {
-				// TODO Auto-generated method stub
 				return "MLG-Rechner";
 			}
 			
 			@Override
 			public String getAlias() {
-				// TODO Auto-generated method stub
 				return "mlg";
 			}
 		});

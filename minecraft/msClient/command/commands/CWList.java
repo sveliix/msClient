@@ -31,25 +31,21 @@ public class CWList extends Command{
 	
 	@Override
 	public String getAlias() {
-		// TODO Auto-generated method stub
 		return "cwlist";
 	}
 
 	@Override
 	public String getDescription() {
-		// TODO Auto-generated method stub
 		return "Lists all current running cws";
 	}
 
 	@Override
 	public String getSyntax() {
-		// TODO Auto-generated method stub
 		return ".cwlist";
 	}
 
 	@Override
 	public void onCommand(String command, String[] args) throws Exception {
-		// TODO Auto-generated method stub
 		
 		
 			try {

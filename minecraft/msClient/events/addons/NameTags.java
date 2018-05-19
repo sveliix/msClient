@@ -22,6 +22,8 @@ public class NameTags {
 
 	public static Minecraft mc = Minecraft.getMinecraft();
 	
+	// TODO implement method to load tags and uuids from website
+	
 	public static void loadTags () {
 		msTags.add(new Tag("f259c4cf-ead1-4c30-98ff-afd3a070af03", "MSClient-Admin")); // MSES
 		msTags.add(new Tag("70715015-d692-464c-8e93-39e103823eb0", "MSClient-Admin")); // MS3

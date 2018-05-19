@@ -140,7 +140,6 @@ public class CrashReport
             @Override
             public Object call() throws Exception
             {
-                // TODO Auto-generated method stub
                 return IntCache.getCacheSizes();
             }
         });

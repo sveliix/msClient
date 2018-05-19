@@ -117,6 +117,7 @@ public class ModelRenderer
     }
 
     /**
+     * TODO use this method (and understand it first)
      * Creates a textured box. Args: originX, originY, originZ, width, height, depth, scaleFactor.
      */
     public void addBox(float p_78790_1_, float p_78790_2_, float p_78790_3_, int width, int height, int depth, float scaleFactor)

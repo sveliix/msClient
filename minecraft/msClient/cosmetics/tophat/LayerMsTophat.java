@@ -1,4 +1,4 @@
-package msClient.cosmetics;
+package msClient.cosmetics.tophat;
 
 import org.lwjgl.opengl.GL11;
 
@@ -12,12 +12,12 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 
-public class LayerMsTophatEdge implements LayerRenderer {
-
-	private static final ResourceLocation rl = new ResourceLocation("textures/grey.png");
-	private final RenderPlayer playerRenderer;
+public class LayerMsTophat implements LayerRenderer {
 	
-	public LayerMsTophatEdge(RenderPlayer playerRendererIn) {
+	private static final ResourceLocation rl = new ResourceLocation("textures/afro_text.png");
+	private final RenderPlayer playerRenderer;
+
+	public LayerMsTophat(RenderPlayer playerRendererIn) {
 		this.playerRenderer = playerRendererIn;
 	}
 	
@@ -41,7 +41,7 @@ public class LayerMsTophatEdge implements LayerRenderer {
 		GlStateManager.rotate(f2, 1.0F, 0.0F, 0.0F);
 		
 		this.playerRenderer.bindTexture(rl);
-		this.playerRenderer.getMainModel().renderMsTophatEdge(0.03125F); // 0.0625F
+		this.playerRenderer.getMainModel().renderMsTophat(0.03125F);
 		
 		GlStateManager.popMatrix();
 	}

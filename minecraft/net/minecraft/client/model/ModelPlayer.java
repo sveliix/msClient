@@ -21,9 +21,13 @@ public class ModelPlayer extends ModelBiped
     // disco dude
     // afro
     private ArrayList<ModelRenderer> msAfro = new ArrayList<ModelRenderer>();
+    private ArrayList<ModelRenderer> msComb = new ArrayList<ModelRenderer>();
     private ArrayList<ModelRenderer> msSunglasses = new ArrayList<ModelRenderer>();
     private ArrayList<ModelRenderer> msShades = new ArrayList<ModelRenderer>();
     
+    // discokugel
+    private ArrayList<ModelRenderer> msDiscoball = new ArrayList<ModelRenderer>();
+     
     // lord
     // tophat
     private ArrayList<ModelRenderer> msTophat = new ArrayList<ModelRenderer>();
@@ -37,7 +41,9 @@ public class ModelPlayer extends ModelBiped
     
     // TODO temporary solution
     public boolean doAfro = true;
+    public boolean doComb = true;
     public boolean doSunglasses = true;
+    public boolean doBall = true;
     public boolean doTophat = false;
     
     ModelRenderer Shape1;
@@ -58,10 +64,21 @@ public class ModelPlayer extends ModelBiped
         
         ModelRenderer mr = new ModelRenderer(this, 0, 0);
         this.msAfro = msAfro(mr);
+        
+        mr = new ModelRenderer(this, 0, 0);
+        // TODO gaaaaaaaaaah
+        /*
+        mr.setRotationPoint(13, -31, -9);
+        mr.rotateAngleY = 135.0F;
+        */
+        this.msComb = msComb(mr);
+        
         mr = new ModelRenderer(this, 0, 0);
         this.msSunglasses = msSunglasses(mr);
         mr = new ModelRenderer(this, 0, 0);
         this.msShades = msShades(mr);
+        mr = new ModelRenderer(this, 0 ,0);
+        this.msDiscoball = msDiscoball(mr);
         mr = new ModelRenderer(this, 0, 0);
         this.msTophat = msTophat(mr);
         mr = new ModelRenderer(this, 0, 0);
@@ -102,18 +119,24 @@ public class ModelPlayer extends ModelBiped
             this.bipedRightArmwear.setRotationPoint(-5.0F, 2.0F, 10.0F);
         }
         
+        //FIXME silly sven ^^
+        int k = 0;
+        if (true) { // TODO implement checkign for my uuid!!
+        	k = 20;
+        }
+        
         this.bipedLeftLeg = new ModelRenderer(this, 16, 48);
-        this.bipedLeftLeg.addBox(-2.0F, 0.0F, -2.0F, 4, 12, 4, p_i46304_1_);
-        this.bipedLeftLeg.setRotationPoint(1.9F, 12.0F, 0.0F);
+        this.bipedLeftLeg.addBox(-2.0F+k, 0.0F, -2.0F, 4, 12, 4, p_i46304_1_);
+        this.bipedLeftLeg.setRotationPoint(1.9F+k, 12.0F, 0.0F);
         this.bipedLeftLegwear = new ModelRenderer(this, 0, 48);
-        this.bipedLeftLegwear.addBox(-2.0F, 0.0F, -2.0F, 4, 12, 4, p_i46304_1_ + 0.25F);
-        this.bipedLeftLegwear.setRotationPoint(1.9F, 12.0F, 0.0F);
+        this.bipedLeftLegwear.addBox(-2.0F+k, 0.0F, -2.0F, 4, 12, 4, p_i46304_1_ + 0.25F);
+        this.bipedLeftLegwear.setRotationPoint(1.9F+k, 12.0F, 0.0F);
         this.bipedRightLegwear = new ModelRenderer(this, 0, 32);
-        this.bipedRightLegwear.addBox(-2.0F, 0.0F, -2.0F, 4, 12, 4, p_i46304_1_ + 0.25F);
-        this.bipedRightLegwear.setRotationPoint(-1.9F, 12.0F, 0.0F);
+        this.bipedRightLegwear.addBox(-2.0F+k, 0.0F, -2.0F, 4, 12, 4, p_i46304_1_ + 0.25F);
+        this.bipedRightLegwear.setRotationPoint(-1.9F+k, 12.0F, 0.0F);
         this.bipedBodyWear = new ModelRenderer(this, 16, 32);
-        this.bipedBodyWear.addBox(-4.0F, 0.0F, -2.0F, 8, 12, 4, p_i46304_1_ + 0.25F);
-        this.bipedBodyWear.setRotationPoint(0.0F, 0.0F, 0.0F);
+        this.bipedBodyWear.addBox(-4.0F+k, 0.0F, -2.0F, 8, 12, 4, p_i46304_1_ + 0.25F);
+        this.bipedBodyWear.setRotationPoint(0.0F+k, 0.0F, 0.0F);
         
     }
 
@@ -298,7 +321,22 @@ public class ModelPlayer extends ModelBiped
     			mr.render(f);
     		}
     	}
-    	
+    }
+    
+    public void renderMsComb(float f) {
+    	if (doComb) {
+    		for (ModelRenderer mr : this.msComb) {
+    			mr.render(f);
+    		}
+    	}
+    }
+    
+    public void renderMsDiscoball(float f) {
+    	if (doBall) {
+    		for (ModelRenderer mr : this.msDiscoball) {
+    			mr.render(f);
+    		}
+    	}
     }
     
     public void renderMsSunglasses(float f) {
@@ -408,6 +446,100 @@ public class ModelPlayer extends ModelBiped
         return a;
     }
     
+    public ArrayList<ModelRenderer> msDiscoball(ModelRenderer mr) {
+    	ArrayList<ModelRenderer> a = new ArrayList<ModelRenderer>();
+    	mr.setTextureSize(128, 128);
+    	
+    	mr.addBox(-4, -60, -3, 2, 1, 6); a.add(mr);
+    	mr.addBox(-2, -60, -4, 4, 1, 8); a.add(mr);
+    	
+    	mr.addBox(2, -60, -3, 2, 1, 6); a.add(mr);
+    	
+    	
+    	mr.addBox(-5, -59, -3, 1, 1, 6); a.add(mr);
+    	mr.addBox(-4, -59, -4, 1, 1, 8); a.add(mr);
+    	mr.addBox(-3, -59, -5, 6, 1, 10); a.add(mr);
+    	
+    	mr.addBox(3, -59, -4, 1, 1, 8); a.add(mr);
+    	mr.addBox(4, -59, -3, 1, 1, 6); a.add(mr);
+    	
+    	
+    	mr.addBox(-6, -58, -3, 1, 2, 6); a.add(mr);
+    	mr.addBox(-5, -58, -4, 1, 2, 8); a.add(mr);
+    	mr.addBox(-4, -58, -5, 1, 2, 10); a.add(mr);
+    	mr.addBox(-3, -58, -6, 6, 2, 12); a.add(mr);
+    	
+    	mr.addBox(3, -58, -5, 1, 2, 10); a.add(mr);
+    	mr.addBox(4, -58, -4, 1, 2, 8); a.add(mr);
+    	mr.addBox(5, -58, -3, 1, 2, 6); a.add(mr);
+    	
+    	
+    	mr.addBox(-7, -56, -4, 1, 6, 8); a.add(mr);
+    	mr.addBox(-6, -56, -5, 1, 6, 10); a.add(mr);
+    	mr.addBox(-5, -56, -6, 2, 6, 12); a.add(mr);
+    	mr.addBox(-3, -56, -7, 6, 6, 14); a.add(mr);
+    
+    	mr.addBox(3, -56, -6, 2, 6, 12); a.add(mr);
+    	mr.addBox(5, -56, -5, 1, 6, 10); a.add(mr);
+    	mr.addBox(6, -56, -4, 1, 6, 8); a.add(mr);
+    	
+
+    	mr.addBox(-6, -50, -3, 1, 2, 6); a.add(mr);
+    	mr.addBox(-5, -50, -4, 1, 2, 8); a.add(mr);
+    	mr.addBox(-4, -50, -5, 1, 2, 10); a.add(mr);
+    	mr.addBox(-3, -50, -6, 6, 2, 12); a.add(mr);
+    	
+    	mr.addBox(3, -50, -5, 1, 2, 10); a.add(mr);
+    	mr.addBox(4, -50, -4, 1, 2, 8); a.add(mr);
+    	mr.addBox(5, -50, -3, 1, 2, 6); a.add(mr);
+    	
+    	
+    	mr.addBox(-5, -48, -3, 1, 1, 6); a.add(mr);
+    	mr.addBox(-4, -48, -4, 1, 1, 8); a.add(mr);
+    	mr.addBox(-3, -48, -5, 6, 1, 10); a.add(mr);
+    	
+    	mr.addBox(3, -48, -4, 1, 1, 8); a.add(mr);
+    	mr.addBox(4, -48, -3, 1, 1, 6); a.add(mr);
+    	
+    	
+    	mr.addBox(-4, -47, -3, 2, 1, 6); a.add(mr);
+    	mr.addBox(-2, -47, -4, 4, 1, 8); a.add(mr);
+    	
+    	mr.addBox(2, -47, -3, 2, 1, 6); a.add(mr);
+    	
+    	return a;
+    }
+    
+    public ArrayList<ModelRenderer> msComb(ModelRenderer mr) {
+    	ArrayList<ModelRenderer> a = new ArrayList<ModelRenderer>();
+    	mr.setTextureSize(64, 64);
+    	
+    	mr.addBox(10, -22, -9, 1, 6, 1); a.add(mr);
+    	mr.addBox(12, -22, -9, 1, 6, 1); a.add(mr);
+    	mr.addBox(14, -22, -9, 1, 6, 1); a.add(mr);
+    	mr.addBox(16, -22, -9, 1, 6, 1); a.add(mr);
+    	
+    	mr.addBox(9, -23, -10, 9, 1, 3); a.add(mr);
+    	mr.addBox(10, -24, -10, 7, 1, 3); a.add(mr);
+    	mr.addBox(12, -25, -10, 3, 1, 3); a.add(mr);
+    	
+    	mr.addBox(8, -24, -9, 1, 2, 1); a.add(mr);
+    	mr.addBox(9, -25, -9, 1, 2, 1); a.add(mr);
+    	mr.addBox(10, -25, -9, 1, 1, 1); a.add(mr);
+    	mr.addBox(11, -26, -9, 1, 2, 1); a.add(mr);
+    	
+    	mr.addBox(11, -30, -9, 1, 2, 1); a.add(mr);
+    	mr.addBox(12, -31, -9, 3, 6, 1); a.add(mr);
+    	mr.addBox(15, -30, -9, 1, 2, 1); a.add(mr);
+    	
+    	mr.addBox(15, -26, -9, 1, 2, 1); a.add(mr);
+    	mr.addBox(16, -25, -9, 1, 1, 1); a.add(mr);
+    	mr.addBox(17, -25, -9, 1, 2, 1); a.add(mr);
+    	mr.addBox(18, -24, -9, 1, 2, 1); a.add(mr);
+    	
+    	return a;
+    }
+    
     public ArrayList<ModelRenderer> msSunglasses(ModelRenderer mr) {
     	ArrayList<ModelRenderer> a = new ArrayList<ModelRenderer>();
     	
@@ -472,6 +604,7 @@ public class ModelPlayer extends ModelBiped
     	
     	return a;
     }
+    
     
     public ArrayList<ModelRenderer> msTophat(ModelRenderer mr) {
     	ArrayList<ModelRenderer> a = new ArrayList<ModelRenderer>();

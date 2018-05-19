@@ -509,12 +509,10 @@ public abstract class ResourcePackListEntry implements GuiListExtended.IGuiListE
     }
     private boolean folder = false;
 	public void setFolder(boolean b) {
-		// TODO Auto-generated method stub
 		this.folder = b;
 	}
 
 	public String getTitle() {
-		// TODO Auto-generated method stub
 		return this.func_148312_b();
 	}
 }

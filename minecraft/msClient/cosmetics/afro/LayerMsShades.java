@@ -1,4 +1,4 @@
-package msClient.cosmetics;
+package msClient.cosmetics.afro;
 
 import org.lwjgl.opengl.GL11;
 
@@ -12,15 +12,15 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 
-public class LayerMsAfro implements LayerRenderer {
+public class LayerMsShades implements LayerRenderer {
+
 	private static final ResourceLocation rl = new ResourceLocation("textures/afro_text.png");
 	private final RenderPlayer playerRenderer;
 	
-	public LayerMsAfro(RenderPlayer playerRendererIn) {
+	public LayerMsShades(RenderPlayer playerRendererIn) {
 		this.playerRenderer = playerRendererIn;
 	}
 	
-
 	public void doRenderLayer(AbstractClientPlayer entitylivingbaseIn, float p_177141_2_, float p_177141_3_,
 			float partialTicks, float p_177141_5_, float p_177141_6_, float p_177141_7_, float scale) {
 		float f = main.partialTicks;
@@ -41,7 +41,7 @@ public class LayerMsAfro implements LayerRenderer {
 		GlStateManager.rotate(f2, 1.0F, 0.0F, 0.0F);
 		
 		this.playerRenderer.bindTexture(rl);
-		this.playerRenderer.getMainModel().renderMsAfro(0.0625F);
+		this.playerRenderer.getMainModel().renderMsShades(0.03125F);
 		
 		GlStateManager.popMatrix();
 	}
@@ -114,5 +114,6 @@ public class LayerMsAfro implements LayerRenderer {
     {
         return clientPlayer.prevRotationPitch + (clientPlayer.rotationPitch - clientPlayer.prevRotationPitch) * partialTicks;
     }
+	
 	
 }

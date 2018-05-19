@@ -47,7 +47,6 @@ public class GuiCredits extends GuiScreen{
 
 	@Override
 	public void initGui() {
-		// TODO Auto-generated method stub
 		
 		this.buttonList.clear();
 		buttonList.add(new GuiButton(10, 2, 2, 50, 20, "Back"));
@@ -112,7 +111,6 @@ public class GuiCredits extends GuiScreen{
 
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
-		// TODO Auto-generated method stub
 		switch(button.id) {
 		case 10: this.mc.displayGuiScreen(this.parentScreen);
 			break;

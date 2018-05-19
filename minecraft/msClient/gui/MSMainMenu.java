@@ -116,17 +116,12 @@ public class MSMainMenu extends GuiScreen implements GuiYesNoCallback {
 	
 	@Override
 	public void setWorldAndResolution(Minecraft mc, int width, int height) {
-		// TODO Auto-generated method stub
 		
 		super.setWorldAndResolution(mc, width, height);
 	}
 
 	@Override
 	public void onResize(Minecraft mcIn, int x, int y) {
-		// TODO Auto-generated method stub
-		
-		
-		
 		super.onResize(mcIn, x, y);
 	}
 	
@@ -196,17 +191,14 @@ public class MSMainMenu extends GuiScreen implements GuiYesNoCallback {
 			
 			@Override
 			public void onTick(int id, float value) {
-				// TODO Auto-generated method stub
 			}
 			
 			@Override
 			public void func_175321_a(int p_175321_1_, boolean p_175321_2_) {
-				// TODO Auto-generated method stub
 			}
 			
 			@Override
 			public void func_175319_a(int p_175319_1_, String p_175319_2_) {
-				// TODO Auto-generated method stub
 			}
 		};
 		this.y = 0;
@@ -729,8 +721,7 @@ public class MSMainMenu extends GuiScreen implements GuiYesNoCallback {
 			isRecordingKey = true;
 			break;
 		case 603:
-			if (currKey != -1 && tg00.getText().trim() != ""
-					) { // TODO TEMPORARY RESTRICTION, remove this when you find out how to create scrollable lists
+			if (currKey != -1 && tg00.getText().trim() != "") {
 				//Variables.msBindings.add(new KeyBinding("MS_" + tg00.getText().trim(), currKey, "key.category.ms"));
 				ToggleSprintManager.modules.add(new ToggleSprintMod(tg00.getText().trim(), currKey) {
 					public void onEnable() {
@@ -858,8 +849,7 @@ public class MSMainMenu extends GuiScreen implements GuiYesNoCallback {
 		}
 		
 		if (keyCode == Keyboard.KEY_RETURN && currentTab == 5) {
-			if (currKey != -1 && tg00.getText().trim() != ""
-					) { // TODO TEMPORARY RESTRICTION, remove this when you find out how to create scrollable lists
+			if (currKey != -1 && tg00.getText().trim() != "") {
 				ToggleSprintManager.modules.add(new ToggleSprintMod(tg00.getText().trim(), currKey) {
 					public void onEnable() {
 						Minecraft.getMinecraft().thePlayer.sendChatMessage(this.getName());
@@ -1007,10 +997,12 @@ public class MSMainMenu extends GuiScreen implements GuiYesNoCallback {
 			}
 		}
 		
+		
 		this.mc.gameSettings.saveMSOptions();
 		
 		super.drawScreen(mouseX, mouseY, partialTicks);
 	}
+	
 	
 	public static void loadButtonColors() {
 		bc00.displayString = (Variables.oldRod) ? ("§21.7 Rod") : ("§41.7 Rod");

@@ -1,4 +1,4 @@
-package msClient.cosmetics;
+package msClient.cosmetics.afro;
 
 import org.lwjgl.opengl.GL11;
 

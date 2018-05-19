@@ -8,25 +8,21 @@ public class EloRechner extends Command{
 
 	@Override
 	public String getAlias() {
-		// TODO Auto-generated method stub
 		return "elo";
 	}
 
 	@Override
 	public String getDescription() {
-		// TODO Auto-generated method stub
 		return "Elo-Rechner";
 	}
 
 	@Override
 	public String getSyntax() {
-		// TODO Auto-generated method stub
 		return ".elo [Elo 1] [Elo 2]";
 	}
 
 	@Override
 	public void onCommand(String command, String[] args) throws Exception {
-		// TODO Auto-generated method stub
 		//System.out.println(Integer.valueOf(args[0]) + "  " + args[1]);
 		if(args.length<3) {					
 			
