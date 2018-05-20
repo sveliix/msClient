@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import msClient.gui.MSMainMenu;
 import msClient.utils.ClickCounter;
 
@@ -84,7 +84,7 @@ public class SVGuiPos extends GuiScreen{
 		}
 		
 		
-		for(InGuiObject o : Variables.objects) {
+		for(InGuiObject o : Vbs.objects) {
 			if(o.isMehrZeilig) {
 				String[] vals = o.val.split(";");
 				if (o.isVisible) {
@@ -131,8 +131,8 @@ public class SVGuiPos extends GuiScreen{
 	@Override
 	public void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException{
 		
-		for(int i = 0; i < Variables.objects.size(); i++) {
-			InGuiObject o = Variables.objects.get(i);
+		for(int i = 0; i < Vbs.objects.size(); i++) {
+			InGuiObject o = Vbs.objects.get(i);
 			if(o.isMehrZeilig) {
 				if (mouseX >= o.x && mouseX <= o.x + o.width &&
 						mouseY >= o.y && mouseY <= o.y + o.height*3
@@ -161,7 +161,7 @@ public class SVGuiPos extends GuiScreen{
 	@Override
 	public void mouseReleased(int mouseX, int mouseY, int state) {
 		if (currObj != -1) {
-			Variables.objects.get(currObj).setCoords(currCoords[0], currCoords[1]);
+			Vbs.objects.get(currObj).setCoords(currCoords[0], currCoords[1]);
 		}
 		currObj = -1;
 		
@@ -173,12 +173,12 @@ public class SVGuiPos extends GuiScreen{
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		
-		Variables.objects.get(0).val = "FPS: 120" ;		
-		Variables.objects.get(1).val = "X: 150 ;Y: 150 ;Z: 50" ;		
-		Variables.objects.get(2).val = "CPS: 15";
-		Variables.objects.get(3).val = "Mem: 25%";
+		Vbs.objects.get(0).val = "FPS: 120" ;		
+		Vbs.objects.get(1).val = "X: 150 ;Y: 150 ;Z: 50" ;		
+		Vbs.objects.get(2).val = "CPS: 15";
+		Vbs.objects.get(3).val = "Mem: 25%";
 		
-		for(InGuiObject k : Variables.objects) {
+		for(InGuiObject k : Vbs.objects) {
 			if(!k.scale) {
 				if(k.isMehrZeilig) {					
 					int w = (int) (k.getWidth());
@@ -193,18 +193,18 @@ public class SVGuiPos extends GuiScreen{
 			}else {
 			if(k.isMehrZeilig) {
 				GL11.glPushMatrix();
-				GL11.glScalef(Variables.x, Variables.x, Variables.x);
-				int w = (int) (k.getWidth() * Variables.x);
-				int h = (int) ((k.getHeight() * Variables.x)*3);		
+				GL11.glScalef(Vbs.x, Vbs.x, Vbs.x);
+				int w = (int) (k.getWidth() * Vbs.x);
+				int h = (int) ((k.getHeight() * Vbs.x)*3);		
 				k.setWidth(w);
 				k.setHeight(h);
 				GL11.glPopMatrix();
 			}
 			
 			GL11.glPushMatrix();
-			GL11.glScalef(Variables.x, Variables.x, Variables.x);
-			int w = (int) (k.getWidth() * Variables.x);
-			int h = (int) (k.getHeight() * Variables.x);		
+			GL11.glScalef(Vbs.x, Vbs.x, Vbs.x);
+			int w = (int) (k.getWidth() * Vbs.x);
+			int h = (int) (k.getHeight() * Vbs.x);		
 			k.setWidth(w);
 			k.setHeight(h);
 			GL11.glPopMatrix();
@@ -226,10 +226,10 @@ public class SVGuiPos extends GuiScreen{
 		}
 		
 		
-		for(int i = 0; i < Variables.objects.size(); i++) {
+		for(int i = 0; i < Vbs.objects.size(); i++) {
 			if(i == currObj) {continue;}
 			
-			InGuiObject o = Variables.objects.get(i);
+			InGuiObject o = Vbs.objects.get(i);
 			this.drawRect(o.x, o.y, o.x + o.width, o.y + o.height*3, Color.TRANSLUCENT);
 			
 			if(!o.scale) {
@@ -258,28 +258,28 @@ public class SVGuiPos extends GuiScreen{
 			}else {
 			
 			GL11.glPushMatrix();
-			GL11.glScalef(Variables.x, Variables.x, Variables.x);
+			GL11.glScalef(Vbs.x, Vbs.x, Vbs.x);
 						
 			if(o.isMehrZeilig) {
 				String[] vals = o.val.split(";");
 				if (o.isVisible) {
 					//this.drawRect(o.x, o.y, o.x + o.getWidth(), o.y + o.getHeight()*3, Color.TRANSLUCENT);
-					this.drawString(fontRendererObj, vals[0], Math.round(o.x/Variables.x), Math.round((o.y)/Variables.x), Color.WHITE.getRGB());
-					this.drawString(fontRendererObj, vals[1], Math.round(o.x/Variables.x), Math.round(o.y/Variables.x)+10, Color.WHITE.getRGB());
-					this.drawString(fontRendererObj, vals[2], Math.round(o.x/Variables.x), Math.round((o.y)/Variables.x)+20, Color.WHITE.getRGB());
+					this.drawString(fontRendererObj, vals[0], Math.round(o.x/Vbs.x), Math.round((o.y)/Vbs.x), Color.WHITE.getRGB());
+					this.drawString(fontRendererObj, vals[1], Math.round(o.x/Vbs.x), Math.round(o.y/Vbs.x)+10, Color.WHITE.getRGB());
+					this.drawString(fontRendererObj, vals[2], Math.round(o.x/Vbs.x), Math.round((o.y)/Vbs.x)+20, Color.WHITE.getRGB());
 				} else {
 					//this.drawRect(o.x, o.y, o.x + o.getWidth(), o.y + o.getHeight()*3, Color.RED.getRGB());
-					this.drawString(fontRendererObj, vals[0], Math.round(o.x/Variables.x), Math.round(o.y/Variables.x), Color.LIGHT_GRAY.getRGB());
-					this.drawString(fontRendererObj, vals[1], Math.round(o.x/Variables.x), Math.round(o.y/Variables.x), Color.LIGHT_GRAY.getRGB());
-					this.drawString(fontRendererObj, vals[2], Math.round(o.x/Variables.x), Math.round(o.y/Variables.x), Color.LIGHT_GRAY.getRGB());
+					this.drawString(fontRendererObj, vals[0], Math.round(o.x/Vbs.x), Math.round(o.y/Vbs.x), Color.LIGHT_GRAY.getRGB());
+					this.drawString(fontRendererObj, vals[1], Math.round(o.x/Vbs.x), Math.round(o.y/Vbs.x), Color.LIGHT_GRAY.getRGB());
+					this.drawString(fontRendererObj, vals[2], Math.round(o.x/Vbs.x), Math.round(o.y/Vbs.x), Color.LIGHT_GRAY.getRGB());
 				}
 			  }else {
 				  if (o.isVisible) {
 						//this.drawRect(o.x, o.y, o.x + o.getWidth(), o.y + o.getHeight()*3, Color.TRANSLUCENT);
-						this.drawString(fontRendererObj, o.val, Math.round(o.x/Variables.x), Math.round(o.y/Variables.x), Color.WHITE.getRGB());
+						this.drawString(fontRendererObj, o.val, Math.round(o.x/Vbs.x), Math.round(o.y/Vbs.x), Color.WHITE.getRGB());
 					} else {
 						//this.drawRect(o.x, o.y, o.x + o.getWidth(), o.y + o.getHeight()*3, Color.RED.getRGB());
-						this.drawString(fontRendererObj, o.val, Math.round(o.x/Variables.x), Math.round(o.y/Variables.x), Color.LIGHT_GRAY.getRGB());
+						this.drawString(fontRendererObj, o.val, Math.round(o.x/Vbs.x), Math.round(o.y/Vbs.x), Color.LIGHT_GRAY.getRGB());
 					}
 			  }
 			
@@ -301,7 +301,7 @@ public class SVGuiPos extends GuiScreen{
 		
 		
 		if (currObj != -1) {
-			InGuiObject o = Variables.objects.get(currObj);
+			InGuiObject o = Vbs.objects.get(currObj);
 
 			int drawX = mouseX + xDiff; int drawY = mouseY + yDiff;
 			int[] changes = new int[2];
@@ -313,9 +313,9 @@ public class SVGuiPos extends GuiScreen{
 			// CHECKING FOR COLLISION WITH OTHER IGOS
 			
 			
-			for (int i = 0; i < Variables.objects.size(); i++) {
+			for (int i = 0; i < Vbs.objects.size(); i++) {
 				if (i == currObj) {continue;}
-				InGuiObject o1 = Variables.objects.get(i);
+				InGuiObject o1 = Vbs.objects.get(i);
 				
 				if (!collideRect(drawX, drawY, o.width, o.height, o1.x, o1.y, o1.width, o1.height)) {continue;}
 				
@@ -413,14 +413,14 @@ public class SVGuiPos extends GuiScreen{
 			}
 			else {
 			GL11.glPushMatrix();
-			GL11.glScalef(Variables.x, Variables.x, Variables.x);		
+			GL11.glScalef(Vbs.x, Vbs.x, Vbs.x);		
 			if(o.isMehrZeilig) {
 				String[] vals = o.val.split(";");	
-				this.drawString(fontRendererObj, vals[0], Math.round(drawX/Variables.x), Math.round((drawY)/Variables.x), Color.BLACK.getRGB());
-				this.drawString(fontRendererObj, vals[1], Math.round(drawX/Variables.x), Math.round((drawY)/Variables.x)+10, Color.BLACK.getRGB());
-				this.drawString(fontRendererObj, vals[2], Math.round(drawX/Variables.x), Math.round((drawY)/Variables.x)+20, Color.BLACK.getRGB());
+				this.drawString(fontRendererObj, vals[0], Math.round(drawX/Vbs.x), Math.round((drawY)/Vbs.x), Color.BLACK.getRGB());
+				this.drawString(fontRendererObj, vals[1], Math.round(drawX/Vbs.x), Math.round((drawY)/Vbs.x)+10, Color.BLACK.getRGB());
+				this.drawString(fontRendererObj, vals[2], Math.round(drawX/Vbs.x), Math.round((drawY)/Vbs.x)+20, Color.BLACK.getRGB());
 			}else {
-				this.drawString(fontRendererObj, o.val, Math.round(drawX/Variables.x), Math.round(drawY/Variables.x), Color.BLACK.getRGB());					
+				this.drawString(fontRendererObj, o.val, Math.round(drawX/Vbs.x), Math.round(drawY/Vbs.x), Color.BLACK.getRGB());					
 			}
 			GL11.glPopMatrix();
 			}

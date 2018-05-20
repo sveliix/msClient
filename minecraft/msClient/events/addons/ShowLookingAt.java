@@ -2,7 +2,7 @@ package msClient.events.addons;
 
 import org.lwjgl.opengl.GL11;
 
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiIngame;
 import net.minecraft.util.BlockPos;
@@ -14,7 +14,7 @@ public class ShowLookingAt {
 	
 	public static void run (GuiIngame g) {
 		GL11.glPushMatrix();
-		GL11.glScalef(Variables.x, Variables.x, Variables.x);
+		GL11.glScalef(Vbs.x, Vbs.x, Vbs.x);
 		
 		BlockPos blockpos1 = mc.objectMouseOver.getBlockPos();
 		
@@ -26,9 +26,9 @@ public class ShowLookingAt {
 					new Object[] {Integer.valueOf(blockpos1.getX()), 
 							Integer.valueOf(blockpos1.getY()), 
 							Integer.valueOf(blockpos1.getZ())}), 
-					Math.round(Variables.objects.get(6).getCoordX()/Variables.x), 
-					Math.round(Variables.objects.get(6).getCoordY()/Variables.x), 
-					Variables.MSColor);
+					Math.round(Vbs.objects.get(6).getCoordX()/Vbs.x), 
+					Math.round(Vbs.objects.get(6).getCoordY()/Vbs.x), 
+					Vbs.MSColor);
 		}
 		
 		GL11.glPopMatrix();

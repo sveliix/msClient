@@ -10,6 +10,7 @@ public class GuiButton extends Gui
 {
     protected static final ResourceLocation widgets = new ResourceLocation("textures/gui/widgets.png");
     protected static final ResourceLocation buttonTextures = new ResourceLocation("textures/widgets2.png");
+    protected static final ResourceLocation bg = new ResourceLocation("textures/bg.png");
 
     /** Button width in pixels */
     protected int width;
@@ -33,6 +34,7 @@ public class GuiButton extends Gui
     /** Hides the button completely if false. */
     public boolean visible;
     protected boolean hovered;
+    private boolean backGround = true;
 
     public GuiButton(int buttonId, int x, int y, String buttonText)
     {
@@ -51,6 +53,21 @@ public class GuiButton extends Gui
         this.width = widthIn;
         this.height = heightIn;
         this.displayString = buttonText;
+    }
+    
+    public GuiButton(int buttonId, int x, int y, int widthIn, int heightIn, String buttonText, boolean bg)
+    {
+        this.width = 200;
+        this.height = 20;
+        this.enabled = true;
+        this.visible = true;
+        this.id = buttonId;
+        this.xPosition = x;
+        this.yPosition = y;
+        this.width = widthIn;
+        this.height = heightIn;
+        this.displayString = buttonText;
+        this.backGround = false;
     }
 
     /**
@@ -81,7 +98,11 @@ public class GuiButton extends Gui
         if (this.visible)
         {
             FontRenderer fontrenderer = mc.fontRendererObj;
-            mc.getTextureManager().bindTexture(buttonTextures);
+            if(this.backGround) {
+            	mc.getTextureManager().bindTexture(buttonTextures);
+            }else {
+            	mc.getTextureManager().bindTexture(bg);
+            }
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             this.hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
             int i = this.getHoverState(this.hovered);

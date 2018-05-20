@@ -11,7 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import net.minecraft.client.Minecraft;
 
 public class UpdaterCheck extends Thread 
@@ -27,7 +27,7 @@ public class UpdaterCheck extends Thread
 	{
 		if (!this.isDeprecated())
 		{
-			Variables.isDeprecated = false; return;
+			Vbs.isDeprecated = false; return;
 		}
 		String s = "filePath"; // TODO ENTER REAL FILE PATH HERE
 		File file1 = new File(s);
@@ -35,7 +35,7 @@ public class UpdaterCheck extends Thread
 		try
 		{
 			downloadFile(url, file1);
-			Variables.isDeprecated = true;
+			Vbs.isDeprecated = true;
 		}
 		catch(IOException e)
 		{

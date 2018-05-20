@@ -6,7 +6,7 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.google.gson.Gson;
 
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import msClient.events.addons.NameTags;
 import msClient.events.addons.NameTags.Tag;
 import msClient.gui.MSMainMenu;
@@ -2346,211 +2346,211 @@ public class GameSettings
                     String[] astring = s.split(":");
                     if (astring[0].equals("showFPS"))
                     {
-                        Variables.showFPS = astring[1].equals("true");
+                        Vbs.showFPS = astring[1].equals("true");
                     }
                     
                     if (astring[0].equals("showCOORDS"))
                     {
-                        Variables.showCoords = astring[1].equals("true");
+                        Vbs.showCoords = astring[1].equals("true");
                     }
                     
                     if (astring[0].equals("showCPS"))
                     {
-                        Variables.CPS = astring[1].equals("true");
+                        Vbs.CPS = astring[1].equals("true");
                     }
                     
                     if (astring[0].equals("showMEM"))
                     {
-                        Variables.memory = astring[1].equals("true");
+                        Vbs.memory = astring[1].equals("true");
                     }
                     
                     if (astring[0].equals("showEP"))
                     {
-                        Variables.EP = astring[1].equals("true");
+                        Vbs.EP = astring[1].equals("true");
                     }
                     
                     if (astring[0].equals("showMLG"))
                     {
-                        Variables.MLG = astring[1].equals("true");
+                        Vbs.MLG = astring[1].equals("true");
                     }
 
                     if (astring[0].equals("showARMOR"))
                     {
-                        Variables.Armor = astring[1].equals("true");
+                        Vbs.Armor = astring[1].equals("true");
                     }
                     
                     if (astring[0].equals("showPOTION"))
                     {
-                        Variables.MSPotion = astring[1].equals("true");
+                        Vbs.MSPotion = astring[1].equals("true");
                     }
                     
                     if (astring[0].equals("MSColor"))
                     {
-                        Variables.MSColor = Integer.parseInt(astring[1]);
+                        Vbs.MSColor = Integer.parseInt(astring[1]);
                     }
                     
                     if (astring[0].equals("GROESSE"))
                     {
-                        Variables.x = Float.parseFloat(astring[1]);
+                        Vbs.x = Float.parseFloat(astring[1]);
                     }
                     
                     if (astring[0].equals("GROESSEF3"))
                     {
-                    	Variables.debugG =  Float.parseFloat(astring[1]);
+                    	Vbs.debugG =  Float.parseFloat(astring[1]);
                     }
 
                     if (astring[0].equals("XCoordFPS"))
                     {
-                        Variables.objects.get(0).setCoordX(Integer.parseInt(astring[1]));
+                        Vbs.objects.get(0).setCoordX(Integer.parseInt(astring[1]));
                     }
                     
                     if (astring[0].equals("YCoordFPS"))
                     {
-                    	Variables.objects.get(0).setCoordY(Integer.parseInt(astring[1]));
+                    	Vbs.objects.get(0).setCoordY(Integer.parseInt(astring[1]));
                     }
                     
                     if (astring[0].equals("XCoords"))
                     {
-                    	Variables.objects.get(1).setCoordX(Integer.parseInt(astring[1]));
+                    	Vbs.objects.get(1).setCoordX(Integer.parseInt(astring[1]));
                     }
                     
                     if (astring[0].equals("YCoords"))
                     {
-                    	Variables.objects.get(1).setCoordY(Integer.parseInt(astring[1]));
+                    	Vbs.objects.get(1).setCoordY(Integer.parseInt(astring[1]));
                     }
                     
                     if (astring[0].equals("XCoordCPS"))
                     {
-                    	Variables.objects.get(2).setCoordX(Integer.parseInt(astring[1]));
+                    	Vbs.objects.get(2).setCoordX(Integer.parseInt(astring[1]));
                     }
                     
                     if (astring[0].equals("YCoordCPS"))
                     {
-                    	Variables.objects.get(2).setCoordY(Integer.parseInt(astring[1]));
+                    	Vbs.objects.get(2).setCoordY(Integer.parseInt(astring[1]));
                     }
                     
                     if (astring[0].equals("XCoordMLG"))
                     {
-                    	Variables.objects.get(4).setCoordX(Integer.parseInt(astring[1]));
+                    	Vbs.objects.get(4).setCoordX(Integer.parseInt(astring[1]));
                     }
                     
                     if (astring[0].equals("YCoordMLG"))
                     {
-                    	Variables.objects.get(4).setCoordY(Integer.parseInt(astring[1]));
+                    	Vbs.objects.get(4).setCoordY(Integer.parseInt(astring[1]));
                     }
                     
                     if (astring[0].equals("XCoordMEM"))
                     {
-                    	Variables.objects.get(3).setCoordX(Integer.parseInt(astring[1]));
+                    	Vbs.objects.get(3).setCoordX(Integer.parseInt(astring[1]));
                     }
                     
                     if (astring[0].equals("YCoordMEM"))
                     {
-                    	Variables.objects.get(3).setCoordY(Integer.parseInt(astring[1]));
+                    	Vbs.objects.get(3).setCoordY(Integer.parseInt(astring[1]));
                     }
                     
                     if (astring[0].equals("XCoordEP"))
                     {
-                    	Variables.objects.get(5).setCoordX(Integer.parseInt(astring[1]));
+                    	Vbs.objects.get(5).setCoordX(Integer.parseInt(astring[1]));
                     }
                     
                     if (astring[0].equals("YCoordEP"))
                     {
-                    	Variables.objects.get(5).setCoordY(Integer.parseInt(astring[1]));
+                    	Vbs.objects.get(5).setCoordY(Integer.parseInt(astring[1]));
                     }
                     if (astring[0].equals("XCoordLook"))
                     {
-                    	Variables.objects.get(6).setCoordX(Integer.parseInt(astring[1]));
+                    	Vbs.objects.get(6).setCoordX(Integer.parseInt(astring[1]));
                     }
                     
                     if (astring[0].equals("YCoordLook"))
                     {
-                    	Variables.objects.get(6).setCoordY(Integer.parseInt(astring[1]));
+                    	Vbs.objects.get(6).setCoordY(Integer.parseInt(astring[1]));
                     }
                     
                     if (astring[0].equals("XCoordSprint"))
                     {
-                    	Variables.objects.get(7).setCoordX(Integer.parseInt(astring[1]));
+                    	Vbs.objects.get(7).setCoordX(Integer.parseInt(astring[1]));
                     }
                     
                     if (astring[0].equals("YCoordSprint"))
                     {
-                    	Variables.objects.get(7).setCoordY(Integer.parseInt(astring[1]));
+                    	Vbs.objects.get(7).setCoordY(Integer.parseInt(astring[1]));
                     }
                     
                     if (astring[0].equals("XCoordReach"))
                     {
-                    	Variables.objects.get(8).setCoordX(Integer.parseInt(astring[1]));
+                    	Vbs.objects.get(8).setCoordX(Integer.parseInt(astring[1]));
                     }
                     
                     if (astring[0].equals("YCoordReach"))
                     {
-                    	Variables.objects.get(8).setCoordY(Integer.parseInt(astring[1]));
+                    	Vbs.objects.get(8).setCoordY(Integer.parseInt(astring[1]));
                     }
                 
                     if (astring[0].equals("OldBow"))
                     {
-                    	Variables.oldBow = astring[1].equals("true");
+                    	Vbs.oldBow = astring[1].equals("true");
                     }
                     
                     if (astring[0].equals("OldRod"))
                     {
-                    	Variables.oldRod = astring[1].equals("true");
+                    	Vbs.oldRod = astring[1].equals("true");
                     }
                     
                     if (astring[0].equals("OldSneak"))
                     {
-                    	Variables.oldSneak = astring[1].equals("true");
+                    	Vbs.oldSneak = astring[1].equals("true");
                     }
 
                     if (astring[0].equals("OldBlockHit"))
                     {
-                    	Variables.oldBlockHit = astring[1].equals("true");
+                    	Vbs.oldBlockHit = astring[1].equals("true");
                     }
                     
                     if (astring[0].equals("OldBlockBuild"))
                     {
-                    	Variables.oldBlockBuild = astring[1].equals("true");
+                    	Vbs.oldBlockBuild = astring[1].equals("true");
                     }
                     
                     if (astring[0].equals("Olddmg"))
                     {
-                    	Variables.oldDmg = astring[1].equals("true");
+                    	Vbs.oldDmg = astring[1].equals("true");
                     }
                     
                     if (astring[0].equals("fastChat"))
                     {
-                    	Variables.fastChat = astring[1].equals("true");
+                    	Vbs.fastChat = astring[1].equals("true");
                     }
                     
                     if (astring[0].equals("fastScore"))
                     {
-                    	Variables.fastScore = astring[1].equals("true");
+                    	Vbs.fastScore = astring[1].equals("true");
                     }
                     
                     if (astring[0].equals("Scoreboard"))
                     {
-                    	Variables.scoreboard = astring[1].equals("true");
+                    	Vbs.scoreboard = astring[1].equals("true");
                     }
                     
                     if (astring[0].equals("CleanTab"))
                     {
-                    	Variables.cleanTab = astring[1].equals("true");
+                    	Vbs.cleanTab = astring[1].equals("true");
                     }
                     
                     if (astring[0].equals("PingOnTab"))
                     {
-                    	Variables.pingOnTab = astring[1].equals("true");
+                    	Vbs.pingOnTab = astring[1].equals("true");
                     }
                     
                     if (astring[0].equals("ShowMyName"))
                     {
-                    	Variables.showMyName = astring[1].equals("true");
+                    	Vbs.showMyName = astring[1].equals("true");
                     }
                     
                     if (astring[0].equals("NameTags"))
                     {
-                    	Variables.nameTags = astring[1].equals("true");
+                    	Vbs.nameTags = astring[1].equals("true");
                     }
                     
                     /*if (astring[0].equals("ShowSneak"))
@@ -2560,84 +2560,84 @@ public class GameSettings
                     
                     if (astring[0].equals("KeyStrokesMod"))
                     {
-                    	Variables.keyStrokesMod = astring[1].equals("true");
+                    	Vbs.keyStrokesMod = astring[1].equals("true");
                     }  
                     
                     if (astring[0].equals("KeyStrokesPos"))
                     {
-                    	Variables.location = Integer.parseInt(astring[1]);
+                    	Vbs.location = Integer.parseInt(astring[1]);
                     }  
                     
                     if (astring[0].equals("ReachDisplayMod"))
                     {
-                    	Variables.reachDisplay = astring[1].equals("true");
+                    	Vbs.reachDisplay = astring[1].equals("true");
                     }
                     
                     if (astring[0].equals("RainBow"))
                     {
-                    	Variables.rainBow = astring[1].equals("true");
+                    	Vbs.rainBow = astring[1].equals("true");
                     }
                     
                     if (astring[0].equals("fastReach"))
                     {
-                    	Variables.fastReach = astring[1].equals("true");
+                    	Vbs.fastReach = astring[1].equals("true");
                     }
                     
                     if (astring[0].equals("fastKeyStrokes"))
                     {
-                    	Variables.fastKeyStrokes = astring[1].equals("true");
+                    	Vbs.fastKeyStrokes = astring[1].equals("true");
                     }
                     if (astring[0].equals("showLookingAt"))
                     {
-                    	Variables.lookingAt = astring[1].equals("true");
+                    	Vbs.lookingAt = astring[1].equals("true");
                     }
                     if (astring[0].equals("GuiParticle"))
                     {
-                    	Variables.particle = astring[1].equals("true");
+                    	Vbs.particle = astring[1].equals("true");
                     }
                     if (astring[0].equals("OldParticles"))
                     {
-                    	Variables.oldParticles = astring[1].equals("true");
+                    	Vbs.oldParticles = astring[1].equals("true");
                     }
                     if (astring[0].equals("CoverParticles"))
                     {
-                    	Variables.coverParticles = astring[1].equals("true");
+                    	Vbs.coverParticles = astring[1].equals("true");
                     }                    
                     if (astring[0].equals("FunnyReach"))
                     {
-                    	Variables.funnyReach = astring[1].equals("true");
+                    	Vbs.funnyReach = astring[1].equals("true");
                     }
                     if (astring[0].equals("FunnyCPS"))
                     {
-                    	Variables.funnyCPS = astring[1].equals("true");
+                    	Vbs.funnyCPS = astring[1].equals("true");
                     }
                     if (astring[0].equals("MouseDelay"))
                     {
-                    	Variables.mouseDelayFix = astring[1].equals("true");
+                    	Vbs.mouseDelayFix = astring[1].equals("true");
                     }
                     if (astring[0].equals("Radius"))
                     {
-                    	Variables.radius = Float.parseFloat(astring[1]);
+                    	Vbs.radius = Float.parseFloat(astring[1]);
                     }
                     if (astring[0].equals("Size"))
                     {
-                    	Variables.size = Float.parseFloat(astring[1]);
+                    	Vbs.size = Float.parseFloat(astring[1]);
                     }
                     if (astring[0].equals("Speed"))
                     {
-                    	Variables.speed = Float.parseFloat(astring[1]);
+                    	Vbs.speed = Float.parseFloat(astring[1]);
                     }
                     if (astring[0].equals("MSTag"))
                     {
-                    	Variables.showNameMS = astring[1].equals("true");
+                    	Vbs.showNameMS = astring[1].equals("true");
                     }
                     if (astring[0].equals("InteqtTag"))
                     {
-                    	Variables.showNameInteqt = astring[1].equals("true");
+                    	Vbs.showNameInteqt = astring[1].equals("true");
                     }
                     if (astring[0].equals("OtherTag"))
                     {
-                    	Variables.showNameOther = astring[1].equals("true");
+                    	Vbs.showNameOther = astring[1].equals("true");
                     }
                     
                     if (astring[0].equals("Keybind"))
@@ -2655,11 +2655,11 @@ public class GameSettings
                     }
                     if (astring[0].equals("ParticleMod"))
                     {
-                    	Variables.particleMod = astring[1].equals("true");
+                    	Vbs.particleMod = astring[1].equals("true");
                     }
                     if (astring[0].equals("ParticleSize"))
                     {
-                    	Variables.pSize = Integer.parseInt(astring[1]);
+                    	Vbs.pSize = Integer.parseInt(astring[1]);
                     }
                    
                 }
@@ -2687,75 +2687,75 @@ public class GameSettings
         try
         {
             PrintWriter printwriter = new PrintWriter(new FileWriter(this.msFile));
-            printwriter.println("showFPS:" + Variables.showFPS);
-            printwriter.println("showCOORDS:" + Variables.showCoords);
-            printwriter.println("showCPS:" + Variables.CPS);
-            printwriter.println("showMLG:" + Variables.MLG);
-            printwriter.println("showMEM:" + Variables.memory);
-            printwriter.println("showPOTION:" + Variables.MSPotion);
-            printwriter.println("showARMOR:" + Variables.Armor);
+            printwriter.println("showFPS:" + Vbs.showFPS);
+            printwriter.println("showCOORDS:" + Vbs.showCoords);
+            printwriter.println("showCPS:" + Vbs.CPS);
+            printwriter.println("showMLG:" + Vbs.MLG);
+            printwriter.println("showMEM:" + Vbs.memory);
+            printwriter.println("showPOTION:" + Vbs.MSPotion);
+            printwriter.println("showARMOR:" + Vbs.Armor);
             //printwriter.println("showEP:" + Variables.EP);
-            printwriter.println("showLookingAt:" + Variables.lookingAt);
+            printwriter.println("showLookingAt:" + Vbs.lookingAt);
             printwriter.println("");
-            printwriter.println("MSColor:" + Variables.MSColor);
-            printwriter.println("RainBow:" + Variables.rainBow);
+            printwriter.println("MSColor:" + Vbs.MSColor);
+            printwriter.println("RainBow:" + Vbs.rainBow);
             printwriter.println("");
-            printwriter.println("GROESSE:" + Variables.x);
-            printwriter.println("GROESSEF3:" + Variables.debugG);
+            printwriter.println("GROESSE:" + Vbs.x);
+            printwriter.println("GROESSEF3:" + Vbs.debugG);
             printwriter.println("");
-            printwriter.println("XCoordFPS:" + Variables.objects.get(0).getCoordX());
-            printwriter.println("YCoordFPS:" + Variables.objects.get(0).getCoordY());
-            printwriter.println("XCoords:" + Variables.objects.get(1).getCoordX());
-            printwriter.println("YCoords:" + Variables.objects.get(1).getCoordY());
-            printwriter.println("XCoordCPS:" + Variables.objects.get(2).getCoordX());
-            printwriter.println("YCoordCPS:" + Variables.objects.get(2).getCoordY());
-            printwriter.println("XCoordEP:" + Variables.objects.get(5).getCoordX());
-            printwriter.println("YCoordEP:" + Variables.objects.get(5).getCoordY());
-            printwriter.println("XCoordMLG:" + Variables.objects.get(4).getCoordX());
-            printwriter.println("YCoordMLG:" + Variables.objects.get(4).getCoordY());
-            printwriter.println("XCoordMEM:" + Variables.objects.get(3).getCoordX());
-            printwriter.println("YCoordMEM:" + Variables.objects.get(3).getCoordY());            
-            printwriter.println("XCoordLook:" + Variables.objects.get(6).getCoordX());
-            printwriter.println("YCoordLook:" + Variables.objects.get(6).getCoordY());
-            printwriter.println("XCoordSprint:" + Variables.objects.get(7).getCoordX());
-            printwriter.println("YCoordSprint:" + Variables.objects.get(7).getCoordY());
-            printwriter.println("XCoordReach:" + Variables.objects.get(8).getCoordX());
-            printwriter.println("YCoordReach:" + Variables.objects.get(8).getCoordY());
+            printwriter.println("XCoordFPS:" + Vbs.objects.get(0).getCoordX());
+            printwriter.println("YCoordFPS:" + Vbs.objects.get(0).getCoordY());
+            printwriter.println("XCoords:" + Vbs.objects.get(1).getCoordX());
+            printwriter.println("YCoords:" + Vbs.objects.get(1).getCoordY());
+            printwriter.println("XCoordCPS:" + Vbs.objects.get(2).getCoordX());
+            printwriter.println("YCoordCPS:" + Vbs.objects.get(2).getCoordY());
+            printwriter.println("XCoordEP:" + Vbs.objects.get(5).getCoordX());
+            printwriter.println("YCoordEP:" + Vbs.objects.get(5).getCoordY());
+            printwriter.println("XCoordMLG:" + Vbs.objects.get(4).getCoordX());
+            printwriter.println("YCoordMLG:" + Vbs.objects.get(4).getCoordY());
+            printwriter.println("XCoordMEM:" + Vbs.objects.get(3).getCoordX());
+            printwriter.println("YCoordMEM:" + Vbs.objects.get(3).getCoordY());            
+            printwriter.println("XCoordLook:" + Vbs.objects.get(6).getCoordX());
+            printwriter.println("YCoordLook:" + Vbs.objects.get(6).getCoordY());
+            printwriter.println("XCoordSprint:" + Vbs.objects.get(7).getCoordX());
+            printwriter.println("YCoordSprint:" + Vbs.objects.get(7).getCoordY());
+            printwriter.println("XCoordReach:" + Vbs.objects.get(8).getCoordX());
+            printwriter.println("YCoordReach:" + Vbs.objects.get(8).getCoordY());
             printwriter.println("");                    
-            printwriter.println("OldBow:" + Variables.oldBow);
-            printwriter.println("OldRod:" + Variables.oldRod);
-            printwriter.println("OldSneak:" + Variables.oldSneak);
-            printwriter.println("OldBlockHit:" + Variables.oldBlockHit);
-            printwriter.println("OldBlockBuild:" + Variables.oldBlockBuild);
-            printwriter.println("OldDmg:" + Variables.oldDmg);
+            printwriter.println("OldBow:" + Vbs.oldBow);
+            printwriter.println("OldRod:" + Vbs.oldRod);
+            printwriter.println("OldSneak:" + Vbs.oldSneak);
+            printwriter.println("OldBlockHit:" + Vbs.oldBlockHit);
+            printwriter.println("OldBlockBuild:" + Vbs.oldBlockBuild);
+            printwriter.println("OldDmg:" + Vbs.oldDmg);
             printwriter.println("");
-            printwriter.println("Scoreboard:" + Variables.scoreboard);
-            printwriter.println("fastChat:" + Variables.fastChat);
-            printwriter.println("fastScore:" + Variables.fastScore);
-            printwriter.println("fastReach:" + Variables.fastReach);
-            printwriter.println("fastKeyStrokes:" + Variables.fastKeyStrokes);
-            printwriter.println("CleanTab:" + Variables.cleanTab);
-            printwriter.println("PingOnTab:" + Variables.pingOnTab);
-            printwriter.println("ShowMyName:" + Variables.showMyName);
-            printwriter.println("NameTags:" + Variables.nameTags);
-            printwriter.println("MouseDelay:" + Variables.mouseDelayFix);
+            printwriter.println("Scoreboard:" + Vbs.scoreboard);
+            printwriter.println("fastChat:" + Vbs.fastChat);
+            printwriter.println("fastScore:" + Vbs.fastScore);
+            printwriter.println("fastReach:" + Vbs.fastReach);
+            printwriter.println("fastKeyStrokes:" + Vbs.fastKeyStrokes);
+            printwriter.println("CleanTab:" + Vbs.cleanTab);
+            printwriter.println("PingOnTab:" + Vbs.pingOnTab);
+            printwriter.println("ShowMyName:" + Vbs.showMyName);
+            printwriter.println("NameTags:" + Vbs.nameTags);
+            printwriter.println("MouseDelay:" + Vbs.mouseDelayFix);
             //printwriter.println("ShowSneak:" + variables.showSneak);
-            printwriter.println("KeyStrokesMod:" + Variables.keyStrokesMod);
-            printwriter.println("KeyStrokesPos:" + Variables.location);
-            printwriter.println("ReachDisplayMod:" + Variables.reachDisplay);
-            printwriter.println("GuiParticle:" + Variables.particle);
-            printwriter.println("OldParticles:" + Variables.oldParticles);
-            printwriter.println("CoverParticles:" + Variables.coverParticles);           
-            printwriter.println("FunnyReach:" + Variables.funnyReach);
-            printwriter.println("FunnyCPS:" + Variables.funnyCPS);
-            printwriter.println("Radius:" + Variables.radius);
-            printwriter.println("Size:" + Variables.size);
-            printwriter.println("Speed:" + Variables.speed);
-            printwriter.println("MSTag:" + Variables.showNameMS);
-            printwriter.println("InteqtTag:" + Variables.showNameInteqt);
-            printwriter.println("OtherTag:" + Variables.showNameOther);
-            printwriter.println("ParticleMod:" + Variables.particleMod);
-            printwriter.println("ParticleSize:" + Variables.pSize);
+            printwriter.println("KeyStrokesMod:" + Vbs.keyStrokesMod);
+            printwriter.println("KeyStrokesPos:" + Vbs.location);
+            printwriter.println("ReachDisplayMod:" + Vbs.reachDisplay);
+            printwriter.println("GuiParticle:" + Vbs.particle);
+            printwriter.println("OldParticles:" + Vbs.oldParticles);
+            printwriter.println("CoverParticles:" + Vbs.coverParticles);           
+            printwriter.println("FunnyReach:" + Vbs.funnyReach);
+            printwriter.println("FunnyCPS:" + Vbs.funnyCPS);
+            printwriter.println("Radius:" + Vbs.radius);
+            printwriter.println("Size:" + Vbs.size);
+            printwriter.println("Speed:" + Vbs.speed);
+            printwriter.println("MSTag:" + Vbs.showNameMS);
+            printwriter.println("InteqtTag:" + Vbs.showNameInteqt);
+            printwriter.println("OtherTag:" + Vbs.showNameOther);
+            printwriter.println("ParticleMod:" + Vbs.particleMod);
+            printwriter.println("ParticleSize:" + Vbs.pSize);
             printwriter.println("");
             for (ToggleSprintMod k : ToggleSprintManager.modules) {
             	printwriter.println("Keybind:" + k.getBind() + ";" + k.getName());

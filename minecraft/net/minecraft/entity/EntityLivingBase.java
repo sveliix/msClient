@@ -4,7 +4,7 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Maps;
 
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import msClient.events.MsEventHandler;
 
 import java.util.Collection;
@@ -2168,7 +2168,7 @@ public abstract class EntityLivingBase extends Entity
      */
     public Vec3 getLook(float partialTicks)
     {
-    	if(this instanceof EntityPlayerSP && Variables.mouseDelayFix) {
+    	if(this instanceof EntityPlayerSP && Vbs.mouseDelayFix) {
     		MsEventHandler.onGetLook(this);
     		return super.getLook(partialTicks);
     	}

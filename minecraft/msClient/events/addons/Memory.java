@@ -5,7 +5,7 @@ import java.util.List;
 import org.lwjgl.opengl.GL11;
 
 
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import net.minecraft.client.gui.GuiIngame;
 
 public class Memory {
@@ -13,7 +13,7 @@ public class Memory {
 	public static void run (GuiIngame g) {
 		
 		GL11.glPushMatrix();
-	    GL11.glScalef(Variables.x, Variables.x, Variables.x);
+	    GL11.glScalef(Vbs.x, Vbs.x, Vbs.x);
 		
 		long i = Runtime.getRuntime().maxMemory();
 		long j = Runtime.getRuntime().totalMemory();
@@ -22,7 +22,7 @@ public class Memory {
 	    long percent = Long.valueOf(l * 100L / i).longValue();
 	
 	    
-	    g.getFontRenderer().drawString("Mem: " + percent + "%", Math.round(Variables.objects.get(3).getCoordX()/Variables.x), Math.round(Variables.objects.get(3).getCoordY()/Variables.x), Variables.MSColor);
+	    g.getFontRenderer().drawString("Mem: " + percent + "%", Math.round(Vbs.objects.get(3).getCoordX()/Vbs.x), Math.round(Vbs.objects.get(3).getCoordY()/Vbs.x), Vbs.MSColor);
 	    GL11.glPopMatrix(); 
 	   
 	    

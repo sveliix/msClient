@@ -6,7 +6,7 @@ import java.io.IOException;
 import org.lwjgl.opengl.GL11;
 
 import msClient.main;
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiConfirmOpenLink;
 import net.minecraft.client.gui.GuiIngame;
@@ -89,7 +89,7 @@ public class GuiCredits extends GuiScreen{
 
 		GL11.glPushMatrix();
 		GL11.glScalef(1.4F, 1.4F, 1.4F);
-		this.drawString(this.fontRendererObj, msYouTube, Math.round((width/2 - ms-17)/1.4F), Math.round((height/2-10)/1.4F), Variables.MSColor);
+		this.drawString(this.fontRendererObj, msYouTube, Math.round((width/2 - ms-17)/1.4F), Math.round((height/2-10)/1.4F), Vbs.MSColor);
 		GL11.glPopMatrix();
 		//this.drawString(this.fontRendererObj, "YouTube: " , width/2 - 50, height/2 + 10, GuiIngame.MSColor);
 		//this.drawString(this.fontRendererObj, "Twitter: " , width/2 - 50, height/2 + 20, GuiIngame.MSColor);
@@ -97,13 +97,13 @@ public class GuiCredits extends GuiScreen{
 
 		GL11.glPushMatrix();
 		GL11.glScalef(1.4F, 1.4F, 1.4F);
-		this.drawString(this.fontRendererObj, krumDe, Math.round((width/2 - krum - 17)/1.4F), Math.round((height/2 + 55)/1.4F), Variables.MSColor);		
+		this.drawString(this.fontRendererObj, krumDe, Math.round((width/2 - krum - 17)/1.4F), Math.round((height/2 + 55)/1.4F), Vbs.MSColor);		
 		GL11.glPopMatrix();
 		//this.drawString(this.fontRendererObj, "YouTube: " , width/2 - 50, height/2 + 55, GuiIngame.MSColor);
 		//this.drawString(this.fontRendererObj, "Twitter: " , width/2 - 50, height/2 + 65, GuiIngame.MSColor);
 		GL11.glPushMatrix();
 		GL11.glScalef(1.1F, 1.1F, 1.1F);
-		this.drawString(this.fontRendererObj, discord, Math.round((width/2 - disc - 5)/1.1F), Math.round((height-45)/1.1F), Variables.MSColor);
+		this.drawString(this.fontRendererObj, discord, Math.round((width/2 - disc - 5)/1.1F), Math.round((height-45)/1.1F), Vbs.MSColor);
 		GL11.glPopMatrix();
 		
 		super.drawScreen(mouseX, mouseY, partialTicks);

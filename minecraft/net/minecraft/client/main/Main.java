@@ -15,7 +15,7 @@ import java.util.List;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 import joptsimple.OptionSpec;
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import msClient.updater.UpdaterCheck;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.Session;
@@ -122,12 +122,12 @@ public class Main
         {
         	public void run()
         	{
-        		if (Variables.isDeprecated) 
+        		if (Vbs.isDeprecated) 
         		{
         			try
         			{
         				// Runtime.getRuntime().exec("updater.exe"); // TODO not functional yet
-        				Variables.isDeprecated = false;
+        				Vbs.isDeprecated = false;
         			}
         			catch(Exception e)
         			{

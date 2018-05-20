@@ -2,7 +2,7 @@ package msClient.events.addons;
 
 import org.lwjgl.opengl.GL11;
 
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiIngame;
 
@@ -12,7 +12,7 @@ public class ShowCoords {
 	
 	public static void run (GuiIngame g) {
 		GL11.glPushMatrix();
-		GL11.glScalef(Variables.x, Variables.x, Variables.x);
+		GL11.glScalef(Vbs.x, Vbs.x, Vbs.x);
 		
 		int coordX = (int)Minecraft.getMinecraft().thePlayer.posX;
 		int coordY = (int)Minecraft.getMinecraft().thePlayer.posY;
@@ -20,11 +20,11 @@ public class ShowCoords {
 		
 		int temp = 0;
 		
-		mc.fontRendererObj.drawString("X: " + coordX, Math.round(Variables.objects.get(1).getCoordX()/Variables.x), Math.round(Variables.objects.get(1).getCoordY()/Variables.x) + temp, Variables.MSColor);
+		mc.fontRendererObj.drawString("X: " + coordX, Math.round(Vbs.objects.get(1).getCoordX()/Vbs.x), Math.round(Vbs.objects.get(1).getCoordY()/Vbs.x) + temp, Vbs.MSColor);
 		temp += 10;
-		mc.fontRendererObj.drawString("Y: " + coordY, Math.round(Variables.objects.get(1).getCoordX()/Variables.x), Math.round(Variables.objects.get(1).getCoordY()/Variables.x) + temp , Variables.MSColor);
+		mc.fontRendererObj.drawString("Y: " + coordY, Math.round(Vbs.objects.get(1).getCoordX()/Vbs.x), Math.round(Vbs.objects.get(1).getCoordY()/Vbs.x) + temp , Vbs.MSColor);
 		temp += 10;
-		mc.fontRendererObj.drawString("Z: " + coordZ, Math.round(Variables.objects.get(1).getCoordX()/Variables.x), Math.round(Variables.objects.get(1).getCoordY()/Variables.x) + temp , Variables.MSColor);
+		mc.fontRendererObj.drawString("Z: " + coordZ, Math.round(Vbs.objects.get(1).getCoordX()/Vbs.x), Math.round(Vbs.objects.get(1).getCoordY()/Vbs.x) + temp , Vbs.MSColor);
 		temp += 10;
 		
 		GL11.glPopMatrix();

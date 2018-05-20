@@ -27,7 +27,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.MapData;
 import org.lwjgl.opengl.GL11;
 
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import msClient.events.MsEventHandler;
 
 public class ItemRenderer
@@ -342,7 +342,7 @@ public class ItemRenderer
                 EnumAction enumaction = this.itemToRender.getItemUseAction();
                 float f4 = 0.0F;
                 
-                if(Variables.oldBlockHit) {
+                if(Vbs.oldBlockHit) {
                 	f4 = f1;
                 }
                 
@@ -366,7 +366,7 @@ public class ItemRenderer
                     	}else {*/
                     		this.transformFirstPersonItem(f, f4);
                         	this.func_178103_d();
-                        	if(Variables.oldBlockHit) {
+                        	if(Vbs.oldBlockHit) {
                         		GlStateManager.scale(0.83F, 0.88F, 0.85F);
                         		GlStateManager.translate(-0.3F, 0.1F, 0.0F);
                         	}
@@ -374,7 +374,7 @@ public class ItemRenderer
                     	//}
 
                     case BOW:
-                    	if(Variables.oldBow) { // TODO: Old Bow
+                    	if(Vbs.oldBow) { // TODO: Old Bow
                     		this.transformFirstPersonItem(f, f4);
                             this.func_178098_a(partialTicks, abstractclientplayer);
                             break;

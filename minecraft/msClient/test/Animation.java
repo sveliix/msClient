@@ -1,6 +1,6 @@
 package msClient.test;
 
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import net.minecraft.client.gui.GuiIngame;
 
 public class Animation {
@@ -27,7 +27,7 @@ public class Animation {
     }
    
     public void animation(int amount, int time) {
-        if (!Variables.keyStrokesMod) {
+        if (!Vbs.keyStrokesMod) {
             if (!(Animation.instance.getFadeAmount() == amount)) {
                 Animation.instance.setFadeAmount(Animation.instance.getFadeAmount() + time);
             } else {

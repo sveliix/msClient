@@ -1,7 +1,7 @@
 package msClient.command.commands;
 
 import msClient.command.Command;
-import msClient.config.Variables;
+import msClient.config.Vbs;
 
 public class Sneak extends Command{
 
@@ -23,7 +23,7 @@ public class Sneak extends Command{
 	@Override
 	public void onCommand(String command, String[] args) throws Exception {
 		
-		Variables.showSneak = !Variables.showSneak;
+		Vbs.showSneak = !Vbs.showSneak;
 		
 	}
 

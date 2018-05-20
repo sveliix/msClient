@@ -2,7 +2,7 @@ package net.minecraft.client.renderer.entity;
 
 import com.google.common.collect.Lists;
 
-import msClient.config.Variables;
+import msClient.config.Vbs;
 
 import java.nio.FloatBuffer;
 import java.util.List;
@@ -334,7 +334,7 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
 
             if (flag1)
             {
-            	if(Variables.oldDmg) {
+            	if(Vbs.oldDmg) {
             		this.brightnessBuffer.put(0.7F);
             	}else {
             		this.brightnessBuffer.put(1.0F); //TODO olddmg
@@ -473,7 +473,7 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
         for (LayerRenderer<T> layerrenderer : this.layerRenderers)
         {
         	boolean f = layerrenderer.shouldCombineTextures();
-        	if(Variables.oldDmg && layerrenderer.getClass().equals(LayerBipedArmor.class)) {
+        	if(Vbs.oldDmg && layerrenderer.getClass().equals(LayerBipedArmor.class)) {
         		f = true;
         	}
         	
@@ -595,7 +595,7 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
 
         boolean flag = entity != this.renderManager.livingPlayer;
 
-        if (Variables.showMyName)
+        if (Vbs.showMyName)
         {
             flag = true;
         }

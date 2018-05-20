@@ -1,6 +1,6 @@
 package msClient.utils;
 
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import net.minecraft.client.gui.GuiIngame;
 
 public class ClickCounter {
@@ -11,7 +11,7 @@ public class ClickCounter {
 
     public static int getClickResult()
     {
-    	if(Variables.funnyCPS) {
+    	if(Vbs.funnyCPS) {
     		return (int) ((int) result*11.4F);
     	}
         return result;
@@ -19,7 +19,7 @@ public class ClickCounter {
 
     public static void click()
     {
-        if (Variables.CPS)
+        if (Vbs.CPS)
         {
             ++clicks;
             //System.out.println("Test");
@@ -29,7 +29,7 @@ public class ClickCounter {
     public static void tick()
     {
     	//result = clicks;
-        if (Variables.CPS && time < System.currentTimeMillis())
+        if (Vbs.CPS && time < System.currentTimeMillis())
         {
             result = clicks;
             time = System.currentTimeMillis() + 1000L;

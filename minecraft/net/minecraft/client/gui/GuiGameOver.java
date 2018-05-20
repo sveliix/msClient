@@ -3,7 +3,7 @@ package net.minecraft.client.gui;
 import java.io.IOException;
 
 import msClient.ParticleAPI.Client.Particle.ParticleGen;
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import msClient.events.MsEventHandler;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.renderer.GlStateManager;
@@ -109,7 +109,7 @@ public class GuiGameOver extends GuiScreen implements GuiYesNoCallback
      */
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
-    	if(Variables.fastRespawn) {
+    	if(Vbs.fastRespawn) {
     		MsEventHandler.onDrawScreen(this);
     	}
     	

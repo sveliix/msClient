@@ -2,7 +2,7 @@ package net.minecraft.client.gui;
 
 import com.google.common.collect.Lists;
 
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import msClient.events.MsEventHandler;
 
 import java.util.Iterator;
@@ -83,7 +83,7 @@ public class GuiNewChat extends Gui
                             {
                                 int i2 = 0;
                                 int j2 = -i1 * 9;
-                                if(Variables.fastChat) {
+                                if(Vbs.fastChat) {
                                 	MsEventHandler.onDrawChat(this);
                                 }             
                                 else {

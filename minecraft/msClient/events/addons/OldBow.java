@@ -1,6 +1,6 @@
 package msClient.events.addons;
 
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.ItemRenderer;

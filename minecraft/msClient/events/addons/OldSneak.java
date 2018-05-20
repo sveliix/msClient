@@ -1,6 +1,6 @@
 package msClient.events.addons;
 
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import msClient.utils.OldSneaking;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;

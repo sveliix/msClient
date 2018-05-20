@@ -5,7 +5,7 @@ import org.lwjgl.opengl.GL11;
 import com.darkmagician6.eventapi.EventManager;
 
 import msClient.main;
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import msClient.events.MsEventHandler;
 import msClient.sv.SVGuiPos;
 import msClient.test.togglesneak.CustomMovementInput;

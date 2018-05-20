@@ -1,6 +1,6 @@
 package msClient.test.togglesneak;
 
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import net.minecraft.client.Minecraft;
 
 
@@ -16,7 +16,7 @@ public class RenderTextToHUD
     {   
     	if(ToggleSneakMod.optionShowHUDText)
     		{
-    			mc.fontRendererObj.drawStringWithShadow(textForHUD, ToggleSneakMod.optionHUDTextPosX, ToggleSneakMod.optionHUDTextPosY, Variables.MSColor);
+    			mc.fontRendererObj.drawStringWithShadow(textForHUD, ToggleSneakMod.optionHUDTextPosX, ToggleSneakMod.optionHUDTextPosY, Vbs.MSColor);
     		}    	
     }
 	    

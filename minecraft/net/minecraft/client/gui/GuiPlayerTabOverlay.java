@@ -4,7 +4,7 @@ import com.google.common.collect.ComparisonChain;
 import com.google.common.collect.Ordering;
 import com.mojang.authlib.GameProfile;
 
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import msClient.events.MsEventHandler;
 
 import java.awt.Color;
@@ -149,7 +149,7 @@ public class GuiPlayerTabOverlay extends Gui
                 l1 = Math.max(l1, this.mc.fontRendererObj.getStringWidth(s2));
             }
         }
-        if(Variables.cleanTab) {
+        if(Vbs.cleanTab) {
         	MsEventHandler.onRenderPlayerlist(this);
         }
         else {
@@ -231,7 +231,7 @@ public class GuiPlayerTabOverlay extends Gui
                 this.drawPing(i1, j2 - (flag ? 9 : 0), k2, networkplayerinfo1);
             }
         }
-        if(Variables.cleanTab) {}
+        if(Vbs.cleanTab) {}
         else {
         	if (list2 != null)
             {
@@ -257,7 +257,7 @@ public class GuiPlayerTabOverlay extends Gui
         int i = 0;
         int j = 0;
         
-        if(Variables.pingOnTab) {
+        if(Vbs.pingOnTab) {
         	String r = networkPlayerInfoIn.getResponseTime() + "";
             int t = (int)mc.fontRendererObj.getStringWidth(r)/4;
 

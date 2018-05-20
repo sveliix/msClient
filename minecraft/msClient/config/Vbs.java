@@ -9,7 +9,7 @@ import msClient.sv.InGuiObject;
 import net.minecraft.client.settings.KeyBinding;
 import pw.cinque.keystrokes.render.Key;
 
-public class Variables {
+public class Vbs {
 
 	public static boolean oldBow = true;		//MSGuiSettings
 	public static boolean oldRod = true;
@@ -56,6 +56,7 @@ public class Variables {
 	public static boolean particle = true;		//GuiScreen
 	public static boolean oldParticles = false;
     public static boolean coverParticles = true;
+    public static boolean particleOptions = true; // 
     
     public static float debugG = 0.6F;	//GuiOverlayDebug
     

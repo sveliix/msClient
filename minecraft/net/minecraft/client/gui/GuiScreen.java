@@ -6,7 +6,7 @@ import com.google.common.collect.Sets;
 
 import msClient.ParticleAPI.Client.Particle.ParticleGen;
 import msClient.ParticleAPI.Client.Particle.SvParticleGen;
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import msClient.gui.CWGui;
 import msClient.gui.MSMainMenu;
 import msClient.sv.SVGuiPos;
@@ -103,9 +103,9 @@ public abstract class GuiScreen extends Gui implements GuiYesNoCallback
      */
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
-    	if (Variables.coverParticles) {
-    		if (Variables.particle && !(Minecraft.getMinecraft().currentScreen instanceof SVGuiPos) && !(Minecraft.getMinecraft().currentScreen instanceof CWGui) && !(Minecraft.getMinecraft().currentScreen instanceof GuiContainerCreative) ) {
-    			if (Variables.oldParticles) {particleGen.drawParticles();}
+    	if (Vbs.coverParticles) {
+    		if (Vbs.particle && !(Minecraft.getMinecraft().currentScreen instanceof SVGuiPos) && !(Minecraft.getMinecraft().currentScreen instanceof CWGui) && !(Minecraft.getMinecraft().currentScreen instanceof GuiContainerCreative) ) {
+    			if (Vbs.oldParticles) {particleGen.drawParticles();}
     			else 						{svParticleGen.tick();}
     		}
     	}
@@ -123,9 +123,9 @@ public abstract class GuiScreen extends Gui implements GuiYesNoCallback
         {
         	((GuiTextField)this.textfieldList.get(k)).drawTextBox();
         }
-        if (!Variables.coverParticles) {
-    		if (Variables.particle && !(Minecraft.getMinecraft().currentScreen instanceof SVGuiPos) && !(Minecraft.getMinecraft().currentScreen instanceof CWGui)) {
-    			if (Variables.oldParticles) {particleGen.drawParticles();}
+        if (!Vbs.coverParticles) {
+    		if (Vbs.particle && !(Minecraft.getMinecraft().currentScreen instanceof SVGuiPos) && !(Minecraft.getMinecraft().currentScreen instanceof CWGui)) {
+    			if (Vbs.oldParticles) {particleGen.drawParticles();}
     			else 						{svParticleGen.tick();}
     		}
     	}

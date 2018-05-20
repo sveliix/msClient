@@ -3,7 +3,7 @@ package net.minecraft.client.gui;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 
-import msClient.config.Variables;
+import msClient.config.Vbs;
 
 import java.awt.Color;
 import java.awt.FontMetrics;
@@ -82,14 +82,14 @@ public class GuiOverlayDebug extends Gui
             	
             	
                 GL11.glPushMatrix(); //Start new matrix
-        	    GL11.glScalef(Variables.debugG, Variables.debugG, Variables.debugG); //scale it to 0.5 size on each side. Must be float e.g.: 2.0F
+        	    GL11.glScalef(Vbs.debugG, Vbs.debugG, Vbs.debugG); //scale it to 0.5 size on each side. Must be float e.g.: 2.0F
         	    
         	    int j = this.fontRenderer.FONT_HEIGHT;
         	    int k = this.fontRenderer.getStringWidth(s);
                 int l = 2;
                 int i1 = 2 + j * i;
                 
-                this.fontRenderer.drawString(s, 2, i1, Variables.MSColor);
+                this.fontRenderer.drawString(s, 2, i1, Vbs.MSColor);
                 
                 GL11.glPopMatrix(); //End this matrix
             }
@@ -118,9 +118,9 @@ public class GuiOverlayDebug extends Gui
                 
                 //drawRect(l - 1, i1 - 1, l + k + 1, i1 + j - 1, -1873784752);
                 GL11.glPushMatrix(); //Start new matrix
-        	    GL11.glScalef(Variables.debugG, Variables.debugG, Variables.debugG); //scale it to 0.5 size on each side. Must be float e.g.: 2.0F
+        	    GL11.glScalef(Vbs.debugG, Vbs.debugG, Vbs.debugG); //scale it to 0.5 size on each side. Must be float e.g.: 2.0F
                 
-                this.fontRenderer.drawString(s, Math.round((l+78)/Variables.debugG-Variables.debugG*100), Math.round(i1/Variables.debugG), Variables.MSColor);
+                this.fontRenderer.drawString(s, Math.round((l+78)/Vbs.debugG-Vbs.debugG*100), Math.round(i1/Vbs.debugG), Vbs.MSColor);
                 GL11.glPopMatrix(); //End this matrix
                 
             }

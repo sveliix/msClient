@@ -3,7 +3,7 @@ package msClient.events.addons;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiIngame;
@@ -22,7 +22,7 @@ public class KeyStrokesAddOn {
         int j1 = 5;
         
         
-        switch (Location.values()[Variables.location])
+        switch (Location.values()[Vbs.location])
         {
             case TOP_LEFT:
                 break;
@@ -40,14 +40,14 @@ public class KeyStrokesAddOn {
             	i1 += (sr.getScaledWidth()/2 - 32);
             	break;
             case CUSTOM:
-            	i1 = Variables.keyStrokes_x;
-            	j1 = Variables.keyStrokes_y;
+            	i1 = Vbs.keyStrokes_x;
+            	j1 = Vbs.keyStrokes_y;
             	break;
             default:
                 return;
         }
 
-        for (Key key : Variables.keys)
+        for (Key key : Vbs.keys)
         {
         	if (key.getName().equals("LMB")) {
         		key.setPressed(Mouse.isButtonDown(0));
@@ -58,14 +58,14 @@ public class KeyStrokesAddOn {
         	}
         	
             int k = mc.fontRendererObj.getStringWidth(key.getName());
-            if(!Variables.fastKeyStrokes) {
+            if(!Vbs.fastKeyStrokes) {
             	Gui.drawRect(i1 + key.getX(), j1 + key.getY(), i1 + key.getX() + key.getWidth(), j1 + key.getY() + key.getHeight(), key.isPressed() ? 1728053247 : 1711276032);
             }
-            mc.fontRendererObj.drawString(key.getName(), i1 + key.getX() + key.getWidth() / 2 - k / 2, j1 + key.getY() + key.getHeight() / 2 - 4, key.isPressed() ? -16777216 : Variables.MSColor);
+            mc.fontRendererObj.drawString(key.getName(), i1 + key.getX() + key.getWidth() / 2 - k / 2, j1 + key.getY() + key.getHeight() / 2 - 4, key.isPressed() ? -16777216 : Vbs.MSColor);
             
         }
         
-        for (Key key : Variables.keys)
+        for (Key key : Vbs.keys)
         {
             if (!key.isMouseKey())
             {
@@ -73,7 +73,7 @@ public class KeyStrokesAddOn {
             }
         }
 
-        for (Key key1 : Variables.keys)
+        for (Key key1 : Vbs.keys)
         {
             if (key1.isMouseKey())
             {

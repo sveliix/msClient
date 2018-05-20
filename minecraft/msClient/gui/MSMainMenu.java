@@ -17,7 +17,7 @@ import com.ibm.icu.impl.ICUService.Key;
 import msClient.main;
 import msClient.ParticleAPI.Client.Particle.SvParticleGen;
 import msClient.ParticleAPI.Client.Particle.Impl.SvAutismParticle;
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import msClient.events.addons.NameTags;
 import msClient.events.addons.NameTags.Tag;
 import msClient.sv.SVGuiPos;
@@ -264,7 +264,7 @@ public class MSMainMenu extends GuiScreen implements GuiYesNoCallback {
 		this.y = 0;
 		this.x += this.sx;
 		llOverlay.add(new SvLabel("F3 Menu", this.x + 40, this.y += this.sy, true));
-		blOverlay.add(sd00 = new GuiSliderFixed(330, this.x - 10 , this.y += this.sy, "Grösse F3", Variables.debugG/1.5F, 1.5F, 0.4F));
+		blOverlay.add(sd00 = new GuiSliderFixed(330, this.x - 10 , this.y += this.sy, "Grösse F3", Vbs.debugG/1.5F, 1.5F, 0.4F));
 		this.y = 0;
 		this.x += this.sx;
 		llOverlay.add(new SvLabel("Scoreboard", this.x + 40, this.y += this.sy, true));
@@ -276,7 +276,7 @@ public class MSMainMenu extends GuiScreen implements GuiYesNoCallback {
 		this.x += this.sx;
 		llIngame.add(new SvLabel("Ingame-Gui", this.x + 40, this.y += this.sy, true));
 		
-		blIngame.add(se00 = new GuiSliderFixed(360, this.x - 10, this.y += this.sy, "Grösse", Variables.x/1.5F, 1.5F, 0.4F));
+		blIngame.add(se00 = new GuiSliderFixed(360, this.x - 10, this.y += this.sy, "Grösse", Vbs.x/1.5F, 1.5F, 0.4F));
 			
 		blIngame.add(be00 = new GuiButton(401, this.x, this.y += this.sy, 80, 20, "Show FPS"));
 		blIngame.add(be01 = new GuiButton(402, this.x, this.y += this.sy, 80, 20, "Show Coords"));
@@ -291,7 +291,7 @@ public class MSMainMenu extends GuiScreen implements GuiYesNoCallback {
 		blIngame.add(be08 = new GuiButton(409, this.x += this.sx, this.y += 2*this.sy, 80, 20, "Show LookingAt"));
 		blIngame.add(be09 = new GuiButton(410, this.x, this.y += this.sy, 80, 20, "Display Reach"));
 		blIngame.add(be17 = new GuiButton(417, this.x, this.y += this.sy, 80, 20, "Particle Mod"));
-		blIngame.add(se02 = new GuiSliderFixed(418, this.x - 10, this.y += this.sy, "Particle Multiplier", Variables.pSize/10F, 10F, 0F));
+		blIngame.add(se02 = new GuiSliderFixed(418, this.x - 10, this.y += this.sy, "Particle Multiplier", Vbs.pSize/10F, 10F, 0F));
 		this.y = 0;
 		this.x += this.sx;
 		llIngame.add(new SvLabel("FastMod", this.x + 40, this.y += this.sy, true));
@@ -312,9 +312,9 @@ public class MSMainMenu extends GuiScreen implements GuiYesNoCallback {
 		blMenues.add(bf01 = new GuiButton(502, this.x, this.y += this.sy, 80, 20, "Mode:"));
 		blMenues.add(bf02 = new GuiButton(503, this.x, this.y += this.sy, 80, 20, "Cover Gui"));
 		
-		blMenues.add(bf10 = new GuiSliderFixed(511, this.x - 10, this.y += this.sy, "Radius", Variables.radius/5, 5F, 0.1F));
-		blMenues.add(bf11 = new GuiSliderFixed(512, this.x - 10, this.y += this.sy, "Size", Variables.size/5, 5F, 0.1F));
-		blMenues.add(bf12 = new GuiSliderFixed(513, this.x - 10, this.y += this.sy, "Speed", Variables.speed/5, 5F, 0.1F));
+		blMenues.add(bf10 = new GuiSliderFixed(511, this.x - 10, this.y += this.sy, "Radius", Vbs.radius/5, 5F, 0.1F));
+		blMenues.add(bf11 = new GuiSliderFixed(512, this.x - 10, this.y += this.sy, "Size", Vbs.size/5, 5F, 0.1F));
+		blMenues.add(bf12 = new GuiSliderFixed(513, this.x - 10, this.y += this.sy, "Speed", Vbs.speed/5, 5F, 0.1F));
 		this.y = 0;
 		this.x += this.sx;
 		llMenues.add(new SvLabel("Color", this.x + 40, this.y += this.sy, true));
@@ -515,140 +515,140 @@ public class MSMainMenu extends GuiScreen implements GuiYesNoCallback {
 			break;
 			
 		case 201:
-			Variables.oldRod = !Variables.oldRod; 
-			bc00.displayString = (Variables.oldRod) ? ("§21.7 Rod") : ("§41.7 Rod");
+			Vbs.oldRod = !Vbs.oldRod; 
+			bc00.displayString = (Vbs.oldRod) ? ("§21.7 Rod") : ("§41.7 Rod");
 			break;
 		case 202:
-			Variables.oldBow = !Variables.oldBow; 
-			bc01.displayString = (Variables.oldBow) ? ("§21.7 Bow") : ("§41.7 Bow");
+			Vbs.oldBow = !Vbs.oldBow; 
+			bc01.displayString = (Vbs.oldBow) ? ("§21.7 Bow") : ("§41.7 Bow");
 			break;
 		case 203:
-			Variables.oldBlockBuild = !Variables.oldBlockBuild; 
-			bc02.displayString = (Variables.oldBlockBuild) ? ("§21.7 BlockBuild") : ("§41.7 BlockBuild");
+			Vbs.oldBlockBuild = !Vbs.oldBlockBuild; 
+			bc02.displayString = (Vbs.oldBlockBuild) ? ("§21.7 BlockBuild") : ("§41.7 BlockBuild");
 			break;
 		case 204:
-			Variables.oldBlockHit = !Variables.oldBlockHit; 
-			bc03.displayString = (Variables.oldBlockHit) ? ("§21.7 BlockHit") : ("§41.7 BlockHit");
+			Vbs.oldBlockHit = !Vbs.oldBlockHit; 
+			bc03.displayString = (Vbs.oldBlockHit) ? ("§21.7 BlockHit") : ("§41.7 BlockHit");
 			break;
 		case 205:
-			Variables.oldSneak = !Variables.oldSneak; 
-			bc04.displayString = (Variables.oldSneak) ? ("§21.7 Sneak") : ("§41.7 Sneak");
+			Vbs.oldSneak = !Vbs.oldSneak; 
+			bc04.displayString = (Vbs.oldSneak) ? ("§21.7 Sneak") : ("§41.7 Sneak");
 			break;
 		case 206:
-			Variables.showMyName = !Variables.showMyName; 
-			bc05.displayString = (Variables.showMyName) ? ("§2Show my Name") : ("§4Show my Name");
+			Vbs.showMyName = !Vbs.showMyName; 
+			bc05.displayString = (Vbs.showMyName) ? ("§2Show my Name") : ("§4Show my Name");
 			break;
 		case 207:
-			Variables.nameTags = !Variables.nameTags; 
-			bc06.displayString = (Variables.nameTags) ? ("§2Name Tags") : ("§4Name Tags");
+			Vbs.nameTags = !Vbs.nameTags; 
+			bc06.displayString = (Vbs.nameTags) ? ("§2Name Tags") : ("§4Name Tags");
 			break;
 		case 208:
-			Variables.mouseDelayFix = !Variables.mouseDelayFix; 
-			bc07.displayString = (Variables.mouseDelayFix) ? ("§2MouseDelayFix") : ("§4MouseDelayFix");
+			Vbs.mouseDelayFix = !Vbs.mouseDelayFix; 
+			bc07.displayString = (Vbs.mouseDelayFix) ? ("§2MouseDelayFix") : ("§4MouseDelayFix");
 			break;
 		
 		case 210:
-			Variables.funnyCPS = !Variables.funnyCPS; 
-			bc09.displayString = (Variables.funnyCPS) ? ("§2Funny CPS") : ("§4Funny CPS");
+			Vbs.funnyCPS = !Vbs.funnyCPS; 
+			bc09.displayString = (Vbs.funnyCPS) ? ("§2Funny CPS") : ("§4Funny CPS");
 			break;
 		case 211:
-			Variables.funnyReach = !Variables.funnyReach; 
-			bc10.displayString = (Variables.funnyReach) ? ("§2Funny Reach") : ("§4Funny Reach");
+			Vbs.funnyReach = !Vbs.funnyReach; 
+			bc10.displayString = (Vbs.funnyReach) ? ("§2Funny Reach") : ("§4Funny Reach");
 			break;
 		case 212:
-			Variables.showNameMS = !Variables.showNameMS; 
-			bc11.displayString = (Variables.showNameMS) ? ("§2Show MS-Name Tags") : ("§4Show MS-Name Tags");
+			Vbs.showNameMS = !Vbs.showNameMS; 
+			bc11.displayString = (Vbs.showNameMS) ? ("§2Show MS-Name Tags") : ("§4Show MS-Name Tags");
 			break;
 		case 213:
-			Variables.showNameInteqt = !Variables.showNameInteqt; 
-			bc12.displayString = (Variables.showNameInteqt) ? ("§2Show Inteqt-Name Tags") : ("§4Show Inteqt-Name Tags");
+			Vbs.showNameInteqt = !Vbs.showNameInteqt; 
+			bc12.displayString = (Vbs.showNameInteqt) ? ("§2Show Inteqt-Name Tags") : ("§4Show Inteqt-Name Tags");
 			break;
 		case 214:
-			Variables.showNameOther = !Variables.showNameOther; 
-			bc13.displayString = (Variables.showNameOther) ? ("§2Show Other-Name Tags") : ("§4Show Other-Name Tags");
+			Vbs.showNameOther = !Vbs.showNameOther; 
+			bc13.displayString = (Vbs.showNameOther) ? ("§2Show Other-Name Tags") : ("§4Show Other-Name Tags");
 			break;
 		case 215:
-			Variables.oldDmg = !Variables.oldDmg;
-			bc14.displayString = (Variables.oldDmg) ? ("§21.7 Damage") : ("§41.7 Damage");
+			Vbs.oldDmg = !Vbs.oldDmg;
+			bc14.displayString = (Vbs.oldDmg) ? ("§21.7 Damage") : ("§41.7 Damage");
 			
 		case 301:
-			Variables.cleanTab = !Variables.cleanTab;
-			bd00.displayString = (Variables.cleanTab) ? ("§2Clean Tab") : ("§4Clean Tab");
+			Vbs.cleanTab = !Vbs.cleanTab;
+			bd00.displayString = (Vbs.cleanTab) ? ("§2Clean Tab") : ("§4Clean Tab");
 			break;
 		case 302:
-			Variables.pingOnTab = !Variables.pingOnTab;
-			bd01.displayString = (Variables.pingOnTab) ? ("§2Show Ping") : ("§4Show Ping");
+			Vbs.pingOnTab = !Vbs.pingOnTab;
+			bd01.displayString = (Vbs.pingOnTab) ? ("§2Show Ping") : ("§4Show Ping");
 			break;
 		case 303:
-			Variables.scoreboard = !Variables.scoreboard;
-			bd02.displayString = (Variables.scoreboard) ? ("§2Enabled") : ("§4Disabled");
+			Vbs.scoreboard = !Vbs.scoreboard;
+			bd02.displayString = (Vbs.scoreboard) ? ("§2Enabled") : ("§4Disabled");
 			break;
 			
 		case 401:
-			Variables.showFPS = !Variables.showFPS;
-			be00.displayString = (Variables.showFPS) ? ("§2Show FPS") : ("§4Show FPS");
+			Vbs.showFPS = !Vbs.showFPS;
+			be00.displayString = (Vbs.showFPS) ? ("§2Show FPS") : ("§4Show FPS");
 			break;
 		case 402:
-			Variables.showCoords = !Variables.showCoords;
-			be01.displayString = (Variables.showCoords) ? ("§2Show Coords") : ("§4Show Coords");
+			Vbs.showCoords = !Vbs.showCoords;
+			be01.displayString = (Vbs.showCoords) ? ("§2Show Coords") : ("§4Show Coords");
 			break;
 		case 403:
-			Variables.CPS = !Variables.CPS;
-			be02.displayString = (Variables.CPS) ? ("§2Show CPS") : ("§4Show CPS");
+			Vbs.CPS = !Vbs.CPS;
+			be02.displayString = (Vbs.CPS) ? ("§2Show CPS") : ("§4Show CPS");
 			break;
 		case 404:
-			Variables.MSPotion = !Variables.MSPotion;
-			be03.displayString = (Variables.MSPotion) ? ("§2Show Potion") : ("§4Show Potion");
+			Vbs.MSPotion = !Vbs.MSPotion;
+			be03.displayString = (Vbs.MSPotion) ? ("§2Show Potion") : ("§4Show Potion");
 			break;
 		case 405:
-			Variables.Armor = !Variables.Armor;
-			be04.displayString = (Variables.Armor) ? ("§2Show Armor") : ("§4Show Armor");
+			Vbs.Armor = !Vbs.Armor;
+			be04.displayString = (Vbs.Armor) ? ("§2Show Armor") : ("§4Show Armor");
 			break;
 		case 406:
-			Variables.MLG = !Variables.MLG;
-			be05.displayString = (Variables.MLG) ? ("§2MLG Helper") : ("§4MLG Helper");
+			Vbs.MLG = !Vbs.MLG;
+			be05.displayString = (Vbs.MLG) ? ("§2MLG Helper") : ("§4MLG Helper");
 			break;
 		case 407:
-			Variables.EP = !Variables.EP;
-			be06.displayString = (Variables.EP) ? ("§2EP Detector") : ("§4EP Detector");
+			Vbs.EP = !Vbs.EP;
+			be06.displayString = (Vbs.EP) ? ("§2EP Detector") : ("§4EP Detector");
 			break;
 		case 408:
-			Variables.memory = !Variables.memory;
-			be07.displayString = (Variables.memory) ? ("§2Show Memory") : ("§4Show Memory");
+			Vbs.memory = !Vbs.memory;
+			be07.displayString = (Vbs.memory) ? ("§2Show Memory") : ("§4Show Memory");
 			break;
 		case 409:
-			Variables.lookingAt = !Variables.lookingAt;
-			be08.displayString = (Variables.lookingAt) ? ("§2Show LookingAt") : ("§4Show LookingAt");
+			Vbs.lookingAt = !Vbs.lookingAt;
+			be08.displayString = (Vbs.lookingAt) ? ("§2Show LookingAt") : ("§4Show LookingAt");
 			break;
 		case 410:
-			Variables.reachDisplay = !Variables.reachDisplay;
-			be09.displayString = (Variables.reachDisplay) ? ("§2Display Reach") : ("§4Display Reach");
+			Vbs.reachDisplay = !Vbs.reachDisplay;
+			be09.displayString = (Vbs.reachDisplay) ? ("§2Display Reach") : ("§4Display Reach");
 			break;
 		case 411:
-			Variables.fastChat = !Variables.fastChat;
-			be10.displayString = (Variables.fastChat) ? ("§2Fast Chat") : ("§4Fast Chat");
+			Vbs.fastChat = !Vbs.fastChat;
+			be10.displayString = (Vbs.fastChat) ? ("§2Fast Chat") : ("§4Fast Chat");
 			break;
 		case 412:
-			Variables.fastScore = !Variables.fastScore;
-			be11.displayString = (Variables.fastScore) ? ("§2Fast Scoreboard") : ("§4Fast Scoreboard");
+			Vbs.fastScore = !Vbs.fastScore;
+			be11.displayString = (Vbs.fastScore) ? ("§2Fast Scoreboard") : ("§4Fast Scoreboard");
 			break;
 		case 413:
-			Variables.fastKeyStrokes = !Variables.fastKeyStrokes;
-			be12.displayString = (Variables.fastKeyStrokes) ? ("§2Fast KeyStrokes") : ("§4Fast KeyStrokes");
+			Vbs.fastKeyStrokes = !Vbs.fastKeyStrokes;
+			be12.displayString = (Vbs.fastKeyStrokes) ? ("§2Fast KeyStrokes") : ("§4Fast KeyStrokes");
 			break;
 		case 414:
-			Variables.fastReach = !Variables.fastReach;
-			be13.displayString = (Variables.fastReach) ? ("§2Fast ReachDisplay") : ("§4Fast ReachDisplay");
+			Vbs.fastReach = !Vbs.fastReach;
+			be13.displayString = (Vbs.fastReach) ? ("§2Fast ReachDisplay") : ("§4Fast ReachDisplay");
 			break;
 		case 415:
-			Variables.keyStrokesMod = !Variables.keyStrokesMod;
-			be14.displayString = (Variables.keyStrokesMod) ? ("§2Show") : ("§4Show");
+			Vbs.keyStrokesMod = !Vbs.keyStrokesMod;
+			be14.displayString = (Vbs.keyStrokesMod) ? ("§2Show") : ("§4Show");
 			break;
 		case 416:
-			if (Variables.location < 4) {Variables.location++;} else {Variables.location = 0;}
+			if (Vbs.location < 4) {Vbs.location++;} else {Vbs.location = 0;}
 			
 			String s = "Position: ";
-			switch (Variables.location) {
+			switch (Vbs.location) {
 			case 0:
 				s += "Links Oben";
 				break;
@@ -668,52 +668,52 @@ public class MSMainMenu extends GuiScreen implements GuiYesNoCallback {
 			be15.displayString = s;
 			break;
 		case 417:
-			Variables.particleMod = !Variables.particleMod;
-			be17.displayString = (Variables.particleMod) ? ("§2Particle Mod") : ("§4Particle Mod");
+			Vbs.particleMod = !Vbs.particleMod;
+			be17.displayString = (Vbs.particleMod) ? ("§2Particle Mod") : ("§4Particle Mod");
 			break;
 			
 		case 501:
-			Variables.particle = !Variables.particle;
-			bf00.displayString = (Variables.particle) ? ("§2Show") : ("§4Show");
+			Vbs.particle = !Vbs.particle;
+			bf00.displayString = (Vbs.particle) ? ("§2Show") : ("§4Show");
 			break;		
 		case 503:
-			Variables.coverParticles = !Variables.coverParticles;
-			bf02.displayString = (Variables.coverParticles) ? ("§4Cover Gui") : ("§2Cover Gui");
+			Vbs.coverParticles = !Vbs.coverParticles;
+			bf02.displayString = (Vbs.coverParticles) ? ("§4Cover Gui") : ("§2Cover Gui");
 			break;
 		case 504:
-			Variables.MSColor = Color.RED.getRGB();
-			Variables.rainBow = false;
+			Vbs.MSColor = Color.RED.getRGB();
+			Vbs.rainBow = false;
 			break;
 		case 505:
-			Variables.MSColor = Color.YELLOW.getRGB();
-			Variables.rainBow = false;
+			Vbs.MSColor = Color.YELLOW.getRGB();
+			Vbs.rainBow = false;
 			break;
 		case 506:
-			Variables.MSColor = Color.GREEN.getRGB();
-			Variables.rainBow = false;
+			Vbs.MSColor = Color.GREEN.getRGB();
+			Vbs.rainBow = false;
 			break;
 		case 507:
-			Variables.MSColor = Color.BLUE.getRGB();
-			Variables.rainBow = false;
+			Vbs.MSColor = Color.BLUE.getRGB();
+			Vbs.rainBow = false;
 			break;
 		case 508:
-			Variables.MSColor = Color.WHITE.getRGB();
-			Variables.rainBow = false;
+			Vbs.MSColor = Color.WHITE.getRGB();
+			Vbs.rainBow = false;
 			break;
 		case 509:
-			Variables.MSColor = Color.BLACK.getRGB();
-			Variables.rainBow = false;
+			Vbs.MSColor = Color.BLACK.getRGB();
+			Vbs.rainBow = false;
 			break;
 		case 510:
-			Variables.rainBow = true;
+			Vbs.rainBow = true;
 			break;
 		case 512:
 			SvParticleGen.particles.clear();
-			SvParticleGen.particles.add(new SvAutismParticle(Variables.size));
+			SvParticleGen.particles.add(new SvAutismParticle(Vbs.size));
 			break;
 		case 513:
 			SvParticleGen.particles.clear();
-			SvParticleGen.particles.add(new SvAutismParticle(Variables.size));
+			SvParticleGen.particles.add(new SvAutismParticle(Vbs.size));
 			break;
 			
 		case 601:
@@ -929,34 +929,34 @@ public class MSMainMenu extends GuiScreen implements GuiYesNoCallback {
 		}
 		
 		
-		Variables.radius = (Float)bf10.sliderValue*5;		
+		Vbs.radius = (Float)bf10.sliderValue*5;		
 		
-		Variables.size = (Float)bf11.sliderValue*5;
+		Vbs.size = (Float)bf11.sliderValue*5;
 		
-		Variables.speed = (Float)bf12.sliderValue*5;
+		Vbs.speed = (Float)bf12.sliderValue*5;
 		
-		Variables.pSize = (int)(se02.sliderValue*10);		
+		Vbs.pSize = (int)(se02.sliderValue*10);		
 				
 		this.drawCenteredString(this.fontRendererObj, main.Client_Name + " " + main.Client_Version, width/2, height, Color.WHITE.getRGB());
 		
-		Variables.x = (float) (se00.sliderValue*1.5);
-		Variables.debugG = (float) (sd00.sliderValue*1.5);
+		Vbs.x = (float) (se00.sliderValue*1.5);
+		Vbs.debugG = (float) (sd00.sliderValue*1.5);
 		
 		for (SvLabel l : llCurrent) {
 			if(l.fac != 0) {
 				GL11.glPushMatrix();
 				GL11.glScalef(l.fac, l.fac, l.fac);
 				if (l.isCentered) {
-					this.drawCenteredString(fontRendererObj, l.s, (int)(l.x/l.fac), (int)(l.y/l.fac), Variables.MSColor);
+					this.drawCenteredString(fontRendererObj, l.s, (int)(l.x/l.fac), (int)(l.y/l.fac), Vbs.MSColor);
 				} else {
-					this.drawString(fontRendererObj, l.s, (int)(l.x/l.fac), (int)(l.y/l.fac), Variables.MSColor);
+					this.drawString(fontRendererObj, l.s, (int)(l.x/l.fac), (int)(l.y/l.fac), Vbs.MSColor);
 				}
 				GL11.glPopMatrix();
 			}else {			
 				if (l.isCentered) {
-					this.drawCenteredString(fontRendererObj, l.s, l.x, l.y, Variables.MSColor);
+					this.drawCenteredString(fontRendererObj, l.s, l.x, l.y, Vbs.MSColor);
 				} else {
-					this.drawString(fontRendererObj, l.s, l.x, l.y, Variables.MSColor);
+					this.drawString(fontRendererObj, l.s, l.x, l.y, Vbs.MSColor);
 				}
 			}
 		}
@@ -964,11 +964,11 @@ public class MSMainMenu extends GuiScreen implements GuiYesNoCallback {
 		if(currentTab == 4) {
 			if(bf11.dragging) {
 				SvParticleGen.particles.clear();
-				SvParticleGen.particles.add(new SvAutismParticle(Variables.size));
+				SvParticleGen.particles.add(new SvAutismParticle(Vbs.size));
 			}
 			if(bf12.dragging) {
 				SvParticleGen.particles.clear();
-				SvParticleGen.particles.add(new SvAutismParticle(Variables.size));
+				SvParticleGen.particles.add(new SvAutismParticle(Vbs.size));
 			}
 		}
 		
@@ -978,9 +978,9 @@ public class MSMainMenu extends GuiScreen implements GuiYesNoCallback {
 			this.y = 0;
 			for (int i = 0; i < ToggleSprintManager.modules.size(); i++) {
 				this.drawCenteredString(fontRendererObj, Keyboard.getKeyName(ToggleSprintManager.modules.get(i).getBind()), 
-						this.x + this.sx + 40, this.y + this.sy * 3 + 5 + (i*this.sy), Variables.MSColor);
+						this.x + this.sx + 40, this.y + this.sy * 3 + 5 + (i*this.sy), Vbs.MSColor);
 				this.drawCenteredString(fontRendererObj, ToggleSprintManager.modules.get(i).getName(), 
-						this.x + 2 * this.sx + 90, this.y + this.sy * 3 + 5 + (i*this.sy), Variables.MSColor);
+						this.x + 2 * this.sx + 90, this.y + this.sy * 3 + 5 + (i*this.sy), Vbs.MSColor);
 			}
 		}
 		
@@ -991,9 +991,9 @@ public class MSMainMenu extends GuiScreen implements GuiYesNoCallback {
 			this.y = 0;
 			for(int i = 0; i < NameTags.otherTags.size(); i++) {
 				this.drawCenteredString(fontRendererObj, NameTags.otherTags.get(i).getUUID(), 
-						this.x + this.sx + 40, this.y + this.sy * 3 + 5 + (i*this.sy), Variables.MSColor);
+						this.x + this.sx + 40, this.y + this.sy * 3 + 5 + (i*this.sy), Vbs.MSColor);
 				this.drawCenteredString(fontRendererObj, NameTags.otherTags.get(i).getTag(), 
-						this.x + 2 * this.sx + 90, this.y + this.sy * 3 + 5 + (i*this.sy), Variables.MSColor);
+						this.x + 2 * this.sx + 90, this.y + this.sy * 3 + 5 + (i*this.sy), Vbs.MSColor);
 			}
 		}
 		
@@ -1005,42 +1005,42 @@ public class MSMainMenu extends GuiScreen implements GuiYesNoCallback {
 	
 	
 	public static void loadButtonColors() {
-		bc00.displayString = (Variables.oldRod) ? ("§21.7 Rod") : ("§41.7 Rod");
-		bc01.displayString = (Variables.oldBow) ? ("§21.7 Bow") : ("§41.7 Bow");
-		bc02.displayString = (Variables.oldBlockBuild) ? ("§21.7 BlockBuild") : ("§41.7 BlockBuild");
-		bc03.displayString = (Variables.oldBlockHit) ? ("§21.7 BlockHit") : ("§41.7 BlockHit");
-		bc04.displayString = (Variables.oldSneak) ? ("§21.7 Sneak") : ("§41.7 Sneak");
-		bc05.displayString = (Variables.showMyName) ? ("§2Show my Name") : ("§4Show my Name");
-		bc06.displayString = (Variables.nameTags) ? ("§2Name Tags") : ("§4Name Tags");
-		bc07.displayString = (Variables.mouseDelayFix) ? ("§2MouseDelayFix") : ("§4MouseDelayFix");		
-		bc09.displayString = (Variables.funnyCPS) ? ("§2Funny CPS") : ("§4Funny CPS");
-		bc10.displayString = (Variables.funnyReach) ? ("§2Funny Reach") : ("§4Funny Reach");
-		bc11.displayString = (Variables.showNameMS) ? ("§2Show MS-Name Tags") : ("§4Show MS-Name Tags");
-		bc12.displayString = (Variables.showNameInteqt) ? ("§2Show Inteqt-Name Tags") : ("§4Show Inteqt-Name Tags");
-		bc13.displayString = (Variables.showNameOther) ? ("§2Show Other-Name Tags") : ("§4Show Other-Name Tags");		
-		bc14.displayString = (Variables.oldDmg) ? ("§21.7 Damage") : ("§41.7 Damage");
+		bc00.displayString = (Vbs.oldRod) ? ("§21.7 Rod") : ("§41.7 Rod");
+		bc01.displayString = (Vbs.oldBow) ? ("§21.7 Bow") : ("§41.7 Bow");
+		bc02.displayString = (Vbs.oldBlockBuild) ? ("§21.7 BlockBuild") : ("§41.7 BlockBuild");
+		bc03.displayString = (Vbs.oldBlockHit) ? ("§21.7 BlockHit") : ("§41.7 BlockHit");
+		bc04.displayString = (Vbs.oldSneak) ? ("§21.7 Sneak") : ("§41.7 Sneak");
+		bc05.displayString = (Vbs.showMyName) ? ("§2Show my Name") : ("§4Show my Name");
+		bc06.displayString = (Vbs.nameTags) ? ("§2Name Tags") : ("§4Name Tags");
+		bc07.displayString = (Vbs.mouseDelayFix) ? ("§2MouseDelayFix") : ("§4MouseDelayFix");		
+		bc09.displayString = (Vbs.funnyCPS) ? ("§2Funny CPS") : ("§4Funny CPS");
+		bc10.displayString = (Vbs.funnyReach) ? ("§2Funny Reach") : ("§4Funny Reach");
+		bc11.displayString = (Vbs.showNameMS) ? ("§2Show MS-Name Tags") : ("§4Show MS-Name Tags");
+		bc12.displayString = (Vbs.showNameInteqt) ? ("§2Show Inteqt-Name Tags") : ("§4Show Inteqt-Name Tags");
+		bc13.displayString = (Vbs.showNameOther) ? ("§2Show Other-Name Tags") : ("§4Show Other-Name Tags");		
+		bc14.displayString = (Vbs.oldDmg) ? ("§21.7 Damage") : ("§41.7 Damage");
 		
-		bd00.displayString = (Variables.cleanTab) ? ("§2Clean Tab") : ("§4Clean Tab");
-		bd01.displayString = (Variables.pingOnTab) ? ("§2Show Ping") : ("§4Show Ping");
-		bd02.displayString = (Variables.scoreboard) ? ("§2Enabled") : ("§4Disabled");
+		bd00.displayString = (Vbs.cleanTab) ? ("§2Clean Tab") : ("§4Clean Tab");
+		bd01.displayString = (Vbs.pingOnTab) ? ("§2Show Ping") : ("§4Show Ping");
+		bd02.displayString = (Vbs.scoreboard) ? ("§2Enabled") : ("§4Disabled");
 		
-		be00.displayString = (Variables.showFPS) ? ("§2Show FPS") : ("§4Show FPS");
-		be01.displayString = (Variables.showCoords) ? ("§2Show Coords") : ("§4Show Coords");
-		be02.displayString = (Variables.CPS) ? ("§2Show CPS") : ("§4Show CPS");
-		be03.displayString = (Variables.MSPotion) ? ("§2Show Potion") : ("§4Show Potion");
-		be04.displayString = (Variables.Armor) ? ("§2Show Armor") : ("§4Show Armor");
-		be05.displayString = (Variables.MLG) ? ("§2MLG Helper") : ("§4MLG Helper");
+		be00.displayString = (Vbs.showFPS) ? ("§2Show FPS") : ("§4Show FPS");
+		be01.displayString = (Vbs.showCoords) ? ("§2Show Coords") : ("§4Show Coords");
+		be02.displayString = (Vbs.CPS) ? ("§2Show CPS") : ("§4Show CPS");
+		be03.displayString = (Vbs.MSPotion) ? ("§2Show Potion") : ("§4Show Potion");
+		be04.displayString = (Vbs.Armor) ? ("§2Show Armor") : ("§4Show Armor");
+		be05.displayString = (Vbs.MLG) ? ("§2MLG Helper") : ("§4MLG Helper");
 		//be06.displayString = (Variables.EP) ? ("§2EP Detector") : ("§4EP Detector");
-		be07.displayString = (Variables.memory) ? ("§2Show Memory") : ("§4Show Memory");
-		be08.displayString = (Variables.lookingAt) ? ("§2Show LookingAt") : ("§4Show LookingAt");
-		be09.displayString = (Variables.reachDisplay) ? ("§2Display Reach") : ("§4Display Reach");
-		be10.displayString = (Variables.fastChat) ? ("§2Fast Chat") : ("§4Fast Chat");
-		be11.displayString = (Variables.fastScore) ? ("§2Fast Scoreboard") : ("§4Fast Scoreboard");
-		be12.displayString = (Variables.fastKeyStrokes) ? ("§2Fast KeyStrokes") : ("§4Fast KeyStrokes");
-		be13.displayString = (Variables.fastReach) ? ("§2Fast ReachDisplay") : ("§4Fast ReachDisplay");
-		be14.displayString = (Variables.keyStrokesMod) ? ("§2Show") : ("§4Show");
+		be07.displayString = (Vbs.memory) ? ("§2Show Memory") : ("§4Show Memory");
+		be08.displayString = (Vbs.lookingAt) ? ("§2Show LookingAt") : ("§4Show LookingAt");
+		be09.displayString = (Vbs.reachDisplay) ? ("§2Display Reach") : ("§4Display Reach");
+		be10.displayString = (Vbs.fastChat) ? ("§2Fast Chat") : ("§4Fast Chat");
+		be11.displayString = (Vbs.fastScore) ? ("§2Fast Scoreboard") : ("§4Fast Scoreboard");
+		be12.displayString = (Vbs.fastKeyStrokes) ? ("§2Fast KeyStrokes") : ("§4Fast KeyStrokes");
+		be13.displayString = (Vbs.fastReach) ? ("§2Fast ReachDisplay") : ("§4Fast ReachDisplay");
+		be14.displayString = (Vbs.keyStrokesMod) ? ("§2Show") : ("§4Show");
 		String s = "Position: ";
-		switch (Variables.location) {
+		switch (Vbs.location) {
 		case 0:
 			s += "Links Oben";
 			break;
@@ -1058,11 +1058,11 @@ public class MSMainMenu extends GuiScreen implements GuiYesNoCallback {
 			break;
 		}
 		be15.displayString = s;
-		be17.displayString = (Variables.particleMod) ? ("§2Particle Mod") : ("§4Particle Mod");
+		be17.displayString = (Vbs.particleMod) ? ("§2Particle Mod") : ("§4Particle Mod");
 		
-		bf00.displayString = (Variables.particle) ? ("§2Show") : ("§4Show");
-		bf01.displayString = (Variables.oldParticles) ? ("Mode: Standart") : ("Mode: Custom");
-		bf02.displayString = (Variables.coverParticles) ? ("§4Cover Gui") : ("§2Cover Gui");
+		bf00.displayString = (Vbs.particle) ? ("§2Show") : ("§4Show");
+		bf01.displayString = (Vbs.oldParticles) ? ("Mode: Standart") : ("Mode: Custom");
+		bf02.displayString = (Vbs.coverParticles) ? ("§4Cover Gui") : ("§2Cover Gui");
 	}	
 	
 	private void resetDelButtons() {

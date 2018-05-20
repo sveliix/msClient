@@ -8,7 +8,7 @@ import org.lwjgl.opengl.GL11;
 
 import com.google.common.collect.Lists;
 
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiIngame;
@@ -25,7 +25,7 @@ public class EP {
 	public static void run (GuiIngame g) {
 		
 		GL11.glPushMatrix();
-		GL11.glScalef(Variables.x, Variables.x, Variables.x);
+		GL11.glScalef(Vbs.x, Vbs.x, Vbs.x);
 		
 		String temp = "";
 		
@@ -55,9 +55,9 @@ public class EP {
 		    				   String s = list.get(i);
 		    				   
 			    			   mc.fontRendererObj.drawString(s, 
-			    					   Math.round(Variables.objects.get(5).getCoordX()/Variables.x), 
-			    					   Math.round((Variables.objects.get(5).getCoordY()+(8*i))/Variables.x), 
-			    					   Variables.MSColor);
+			    					   Math.round(Vbs.objects.get(5).getCoordX()/Vbs.x), 
+			    					   Math.round((Vbs.objects.get(5).getCoordY()+(8*i))/Vbs.x), 
+			    					   Vbs.MSColor);
 		    		        }
 		    		   	}  
 		    	   	}  

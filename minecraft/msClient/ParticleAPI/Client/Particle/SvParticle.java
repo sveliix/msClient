@@ -10,7 +10,7 @@ import org.lwjgl.input.Mouse;
 import msClient.ParticleAPI.Client.Particle.BorderingSide;
 import msClient.ParticleAPI.Client.Particle.Particle;
 import msClient.ParticleAPI.Client.Utilities.RenderUtil;
-import msClient.config.Variables;
+import msClient.config.Vbs;
 
 public abstract class SvParticle implements IParticle {
 	
@@ -36,7 +36,7 @@ public abstract class SvParticle implements IParticle {
         float tempSpeed = facX * (float)Math.random()*this.speed;
         this.xIncrease = tempSpeed;
         this.yIncrease = facY * (float)Math.sqrt(
-				Math.pow(Variables.speed, 2) - Math.pow(tempSpeed, 2));
+				Math.pow(Vbs.speed, 2) - Math.pow(tempSpeed, 2));
     }
 
     public float getX() {

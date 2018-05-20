@@ -21,7 +21,7 @@ import com.mojang.authlib.yggdrasil.YggdrasilUserAuthentication;
 
 import msClient.MinecraftLogin;
 import msClient.main;
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import msClient.gui.MSMainMenu;
 import msClient.sv.InGuiObject;
 import msClient.sv.SVGuiPos;
@@ -424,15 +424,15 @@ public class Minecraft implements IThreadListener, IPlayerUsage
     	
     	// FIXME edited by MSES
     	
-    	Variables.objects.add(new InGuiObject(2, 2, 50, 10, "FPS ", true, false, true));
-    	Variables.objects.add(new InGuiObject(2, 12, 50, 10, "X: 150;Y: 150;Z: 150", true, true, true));
-    	Variables.objects.add(new InGuiObject(2, 42, 50, 10, "CPS", true, false, true));
-    	Variables.objects.add(new InGuiObject(2, 52, 50, 10, "MEM", true, false, true));
-    	Variables.objects.add(new InGuiObject(2, 62, 50, 10, "MLG-Helper", true, false, true));
-    	Variables.objects.add(new InGuiObject(2, 72, 50, 10, "EP-Detector", true, false, true));
-    	Variables.objects.add(new InGuiObject(2, 82, 70, 10, "lookingAt", true, false, true));
-    	Variables.objects.add(new InGuiObject(2, 92, 80, 10, "ToggleSprint", true, false, false));
-    	Variables.objects.add(new InGuiObject(2, 102, 100, 10, "ReachDisplayMod", true, false, false));
+    	Vbs.objects.add(new InGuiObject(2, 2, 50, 10, "FPS ", true, false, true));
+    	Vbs.objects.add(new InGuiObject(2, 12, 50, 10, "X: 150;Y: 150;Z: 150", true, true, true));
+    	Vbs.objects.add(new InGuiObject(2, 42, 50, 10, "CPS", true, false, true));
+    	Vbs.objects.add(new InGuiObject(2, 52, 50, 10, "MEM", true, false, true));
+    	Vbs.objects.add(new InGuiObject(2, 62, 50, 10, "MLG-Helper", true, false, true));
+    	Vbs.objects.add(new InGuiObject(2, 72, 50, 10, "EP-Detector", true, false, true));
+    	Vbs.objects.add(new InGuiObject(2, 82, 70, 10, "lookingAt", true, false, true));
+    	Vbs.objects.add(new InGuiObject(2, 92, 80, 10, "ToggleSprint", true, false, false));
+    	Vbs.objects.add(new InGuiObject(2, 102, 100, 10, "ReachDisplayMod", true, false, false));
     	//Variables.objects.add(new InGuiObject(2, 22, 50, 10, "Y: 150", true));
     	//Variables.objects.add(new InGuiObject(2, 32, 50, 10, "Z: 150", true));
     	
@@ -1151,8 +1151,8 @@ public class Minecraft implements IThreadListener, IPlayerUsage
     private void runGameLoop() throws IOException
     {
     	
-    	if(Variables.rainBow) {
-			Variables.MSColor = java.awt.Color.HSBtoRGB((float)(System.currentTimeMillis()/1.5 % 1000L) / 1000.0F, 0.8F, 0.8F);
+    	if(Vbs.rainBow) {
+			Vbs.MSColor = java.awt.Color.HSBtoRGB((float)(System.currentTimeMillis()/1.5 % 1000L) / 1000.0F, 0.8F, 0.8F);
     	}
     	
     	ClickCounter.tick();
@@ -1577,7 +1577,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
             this.leftClickCounter = 0;
         }
 
-        if (this.leftClickCounter <= 0 && (!this.thePlayer.isUsingItem() || Variables.oldBlockBuild))
+        if (this.leftClickCounter <= 0 && (!this.thePlayer.isUsingItem() || Vbs.oldBlockBuild))
         {
             if (leftClick && this.objectMouseOver != null && this.objectMouseOver.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK)
             {
@@ -2143,7 +2143,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
                         }
                         
                         if(this.gameSettings.mlgH.isPressed()) {
-                        	Variables.MLG = !Variables.MLG;
+                        	Vbs.MLG = !Vbs.MLG;
                         }
                        
                         if(this.gameSettings.MSGui.isPressed()) {

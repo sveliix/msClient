@@ -2,7 +2,7 @@ package net.minecraft.client.gui;
 
 import com.google.common.collect.Lists;
 
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import msClient.events.MsEventHandler;
 
 import java.io.IOException;
@@ -304,7 +304,7 @@ public class GuiChat extends GuiScreen
      */
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
-    	if(Variables.fastChat) {
+    	if(Vbs.fastChat) {
     		MsEventHandler.onDrawScreen(this);
     	}
     	else {

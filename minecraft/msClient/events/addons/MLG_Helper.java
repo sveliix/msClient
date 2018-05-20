@@ -2,7 +2,7 @@ package msClient.events.addons;
 
 import org.lwjgl.opengl.GL11;
 
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import msClient.mlgHelper.Rechner;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiIngame;
@@ -15,7 +15,7 @@ public class MLG_Helper{
 	public static void run(GuiIngame g) {
 		
 		GL11.glPushMatrix();
-		GL11.glScalef(Variables.x, Variables.x, Variables.x);
+		GL11.glScalef(Vbs.x, Vbs.x, Vbs.x);
 		
 		MovingObjectPosition mop = mc.getRenderViewEntity().rayTrace(200, 1.0F);//Das ist ab hier für den MLGHelper
 
@@ -27,7 +27,10 @@ public class MLG_Helper{
     		
     		if(mlg != null) {
     			
-    			mc.fontRendererObj.drawString(mlg , Math.round(Variables.objects.get(4).getCoordX()/Variables.x), Math.round(Variables.objects.get(4).getCoordY()/Variables.x), Variables.MSColor);
+    			mc.fontRendererObj.drawString("[" + ((int)lookBY+1) + "]" + mlg, 
+    					Math.round(Vbs.objects.get(4).getCoordX()/Vbs.x), 
+    					Math.round(Vbs.objects.get(4).getCoordY()/Vbs.x), 
+    					Vbs.MSColor);
     			
     		}
     	}

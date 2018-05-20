@@ -2,7 +2,7 @@ package msClient.utils;
 
 import de.resourcepacks24.utils.Color;
 import msClient.ParticleAPI.Client.Particle.SvParticleGen;
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
@@ -73,13 +73,13 @@ public class SliderSize extends GuiButton
 
 	    public void updateText()
 	    {
-	        if (Variables.radius == 50)
+	        if (Vbs.radius == 50)
 	        {
-	            this.displayString = "" + Color.c + "a" + (Variables.radius + 50) + "%";
+	            this.displayString = "" + Color.c + "a" + (Vbs.radius + 50) + "%";
 	        }
 	        else
 	        {
-	            this.displayString = Variables.radius  + "%";
+	            this.displayString = Vbs.radius  + "%";
 	        }
 	    }
 
@@ -97,14 +97,14 @@ public class SliderSize extends GuiButton
 	                this.sliderValue = (float)(mouseX - (this.xPosition + 4)) / (float)(this.width - 8);
 	                this.sliderValue = MathHelper.clamp_float(this.sliderValue, 0.0F, 1.0F);
 	                this.sliderValue = this.denormalizeValue(this.sliderValue);
-	                Variables.radius = (float)this.sliderValue;
+	                Vbs.radius = (float)this.sliderValue;
 	                this.updateText();
 	            }
 
 	            mc.getTextureManager().bindTexture(buttonTextures);
 	            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-	            this.drawTexturedModalRect(this.getX() + (int)((double)((float)(Variables.radius * valueMax) / this.valueMax) * 0.72D), this.getY(), 0, 66, 4, 20);
-	            this.drawTexturedModalRect(this.getX() + (int)((double)((float)(Variables.radius * valueMax) / this.valueMax) * 0.72D) + 4, this.getY(), 196, 66, 4, 20);
+	            this.drawTexturedModalRect(this.getX() + (int)((double)((float)(Vbs.radius * valueMax) / this.valueMax) * 0.72D), this.getY(), 0, 66, 4, 20);
+	            this.drawTexturedModalRect(this.getX() + (int)((double)((float)(Vbs.radius * valueMax) / this.valueMax) * 0.72D) + 4, this.getY(), 196, 66, 4, 20);
 	        }
 	    }
 
@@ -118,7 +118,7 @@ public class SliderSize extends GuiButton
 	        {
 	            this.sliderValue = (float)(mouseX - (this.getX() + 4)) / (float)(this.width - 8);
 	            this.sliderValue = MathHelper.clamp_float(this.sliderValue, 0.0F, 1.0F);
-	            Variables.radius = (Float)this.sliderValue;
+	            Vbs.radius = (Float)this.sliderValue;
 	            this.updateText();
 	            this.dragging = true;
 	            return true;

@@ -4,7 +4,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import msClient.events.MsEventHandler;
 import msClient.test.Animation;
 import msClient.test.togglesneak.RenderTextToHUD;
@@ -712,7 +712,7 @@ public class GuiIngame extends Gui
             String s2 = EnumChatFormatting.RED + "" + score1.getScorePoints();
             int l = k1 - k * this.getFontRenderer().FONT_HEIGHT;
             int i1 = p_180475_2_.getScaledWidth() - b0 + 2;
-            if(Variables.fastScore) {}
+            if(Vbs.fastScore) {}
             else {
             	drawRect(j - 2, l, i1, l + this.getFontRenderer().FONT_HEIGHT, 1342177280);
             }
@@ -722,7 +722,7 @@ public class GuiIngame extends Gui
             if (k == arraylist1.size())
             {
                 String s3 = p_180475_1_.getDisplayName();
-                if(Variables.fastScore) {}
+                if(Vbs.fastScore) {}
                 else {
                 	drawRect(j - 2, l - this.getFontRenderer().FONT_HEIGHT - 1, i1, l - 1, 1610612736);
                 	drawRect(j - 2, l - 1, i1, l, 1342177280);

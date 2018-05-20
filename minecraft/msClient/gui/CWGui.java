@@ -17,6 +17,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import javax.swing.plaf.basic.BasicOptionPaneUI.ButtonActionListener;
+
 import org.apache.commons.io.IOUtils;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
@@ -27,10 +29,11 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import msClient.ParticleAPI.Client.Particle.ParticleGen;
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.util.ChatComponentText;
 
 public class CWGui extends GuiScreen {
@@ -49,12 +52,40 @@ public class CWGui extends GuiScreen {
     public CWGui(GuiScreen parentScreen) {
     	this.parentScreen = parentScreen;
     }
+    
+    	ScaledResolution s = new ScaledResolution(Minecraft.getMinecraft());
 		
 		@Override
 		public void initGui() {
 			buttonList.add(new GuiButton(01, 2, 2, 50, 20, "Back"));
+			buttonList.add(new GuiButton(02, s.getScaledWidth()-52, 2, 50, 20, "Refresh"));
+			
+			refreshCWs();
+			
+			draw();
 			
 			super.initGui();
+		}
+		
+		public void draw() {
+			int x = 10;
+			int y = 30;
+			int id = 10;
+			for(String t : cwList) {
+				if((y > s.getScaledHeight()-40 ) && t.startsWith(" ")) {
+					x += 100;
+					y = 30;
+				}
+				if(t.endsWith(".)")){
+					buttonList.add(new GuiButton(id, x+40, y-5, 10, 10, "->", false));
+					id++;
+				}
+				GL11.glPushMatrix();
+				GL11.glScalef(0.6F, 0.6F, 0.6F);
+				Minecraft.getMinecraft().fontRendererObj.drawString("" + t, Math.round(x/0.6F), Math.round(y/0.6F), Color.WHITE.getRGB());
+				GL11.glPopMatrix();
+				y += 6;
+			}
 		}
 		
 		@Override
@@ -70,14 +101,27 @@ public class CWGui extends GuiScreen {
 		
 		@Override
 		protected void actionPerformed(GuiButton button) throws IOException {
+			
+			for(int j = 0;j < cws.size(); j++) {
+	        	if(button.id > 9) {	      	        		
+	        		try {
+	    				if(mc.theWorld.isRemote) {	    					
+	    	        		if(mc.thePlayer != null && mc.getCurrentServerData() != null && mc.getCurrentServerData().serverMOTD != null && mc.getCurrentServerData().serverIP != null && mc.getCurrentServerData().serverName != null 
+	    	        				&& Minecraft.getMinecraft().getCurrentServerData().serverMOTD.toLowerCase().contains("gommehd") || Minecraft.getMinecraft().getCurrentServerData().serverIP.contains("gomme") || Minecraft.getMinecraft().getCurrentServerData().serverIP.contains("Gomme") || Minecraft.getMinecraft().getCurrentServerData().serverName.equalsIgnoreCase("GommeHD")) {
+	    	        			mc.thePlayer.sendChatMessage("/cw jump " + cws.get(button.id-10));
+	    	        		}
+	    	        		break;
+	    				}
+	    			}catch(Exception e) {
+	    				
+	    			}	    			
+	        	}
+	        }
+			
 			switch (button.id)
 	        {
 	        case 01: mc.displayGuiScreen(this.parentScreen);break;
-	        case 02: mc.thePlayer.sendChatMessage("/cw jump " + cws.get(0));break;
-	        case 03: mc.thePlayer.sendChatMessage("/cw jump " + cws.get(1));break;
-	        case 04: mc.thePlayer.sendChatMessage("/cw jump " + cws.get(2));break;
-	        case 05: mc.thePlayer.sendChatMessage("/cw jump " + cws.get(3));break;
-	        case 06: mc.thePlayer.sendChatMessage("/cw jump " + cws.get(4));break;
+	        case 02: this.buttonList.clear(); initGui(); break;	        	       	        
 	        
 	        }
 		}
@@ -88,49 +132,46 @@ public class CWGui extends GuiScreen {
 			super.updateScreen();
 		}
 		
-		
-		@Override
-		public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-			
-			drawDefaultBackground();
-			
+		public void refreshCWs() {
 			try {					
 				TestCW(1, null, null);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			/*try {					
-				TestCW(2, null, null);
-			} catch (IOException e) {
-				e.printStackTrace();
+			int q1 = 0;
+			for(String q : cws) {
+				//buttonList.add(new GuiButton(q1 + 100, eventButton, eventButton, eventButton, eventButton, q));
+				q1++;
 			}
-			t = cws.get(0);
-    		//System.out.println(t);
-			try {					
-				TestCW(4, t, null);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}*/
 			
+		}
+		
+		@Override
+		public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 			
-			
-			//drawTeamSpeak();
+			drawDefaultBackground();
+			int x = 10;
+			int y = 30;
+			int id = 10;			
+						
+			for(String t : cwList) {
+				if((y > s.getScaledHeight()-40 ) && t.startsWith(" ")) {
+					x += 100;
+					y = 30;
+				}
+				if(t.endsWith(".)")){
+					//buttonList.add(new GuiButton(id, x-7, y, 10, 10, "Jump"));
+					id++;
+				}
+				GL11.glPushMatrix();
+				GL11.glScalef(0.6F, 0.6F, 0.6F);
+				Minecraft.getMinecraft().fontRendererObj.drawString("" + t, Math.round(x/0.6F), Math.round(y/0.6F), Color.WHITE.getRGB());
+				GL11.glPopMatrix();
+				y += 6;
+			}			
 			
 			int o = width;
-			int j = height;
-			
-			
-			
-			//drawModalRectWithCustomSizedTexture(0, 0, 0, 0, 1920, 1080, 100, 20);
-			//System.out.println(cws.size());
-			/*for(int k=1;k<=count;k++) {
-				if(jj >= height-40) {
-	        		jj1 -= 100;
-	        		jj = 0;
-	        	}
-				this.buttonList.add(new GuiButton(k+1, width/2-jj1, jj+20, 10, 10, "->"));
-				jj+=40;
-			}*/
+			int j = height;											
 			
 			super.drawScreen(mouseX, mouseY, partialTicks);
 		}
@@ -138,72 +179,8 @@ public class CWGui extends GuiScreen {
 		
 	    static String t;
 	    
-	    
-	    /*public static String fetchContents(String url, Map<String, String> properties)
-	    {
-	      try
-	      {
-	        URL url1 = new URL(url);
-	        HttpURLConnection connection = (HttpURLConnection)url1.openConnection();
-	        for (Map.Entry<String, String> entry : properties.entrySet()) {
-	          connection.setRequestProperty((String)entry.getKey(), (String)entry.getValue());
-	        }
-	        if (connection.getResponseCode() == 404) {
-	          return null;
-	        }
-	        return IOUtils.toString(connection.getInputStream(), "UTF-8");
-	      }
-	      catch (Exception localException) {}
-	      return null;
-	    }
-	    
-	    public static String fetchContents(String url)
-	    {
-	      return fetchContents(url, new HashMap());
-	    }
-	    
-	    public static JsonElement fetchJsonContent(String url)
-	    {
-	      String content = fetchContents(url);
-	      if (content == null) {
-	        return new JsonObject();
-	      }
-	      if (content.contains("<code>")) {
-	        content = content.substring(content.indexOf("<code>") + 7);
-	      }
-	      if (content.contains("</code>")) {
-	        content = content.substring(0, content.indexOf("</code>") - 1);
-	      }
-	      JsonParser parser = new JsonParser();
-	      return parser.parse(content).getAsJsonObject();
-	    }
-	    
-	    private static Pattern PLAYERS_NAME = Pattern.compile("[a-zA-Z0-9_]{3,16} </td>");
-	    private static Pattern PLAYERS_CLAN = Pattern.compile("<a href=\"/clan-profile\\?name=.{3,16}\" style=\"color: #[0-9a-fA-F]{6}\"><strong style=\"font-size: 18px;\">.{3,16}</strong></a>");
-	    
-	    public static Map<String, List<String>> convertWebsitePlayersData(String html)
-	    {
-	      String[] data = html.split("\n");
-	      
-	      Map<String, List<String>> teamPlayerMap = new HashMap();
-	      String clan = null;
-	      for (String s : data)
-	      {
-	        if (PLAYERS_NAME.matcher(s).matches())
-	        {
-	          if ((clan != null) && (!teamPlayerMap.containsKey(clan))) {
-	            teamPlayerMap.put(clan, new ArrayList());
-	          }
-	          ((List)teamPlayerMap.get(clan)).add(s.replaceAll(" </td>", ""));
-	        }
-	        if (PLAYERS_CLAN.matcher(s).matches()) {
-	          clan = s.replaceFirst("<a href=\"/clan-profile\\?name=.{3,16}\" style=\"color: #[0-9a-fA-F]{6}\"><strong style=\"font-size: 18px;\">", "").replaceFirst("</strong></a>", "");
-	        }
-	      }
-	      return teamPlayerMap;
-	    }*/
-		
-		public static ArrayList<String>  TestCW(int method, String ID, String clan) throws IOException {
+	   
+		public ArrayList<String>  TestCW(int method, String ID, String clan) throws IOException {
 			
 			
 			cws.clear();
@@ -259,65 +236,83 @@ public class CWGui extends GuiScreen {
 		        int i = 1;
 		        
 		        while((s = r.readLine()) != null) {
-		        	if(method == 1) {
-		        	//if(Arrays.toString(t).contains(">")) {
-		        		//Minecraft.getMinecraft().thePlayer.sendChatMessage(Arrays.toString(t));
-		        	//}
-		        	int s2 = 0;
-		        	int s3 = 0;
-		        	String s4 = null;
-		        	String s5;
-		        	String s6;
-		        	if(s.contains("<") && s.contains(">")) {
-		        		s2 = s.lastIndexOf("<");
-		        		//System.out.println(s2);
-		    		
-		    			s3 = s.indexOf(">");
-		    			//System.out.println(s3);
-		    			if(s2 < s3) {
-		    				s4 = s.substring(s3);
-		    			}else {
-		    				s4 = s.substring(s3+1, s2);
-		    			}
+		        	if(method == 1) {		        	
+		        		
+		        		int b2 = 0;
+			        	int b3 = 0;
+			        	int i4 = 0;
+			        	String b4 = null;
+			        	String b5 = null;
+			        	String b6;
 		        	
-		        	if(s4.contains("?name=")) {
-		        		if(j >= height-40) {
-			        		j1 -= 100;
-			        		j = 0;
+		        		if(s.contains("/clan-match?id=")) {
+		        			
+		        			b3 = s.indexOf('"');
+		        			b4 = s.substring(b3+1);
+		        			i4 = b4.indexOf("?");
+		        			b2 = b4.indexOf('"');
+		        			b5 = b4.substring(i4+4,b2);
+		        			
+		        		}
+		        		//main.addChatMessage(s);
+		        		if(b5 != null) {
+		        			cws.add(b5);
+		        		}		        				        	
+		        		
+		        		int s2 = 0;
+			        	int s3 = 0;
+			        	String s4 = null;
+			        	String s5;
+			        	String s6;
+			        	if(s.contains("<") && s.contains(">")) {
+			        		s2 = s.lastIndexOf("<");
+			        		//System.out.println(s2);
+			    		
+			    			s3 = s.indexOf(">");
+			    			//System.out.println(s3);
+			    			if(s2 < s3) {
+			    				s4 = s.substring(s3);
+			    			}else {
+			    				s4 = s.substring(s3+1, s2);
+			    			}
+			        	
+			    			if(s4.contains("?name=")) {
+			    			
+			    				int t = s4.indexOf("?name=");
+			    				int t1 = s4.lastIndexOf("\"");
+			    				s5 = s4.substring(t+6, t1);
+			    				int t2 = s4.indexOf("<");
+			    				s6 = s4.substring(0, t2);
+			    				String s10 = s6 + " vs " + s5;
+			    				int k = s10.length();
+			    				GL11.glPushMatrix();
+			    				GL11.glScalef(0.6F, 0.6F, 0.6F);
+			    				//Minecraft.getMinecraft().fontRendererObj.drawString(i + ".)", Math.round((width/2-j1)/0.6F), Math.round((20+j)/0.6F), Color.RED.getRGB());
+			    				cwList.add(" ");
+			    				cwList.add(i + ".)");
+			    				GL11.glPopMatrix();
+			    				j+=8;
+			    				i++;
+			    				GL11.glPushMatrix();
+			    				GL11.glScalef(0.6F, 0.6F, 0.6F);
+			    				//Minecraft.getMinecraft().fontRendererObj.drawString(s10, Math.round(((width/2-k-5)-j1)/0.6F), Math.round((20+j)/0.6F), Color.BLUE.getRGB());
+			    				GL11.glPopMatrix();
+			    				cwList.add(s10);
+			    				j+=8;
+			    				//Minecraft.getMinecraft().thePlayer.sendChatMessage("&l" + s6 + " vs " + s5);
+			    			}
 			        	}
-		        		int t = s4.indexOf("?name=");
-		        		int t1 = s4.lastIndexOf("\"");
-		        		s5 = s4.substring(t+6, t1);
-		        		int t2 = s4.indexOf("<");
-		        		s6 = s4.substring(0, t2);
-		        		String s10 = s6 + " vs " + s5;
-		        		int k = s10.length();
-		        		GL11.glPushMatrix();
-		        		GL11.glScalef(0.6F, 0.6F, 0.6F);
-		        		Minecraft.getMinecraft().fontRendererObj.drawString(i + ".)", Math.round((width/2-j1)/0.6F), Math.round((20+j)/0.6F), Color.RED.getRGB());
-		        		GL11.glPopMatrix();
-		        		j+=8;
-		        		i++;
-		        		GL11.glPushMatrix();
-		        		GL11.glScalef(0.6F, 0.6F, 0.6F);
-		        		Minecraft.getMinecraft().fontRendererObj.drawString(s10, Math.round(((width/2-k-5)-j1)/0.6F), Math.round((20+j)/0.6F), Color.BLUE.getRGB());
-		        		GL11.glPopMatrix();
-		        		cwList.add(s10);
-		        		j+=8;
-		        		//Minecraft.getMinecraft().thePlayer.sendChatMessage("&l" + s6 + " vs " + s5);
-		        	}
-		        	}
-		        	if(s4 != null && !s4.isEmpty() && !s4.endsWith(">") && !s4.contains("Matchpage") && !s4.contains("<")) {
-		        		GL11.glPushMatrix();
-		        		GL11.glScalef(0.6F, 0.6F, 0.6F);
-		        		Minecraft.getMinecraft().fontRendererObj.drawString(s4, Math.round(((width/2-20)-j1)/0.6F), Math.round((20+j)/0.6F), Color.GRAY.getRGB());
-		        		GL11.glPopMatrix();
-		        		cwList.add(s4);
-		        		j+=8;		        		
-		        	}
-		        	
-		        	}
-		        	count++;
+			        	if(s4 != null && !s4.isEmpty() && !s4.endsWith(">") && !s4.contains("Matchpage") && !s4.contains("<")) {
+			        		GL11.glPushMatrix();
+			        		GL11.glScalef(0.6F, 0.6F, 0.6F);
+			        		//Minecraft.getMinecraft().fontRendererObj.drawString(s4, Math.round(((width/2-20)-j1)/0.6F), Math.round((20+j)/0.6F), Color.GRAY.getRGB());
+			        		GL11.glPopMatrix();
+			        		cwList.add(s4);
+			        		j+=8;		        		
+			        	}
+		        		
+			        }
+			        count++;
 		        	if(method == 2) {
 		        		
 		        		int s2 = 0;
@@ -364,6 +359,60 @@ public class CWGui extends GuiScreen {
 		        e.printStackTrace();
 		      }
 			return null;
+			
+			/*int s2 = 0;
+			        	int s3 = 0;
+			        	String s4 = null;
+			        	String s5;
+			        	String s6;
+			        	if(s.contains("<") && s.contains(">")) {
+			        		s2 = s.lastIndexOf("<");
+			        		//System.out.println(s2);
+			    		
+			    			s3 = s.indexOf(">");
+			    			//System.out.println(s3);
+			    			if(s2 < s3) {
+			    				s4 = s.substring(s3);
+			    			}else {
+			    				s4 = s.substring(s3+1, s2);
+			    			}
+			        	
+			    			if(s4.contains("?name=")) {
+			    				if(j >= height-40) {
+			    					j1 -= 100;
+			    					j = 0;
+			    				}
+			        		int t = s4.indexOf("?name=");
+			        		int t1 = s4.lastIndexOf("\"");
+			        		s5 = s4.substring(t+6, t1);
+			        		int t2 = s4.indexOf("<");
+			        		s6 = s4.substring(0, t2);
+			        		String s10 = s6 + " vs " + s5;
+			        		int k = s10.length();
+			        		GL11.glPushMatrix();
+			        		GL11.glScalef(0.6F, 0.6F, 0.6F);
+			        		//Minecraft.getMinecraft().fontRendererObj.drawString(i + ".)", Math.round((width/2-j1)/0.6F), Math.round((20+j)/0.6F), Color.RED.getRGB());
+			        		GL11.glPopMatrix();
+			        		j+=8;
+			        		i++;
+			        		GL11.glPushMatrix();
+			        		GL11.glScalef(0.6F, 0.6F, 0.6F);
+			        		//Minecraft.getMinecraft().fontRendererObj.drawString(s10, Math.round(((width/2-k-5)-j1)/0.6F), Math.round((20+j)/0.6F), Color.BLUE.getRGB());
+			        		GL11.glPopMatrix();
+			        		cwList.add(s10);
+			        		j+=8;
+			        		//Minecraft.getMinecraft().thePlayer.sendChatMessage("&l" + s6 + " vs " + s5);
+			    			}
+			        	}
+			        	if(s4 != null && !s4.isEmpty() && !s4.endsWith(">") && !s4.contains("Matchpage") && !s4.contains("<")) {
+			        		GL11.glPushMatrix();
+			        		GL11.glScalef(0.6F, 0.6F, 0.6F);
+			        		//Minecraft.getMinecraft().fontRendererObj.drawString(s4, Math.round(((width/2-20)-j1)/0.6F), Math.round((20+j)/0.6F), Color.GRAY.getRGB());
+			        		GL11.glPopMatrix();
+			        		cwList.add(s4);
+			        		j+=8;		        		
+			        	}
+			        	*/
 		}
 	}
 

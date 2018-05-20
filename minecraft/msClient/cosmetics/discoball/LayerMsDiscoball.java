@@ -21,7 +21,7 @@ public class LayerMsDiscoball implements LayerRenderer {
 	
 	public void doRenderLayer(AbstractClientPlayer entitylivingbaseIn, float p_177141_2_, float p_177141_3_,
 			float partialTicks, float p_177141_5_, float p_177141_6_, float p_177141_7_, float scale) {
-		float f = main.partialTicks;
+		float f = main.partialTicks; // range: 0F - 1F
 		
 		float fac = 0.2F; // dont hardcode that value like this
 		

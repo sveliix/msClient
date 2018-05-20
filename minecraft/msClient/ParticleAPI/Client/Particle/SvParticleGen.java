@@ -14,7 +14,7 @@ import java.util.Set;
 import org.lwjgl.input.Mouse;
 
 import msClient.ParticleAPI.Client.Particle.Impl.SvAutismParticle;
-import msClient.config.Variables;
+import msClient.config.Vbs;
 
 public class SvParticleGen {
 	
@@ -33,7 +33,7 @@ public class SvParticleGen {
 	
 	public void tick() {
 		while (amount > particles.size()) {
-			particles.add(new SvAutismParticle(Variables.size));
+			particles.add(new SvAutismParticle(Vbs.size));
 		}
 		
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
@@ -75,7 +75,7 @@ public class SvParticleGen {
 				
 				if ((Math.abs(p.getX() - Mouse.getX()/sr.getScaleFactor()) < CONNECT_RANGE1)
 						&& Math.abs(p.getY() - (sr.getScaledHeight() - Mouse.getY()/sr.getScaleFactor())) < CONNECT_RANGE1) {
-					p.connect(Mouse.getX()/sr.getScaleFactor(), sr.getScaledHeight() - Mouse.getY()/sr.getScaleFactor(), Variables.radius);
+					p.connect(Mouse.getX()/sr.getScaleFactor(), sr.getScaledHeight() - Mouse.getY()/sr.getScaleFactor(), Vbs.radius);
 				}
 			}
 			p.draw();

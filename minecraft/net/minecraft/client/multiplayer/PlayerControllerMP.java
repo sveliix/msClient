@@ -2,7 +2,7 @@ package net.minecraft.client.multiplayer;
 
 import java.awt.Color;
 
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import msClient.events.MsEventHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -288,7 +288,7 @@ public class PlayerControllerMP
 
     public boolean onPlayerDamageBlock(BlockPos posBlock, EnumFacing directionFacing)
     {
-    	if(Variables.oldBlockBuild && this.mc.thePlayer != null && this.mc.thePlayer.isUsingItem()) {
+    	if(Vbs.oldBlockBuild && this.mc.thePlayer != null && this.mc.thePlayer.isUsingItem()) {
     		return true;
     	}
     	
@@ -638,6 +638,6 @@ public class PlayerControllerMP
 
     public boolean func_181040_m()
     {
-        return Variables.oldBlockBuild ? false : this.isHittingBlock;
+        return Vbs.oldBlockBuild ? false : this.isHittingBlock;
     }
 }

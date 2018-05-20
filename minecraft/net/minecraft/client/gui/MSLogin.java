@@ -5,7 +5,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import org.lwjgl.input.Keyboard;
 
-import msClient.config.Variables;
+import msClient.config.Vbs;
 import msClient.utils.AccountManager;
 import msClient.utils.ModGuiTextField;
 
@@ -145,8 +145,8 @@ public class MSLogin extends GuiScreen
         this.drawDefaultBackground();       
         this.done.enabled = !this.login;
         this.cancel.enabled = !this.login;
-        this.fontRendererObj.drawString("Username/Email:", (int)(this.width / 2 - 100), (int)(this.height / 2 - 63), Variables.MSColor);
-        this.fontRendererObj.drawString("Password:", (int)(this.width / 2 - 100), (int)(this.height / 2 - 13), Variables.MSColor);
+        this.fontRendererObj.drawString("Username/Email:", (int)(this.width / 2 - 100), (int)(this.height / 2 - 63), Vbs.MSColor);
+        this.fontRendererObj.drawString("Password:", (int)(this.width / 2 - 100), (int)(this.height / 2 - 13), Vbs.MSColor);
 
         if (!this.badLogin.isEmpty())
         {
@@ -155,11 +155,11 @@ public class MSLogin extends GuiScreen
 
             if (this.time + 1000L > System.currentTimeMillis() && this.flash)
             {
-                this.drawCenteredString(this.fontRendererObj, s + "Error: " + this.badLogin, this.width / 2 - 1, 16, Variables.MSColor);
+                this.drawCenteredString(this.fontRendererObj, s + "Error: " + this.badLogin, this.width / 2 - 1, 16, Vbs.MSColor);
             }
             else
             {
-                this.drawCenteredString(this.fontRendererObj, s + "Error: " + this.badLogin, this.width / 2, 16, Variables.MSColor);
+                this.drawCenteredString(this.fontRendererObj, s + "Error: " + this.badLogin, this.width / 2, 16, Vbs.MSColor);
             }
 
             this.flash = !this.flash;
@@ -168,7 +168,7 @@ public class MSLogin extends GuiScreen
         if (this.login)
         {
             drawRect(0, 10, this.width, 30, java.awt.Color.BLUE.getRGB());
-            this.drawCenteredString(this.fontRendererObj, "Logging in..", this.width / 2 - 1, 16, Variables.MSColor);
+            this.drawCenteredString(this.fontRendererObj, "Logging in..", this.width / 2 - 1, 16, Vbs.MSColor);
         }
 
         this.username.drawTextBox();

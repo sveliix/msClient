@@ -11,7 +11,7 @@ import msClient.ParticleAPI.Client.Particle.BorderingSide;
 import msClient.ParticleAPI.Client.Particle.Particle;
 import msClient.ParticleAPI.Client.Particle.SvParticle;
 import msClient.ParticleAPI.Client.Utilities.RenderUtil;
-import msClient.config.Variables;
+import msClient.config.Vbs;
 
 public class SvAutismParticle extends SvParticle {
 
@@ -22,7 +22,7 @@ public class SvAutismParticle extends SvParticle {
     private static final int CONNECT_RANGE = 80;
 	
 	public SvAutismParticle(float radius) {
-		super(radius, Variables.speed);
+		super(radius, Vbs.speed);
 		
 		ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
 		setX((float)Math.random()*sr.getScaledWidth());
